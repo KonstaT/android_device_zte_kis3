@@ -1,0 +1,69 @@
+#
+# system.prop for msm8610
+#
+
+# Use reference RIL for initial bringup
+rild.libpath=/system/lib/libreference-ril.so
+#rild.libpath=/system/lib/libril-qc-qmi-1.so
+rild.libargs=-d /dev/smd0
+persist.rild.nitz_plmn=
+persist.rild.nitz_long_ons_0=
+persist.rild.nitz_long_ons_1=
+persist.rild.nitz_long_ons_2=
+persist.rild.nitz_long_ons_3=
+persist.rild.nitz_short_ons_0=
+persist.rild.nitz_short_ons_1=
+persist.rild.nitz_short_ons_2=
+persist.rild.nitz_short_ons_3=
+ril.subscription.types=NV,RUIM
+DEVICE_PROVISIONED=1
+# Start in cdma mode
+ro.telephony.default_network=5
+
+# Skip /sys/power/wait_for_fb_* nodes and
+# force FB to be always on
+debug.sf.fb_always_on=1
+
+debug.sf.hw=0
+debug.egl.hw=0
+debug.composition.type=dyn
+debug.compbypass.enable=1
+dalvik.vm.heapsize=36m
+dev.pm.dyn_samplingrate=1
+
+ro.hdmi.enable=true
+lpa.decode=true
+lpa.use-stagefright=true
+
+#system props for the MM modules
+
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+mmp.enable.3g2=true
+
+#
+# system props for the data modules
+#
+ro.use_data_netmgrd=true
+
+#system props for time-services
+persist.timed.enable=true
+
+#
+# system prop for opengles version
+#
+# 131072 is decimal for 0x20000 to report version 2
+ro.opengles.version=131072
+
+#
+# System props for telephony
+# System prop to turn on CdmaLTEPhone always
+telephony.lteOnCdmaDevice=1
+
+#Do not simulate sdcard on /data/media
+#
+persist.fuse_sdcard=false
