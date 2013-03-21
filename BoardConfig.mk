@@ -41,6 +41,16 @@ BOARD_KERNEL_PAGESIZE    := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
 BOARD_RAMDISK_OFFSET     := 0x02000000
 
+# Shader cache config options
+# Maximum size of the  GLES Shaders that can be cached for reuse.
+# Increase the size if shaders of size greater than 12KB are used.
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+
+# Maximum GLES shader cache size for each app to store the compiled shader
+# binaries. Decrease the size if RAM or Flash Storage size is a limitation
+# of the device.
+MAX_EGL_CACHE_SIZE := 2048*1024
+
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
