@@ -1,7 +1,18 @@
+# media_profiles and media_codecs xmls for 8610
+PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml \
+                      device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
+
 $(call inherit-product, device/qcom/common/common.mk)
 
 PRODUCT_NAME := msm8610
 PRODUCT_DEVICE := msm8610
+
+# Audio configuration file
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
+
+# audio UCM files
+PRODUCT_COPY_FILES += device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd \
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
