@@ -1,4 +1,5 @@
-# Copyright (c) 2012, The Linux Foundation. All rights reserved.
+#!/system/bin/sh
+# Copyright (c) 2012-2013, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -27,40 +28,22 @@
 #
 #
 
-on early-init
-    mkdir /firmware 0771 system system
-    symlink /data/tombstones /tombstones
+# No path is set up at this point so we have to do it here.
+PATH=/sbin:/system/sbin:/system/bin:/system/xbin
+export PATH
 
-on fs
-    mount_all fstab.qcom
+# Set a default value
+setprop qcom.thermal thermal-engine
 
-    # Keeping following partitions outside fstab file. As user may not have
-    # these partition flashed on the device. Failure to mount any partition in fstab file
-    # results in failure to launch late-start class.
+platformid=`cat /sys/devices/system/soc/soc0/id`
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
+THERMAL_ENGINE_CONF_SYMLINK=/etc/thermal-engine.conf
+# symlink already exists, exit
+if [ ! -h $THERMAL_ENGINE_CONF_SYMLINK ]; then
+ case "$platformid" in
+     *) #MSM8610, etc
+     ln -s /etc/thermal-engine-8610.conf $THERMAL_ENGINE_CONF_SYMLINK 2>/dev/null
+     ;;
+ esac
+fi
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/persist
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
-
-    wait /dev/block/platform/msm_sdcc.1/by-name/modem
-    mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
-
-on post-fs-data
-    mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-
-service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
-
-service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   group root
-   disabled
-
-on property:qcom.thermal=thermal-engine
-    start thermal-engine
