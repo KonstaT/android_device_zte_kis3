@@ -4,7 +4,7 @@
 
 # Use reference RIL for initial bringup
 rild.libpath=/system/lib/libreference-ril.so
-#rild.libpath=/system/lib/libril-qc-qmi-1.so
+#rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 persist.rild.nitz_plmn=
 persist.rild.nitz_long_ons_0=
