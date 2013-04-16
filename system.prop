@@ -23,11 +23,8 @@ ro.telephony.default_network=5
 # Skip /sys/power/wait_for_fb_* nodes and
 # force FB to be always on
 debug.sf.fb_always_on=1
-
-debug.sf.hw=0
-debug.egl.hw=0
 debug.composition.type=dyn
-debug.compbypass.enable=1
+debug.gralloc.map_fb_memory=1
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
