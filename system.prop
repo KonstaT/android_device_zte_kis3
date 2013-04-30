@@ -29,8 +29,10 @@ dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
 ro.hdmi.enable=true
-lpa.decode=true
-lpa.use-stagefright=true
+tunnel.decode=false
+tunnel.audiovideo.decode=false
+lpa.decode=false
+lpa.use-stagefright=false
 
 #system props for the MM modules
 
@@ -64,3 +66,10 @@ telephony.lteOnCdmaDevice=1
 # simulate sdcard on /data/media
 #
 persist.fuse_sdcard=true
+
+#
+#snapdragon value add features
+#
+ro.qc.sdk.audio.ssr=false
+##fluencetype can be "fluence" or "fluencepro" or "none"
+ro.qc.sdk.audio.fluencetype=none
