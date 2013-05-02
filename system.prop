@@ -24,7 +24,7 @@ ro.telephony.default_network=5
 # force FB to be always on
 debug.sf.fb_always_on=1
 debug.composition.type=dyn
-debug.gralloc.map_fb_memory=1
+debug.gralloc.map_fb_memory=0
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
