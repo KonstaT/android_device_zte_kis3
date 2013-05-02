@@ -2924,16 +2924,14 @@ SectionDevice
 
 	EnableSequence
 		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
-		'RX1 Digital Volume':1:80
-		'RX2 Digital Volume':1:80
+		'RX1 Digital Volume':1:67
+		'DAC1 Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
+		'RX1 Digital Volume':1:0
+		'DAC1 Switch':1:0
 	EndSequence
 
 	ACDBID	7:1
@@ -2999,15 +2997,11 @@ SectionDevice
 	Comment "Speaker Rx device"
 
 	EnableSequence
-		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
+		'RX3 MIX1 INP1':0:RX1
 	EndSequence
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	15:1

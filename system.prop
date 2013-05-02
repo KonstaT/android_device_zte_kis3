@@ -29,10 +29,12 @@ dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
 ro.hdmi.enable=true
-tunnel.decode=false
+tunnel.decode=true
+#8x10 does not support tunnel av playback
+#this prop should be set to false all the time
 tunnel.audiovideo.decode=false
 lpa.decode=false
-lpa.use-stagefright=false
+lpa.use-stagefright=true
 
 #system props for the MM modules
 
@@ -43,6 +45,7 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 mmp.enable.3g2=true
+media.aac_51_output_enabled=true
 
 #
 # system props for the data modules
