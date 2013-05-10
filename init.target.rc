@@ -81,3 +81,9 @@ service qrngd /system/bin/qrngd -f
    class main
    user root
    group root
+
+#start camera server as daemon
+service qcamerasvr /system/bin/mm-qcamera-daemon
+   class late_start
+   user camera
+   group camera system inet input graphics
