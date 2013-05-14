@@ -63,6 +63,10 @@ service time_daemon /system/bin/time_daemon
    user root
    group root
 
+service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
+   user root
+   disabled
+
 service thermal-engine /system/bin/thermal-engine
    class main
    user root
