@@ -3001,7 +3001,7 @@ SectionDevice
 	EndSequence
 
 	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
+		'RX3 MIX1 INP1':0:ZERO
 	EndSequence
 
 	ACDBID	15:1
