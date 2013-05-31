@@ -2945,12 +2945,35 @@ SectionDevice
 
 	EnableSequence
 		'RX1 MIX1 INP1':0:RX1
-		'RX1 Digital Volume':1:67
 		'DAC1 Switch':1:1
+		'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Enable Band1':1:1
+		'IIR1 Enable Band2':1:1
+		'IIR1 Enable Band3':1:1
+		'IIR1 Enable Band4':1:1
+		'IIR1 Enable Band5':1:1
+		'IIR1 INP1 Volume':1:43
+		'RX1 MIX2 INP1':0:IIR1
+		'RX1 Digital Volume':1:68
 	EndSequence
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
+		'RX1 MIX2 INP1':0:ZERO
+		'IIR1 Enable Band1':1:0
+		'IIR1 Enable Band2':1:0
+		'IIR1 Enable Band3':1:0
+		'IIR1 Enable Band4':1:0
+		'IIR1 Enable Band5':1:0
+		'IIR1 Band1':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band2':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band3':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band4':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band5':2:0x0 0x0 0x0 0x0 0x0
 		'DAC1 Switch':1:0
 	EndSequence
 
@@ -3040,12 +3063,39 @@ SectionDevice
 		'RX1 MIX1 INP1':0:RX1
 		'RX2 MIX1 INP1':0:RX2
 		'HPHL DAC Switch':1:1
+		'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0
+		'IIR1 Enable Band1':1:1
+		'IIR1 Enable Band2':1:1
+		'IIR1 Enable Band3':1:1
+		'IIR1 Enable Band4':1:1
+		'IIR1 Enable Band5':1:1
+		'IIR1 INP1 Volume':1:43
+		'RX1 MIX2 INP1':0:IIR1
+		'RX2 MIX2 INP1':0:IIR1
+		'RX1 Digital Volume':1:68
+		'RX2 Digital Volume':1:68
 	EndSequence
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
 		'RX2 MIX1 INP1':0:ZERO
 		'HPHL DAC Switch':1:0
+		'IIR1 Enable Band1':1:0
+		'IIR1 Enable Band2':1:0
+		'IIR1 Enable Band3':1:0
+		'IIR1 Enable Band4':1:0
+		'IIR1 Enable Band5':1:0
+		'IIR1 Band1':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band2':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band3':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band4':2:0x0 0x0 0x0 0x0 0x0
+		'IIR1 Band5':2:0x0 0x0 0x0 0x0 0x0
+		'RX1 MIX2 INP1':0:ZERO
+		'RX2 MIX2 INP1':0:ZERO
 	EndSequence
 
 	ACDBID	10:1
@@ -3142,10 +3192,12 @@ SectionDevice
 
 	EnableSequence
 		'DEC1 MUX':0:ADC2
+		'IIR1 INP1 MUX':0:DEC1
 	EndSequence
 
 	DisableSequence
 		'DEC1 MUX':0:ZERO
+		'IIR1 INP1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	8:2
@@ -3206,10 +3258,12 @@ SectionDevice
 
 	EnableSequence
 		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:DEC1
 	EndSequence
 
 	DisableSequence
-		'DEC1 MUX':0:ZERO
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	4:2
