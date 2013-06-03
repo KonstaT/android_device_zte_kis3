@@ -2967,9 +2967,15 @@ SectionDevice
 	Comment "TTY HCO Handset Rx device"
 
 	EnableSequence
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 Digital Volume':1:67
+		'DAC1 Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 Digital Volume':1:0
+		'DAC1 Switch':1:0
 	EndSequence
 
 	ACDBID  37:1
@@ -3190,12 +3196,10 @@ SectionDevice
 
 	EnableSequence
 		'DEC1 MUX':0:ADC1
-		'DEC2 MUX':0:ADC2
 	EndSequence
 
 	DisableSequence
-		'DEC1 MUX':0:ADC1
-		'DEC2 MUX':0:ADC2
+		'DEC1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	4:2
@@ -3208,9 +3212,11 @@ SectionDevice
 	Comment "TTY VCO Handset Tx device"
 
 	EnableSequence
+		'DEC1 MUX':0:ADC1
 	EndSequence
 
 	DisableSequence
+		'DEC1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID  36:2
@@ -3328,9 +3334,17 @@ SectionDevice
 	Comment "TTY Headset Rx device"
 
 	EnableSequence
+		'TTY Mode':0:VCO
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 Digital Volume':1:67
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'TTY Mode':0:ZERO
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 Digital Volume':1:0
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	17:1
@@ -3343,9 +3357,13 @@ SectionDevice
 	Comment "TTY Headset Tx device"
 
 	EnableSequence
+		'TTY Mode':0:HCO
+		'DEC1 MUX':0:ADC2
 	EndSequence
 
 	DisableSequence
+		'TTY Mode':0:ZERO
+		'DEC1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	16:2
@@ -3358,9 +3376,17 @@ SectionDevice
 	Comment "TTY Full Rx device"
 
 	EnableSequence
+		'TTY Mode':0:FULL
+		'RX1 MIX1 INP1':0:RX1
+		'RX1 Digital Volume':1:67
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'TTY Mode':0:ZERO
+		'RX1 MIX1 INP1':0:ZERO
+		'RX1 Digital Volume':1:0
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	17:1
@@ -3373,9 +3399,11 @@ SectionDevice
 	Comment "TTY Full Tx device"
 
 	EnableSequence
+		'DEC1 MUX':0:ADC2
 	EndSequence
 
 	DisableSequence
+		'DEC1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	16:2
