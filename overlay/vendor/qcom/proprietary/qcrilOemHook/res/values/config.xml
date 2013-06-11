@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--Copyright (c) 2013 Qualcomm Technologies, Inc.  All Rights Reserved.
-    Qualcomm Technologies Proprietary and Confidential.
--->
-
-<resources>
-    <!-- Set to true if the app needs to start the service at the bootup. -->
-    <bool name="config_start_qcrilmsgtunnel_service_at_bootup">false</bool>
-</resources>
