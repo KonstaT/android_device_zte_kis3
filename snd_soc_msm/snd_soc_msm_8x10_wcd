@@ -1337,12 +1337,12 @@ SectionVerb
 
         EnableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:1
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:1
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
         EndSequence
 
         DisableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:0
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:0
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
         EndSequence
 
         # ALSA PCMs
@@ -4588,12 +4588,12 @@ SectionModifier
 
         EnableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:1
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:1
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
         EndSequence
 
         DisableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:0
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:0
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
         EndSequence
 
         # ALSA PCMs
