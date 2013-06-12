@@ -1,5 +1,3 @@
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8610/overlay
-
 # media_profiles and media_codecs xmls for 8610
 PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml \
                       device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
