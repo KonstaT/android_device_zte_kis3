@@ -73,3 +73,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 # Add NON-HLOS files for ota upgrade
 ADD_RADIO_FILES ?= false
 TARGET_USES_QCOM_BSP := true
+
+# Add QC Video Enhancements flag
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
