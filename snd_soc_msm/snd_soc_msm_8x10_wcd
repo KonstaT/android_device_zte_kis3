@@ -3056,9 +3056,17 @@ SectionDevice
 	Comment "Speaker Headset Rx combo device"
 
 	EnableSequence
+		'RX3 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP1':0:RX1
+		'RX2 MIX1 INP1':0:RX2
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'RX3 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP1':0:ZERO
+		'RX2 MIX1 INP1':0:ZERO
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	10:1
@@ -3595,18 +3603,14 @@ SectionDevice
 	Comment "PROXY Rx + Speaker Rx device combo device"
 
 	EnableSequence
-		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
+		'RX3 MIX1 INP1':0:RX1
 	EndSequence
 
 	DisableSequence
-		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
+		'RX3 MIX1 INP1':0:ZERO
 	EndSequence
 
-	ACDBID	15:1
+	ACDBID  15:1
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
@@ -3676,12 +3680,14 @@ SectionDevice
 	Comment "USB PROXY Rx + Speaker Rx device combo device"
 
 	EnableSequence
+		'RX3 MIX1 INP1':0:RX1
 	EndSequence
 
 	DisableSequence
+		'RX3 MIX1 INP1':0:ZERO
 	EndSequence
 
-	ACDBID	15:1
+	ACDBID  15:1
 	EffectsMixerCTL "SRS TruMedia"
 
 EndSection
