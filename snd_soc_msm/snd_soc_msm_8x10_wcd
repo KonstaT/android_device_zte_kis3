@@ -1926,6 +1926,25 @@ SectionVerb
 
 EndSection
 }
+SectionUseCase."UL REC" {
+Comment "Voice Uplink Recording use case"
+SectionVerb
+	Name "UL REC"
+
+	EnableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 0
+	CapturePCM 0
+
+EndSection
+}
 SectionUseCase."DL REC" {
 Comment "Voice Downlink Recording use case"
 SectionVerb
@@ -4376,6 +4395,23 @@ SectionModifier
         # ALSA PCMs
         PlaybackPCM 3
         CapturePCM 3
+
+EndSection
+
+SectionModifier
+	Name "Capture Voice Uplink"
+
+	EnableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 0
+	CapturePCM 0
 
 EndSection
 
