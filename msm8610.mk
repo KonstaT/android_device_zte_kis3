@@ -13,7 +13,9 @@ PRODUCT_COPY_FILES += \
     device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
 
 # audio UCM files
-PRODUCT_COPY_FILES += device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd \
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd \
+    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab \
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
