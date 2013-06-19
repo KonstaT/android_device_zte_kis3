@@ -1807,7 +1807,6 @@ SectionVerb
 	EndSequence
 
 	DisableSequence
-		'Internal FM RX Volume':1:ZERO
 		'SEC_MI2S_RX Port Mixer INTERNAL_FM_TX':1:0
 	EndSequence
 
@@ -2930,7 +2929,6 @@ SectionDevice
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
-		'RX1 Digital Volume':1:0
 		'DAC1 Switch':1:0
 	EndSequence
 
@@ -2945,16 +2943,13 @@ SectionDevice
 
 	EnableSequence
 		'RX1 MIX1 INP1':0:RX1
-		'RX2 MIX1 INP1':0:RX2
-		'HPHL DAC Switch':1:1
-		'RX1 Digital Volume':1:80
-		'RX2 Digital Volume':1:80
+		'RX1 Digital Volume':1:67
+		'DAC1 Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
-		'RX2 MIX1 INP1':0:ZERO
-		'HPHL DAC Switch':1:0
+		'DAC1 Switch':1:0
 	EndSequence
 
 	ACDBID	7:1
@@ -2974,7 +2969,6 @@ SectionDevice
 
 	DisableSequence
 		'RX1 MIX1 INP1':0:ZERO
-		'RX1 Digital Volume':1:0
 		'DAC1 Switch':1:0
 	EndSequence
 
@@ -3041,9 +3035,15 @@ SectionDevice
 	Comment "Headset Rx device for voice call"
 
 	EnableSequence
+		'RX1 MIX1 INP1':0:RX1
+		'RX2 MIX1 INP1':0:RX2
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX2 MIX1 INP1':0:ZERO
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	10:1
@@ -3139,13 +3139,11 @@ SectionDevice
 	Comment "Headset Tx device"
 
 	EnableSequence
-		'DEC1 MUX':0:ADC1
-		'DEC2 MUX':0:ADC2
+		'DEC1 MUX':0:ADC2
 	EndSequence
 
 	DisableSequence
 		'DEC1 MUX':0:ZERO
-		'DEC2 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	8:2
@@ -3158,9 +3156,11 @@ SectionDevice
 	Comment "Handset Tx device"
 
 	EnableSequence
+		'DEC1 MUX':0:ADC1
 	EndSequence
 
 	DisableSequence
+		'DEC1 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	4:2
@@ -3351,7 +3351,6 @@ SectionDevice
 	DisableSequence
 		'TTY Mode':0:ZERO
 		'RX1 MIX1 INP1':0:ZERO
-		'RX1 Digital Volume':1:0
 		'HPHL DAC Switch':1:0
 	EndSequence
 
@@ -3393,7 +3392,6 @@ SectionDevice
 	DisableSequence
 		'TTY Mode':0:ZERO
 		'RX1 MIX1 INP1':0:ZERO
-		'RX1 Digital Volume':1:0
 		'HPHL DAC Switch':1:0
 	EndSequence
 
@@ -3620,9 +3618,15 @@ SectionDevice
 	Comment "PROXY Rx + Headphone Rx device combo device"
 
 	EnableSequence
+		'RX1 MIX1 INP1':0:RX1
+		'RX2 MIX1 INP1':0:RX2
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'RX1 MIX1 INP1':0:ZERO
+		'RX2 MIX1 INP1':0:ZERO
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	10:1
@@ -3635,9 +3639,17 @@ SectionDevice
 	Comment "PROXY Rx + Speaker Headset Rx combo device"
 
 	EnableSequence
+		'RX3 MIX1 INP1':0:RX1
+		'RX1 MIX1 INP1':0:RX1
+		'RX2 MIX1 INP1':0:RX2
+		'HPHL DAC Switch':1:1
 	EndSequence
 
 	DisableSequence
+		'RX3 MIX1 INP1':0:ZERO
+		'RX1 MIX1 INP1':0:ZERO
+		'RX2 MIX1 INP1':0:ZERO
+		'HPHL DAC Switch':1:0
 	EndSequence
 
 	ACDBID	10:1
