@@ -1804,10 +1804,12 @@ SectionVerb
 	EnableSequence
 		'Internal FM RX Volume':1:0
 		'SEC_MI2S_RX Port Mixer INTERNAL_FM_TX':1:1
+                'MI2S_DL_HL Switch':1:1
 	EndSequence
 
 	DisableSequence
 		'SEC_MI2S_RX Port Mixer INTERNAL_FM_TX':1:0
+                'MI2S_DL_HL Switch':1:0
 	EndSequence
 
 	# ALSA PCMs
@@ -1832,7 +1834,7 @@ SectionVerb
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -1847,7 +1849,7 @@ SectionVerb
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -1867,7 +1869,7 @@ SectionVerb
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -1882,7 +1884,7 @@ SectionVerb
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -3943,14 +3945,19 @@ SectionModifier
 	Name "Play FM"
 
 	EnableSequence
+	'Internal FM RX Volume':1:0
+	'SEC_MI2S_RX Port Mixer INTERNAL_FM_TX':1:1
+	'MI2S_DL_HL Switch':1:1
 	EndSequence
 
 	DisableSequence
+	'SEC_MI2S_RX Port Mixer INTERNAL_FM_TX':1:0
+	'MI2S_DL_HL Switch':1:0
 	EndSequence
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -3970,7 +3977,7 @@ SectionModifier
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
@@ -3990,7 +3997,7 @@ SectionModifier
 
 	# ALSA PCMs
 	PlaybackPCM 5
-	CapturePCM 7
+	CapturePCM 6
 
 EndSection
 
