@@ -31,6 +31,9 @@ on early-init
     mkdir /firmware 0771 system system
     symlink /data/tombstones /tombstones
 
+on init
+    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/oem-services.jar
+
 on fs
     mount_all fstab.qcom
 

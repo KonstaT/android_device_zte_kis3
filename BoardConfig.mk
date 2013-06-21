@@ -78,3 +78,5 @@ TARGET_USES_QCOM_BSP := true
 # Add QC Video Enhancements flag
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
+TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:WfdCommon:oem-services
