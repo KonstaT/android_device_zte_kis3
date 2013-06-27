@@ -1,6 +1,15 @@
+TARGET_USES_QCOM_BSP := true
+
+ifeq ($(TARGET_USES_QCOM_BSP), true)
+# Add QC Video Enhancements flag
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+endif #TARGET_USES_QCOM_BSP
+
+ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 # media_profiles and media_codecs xmls for 8610
 PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml \
                       device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
+endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
