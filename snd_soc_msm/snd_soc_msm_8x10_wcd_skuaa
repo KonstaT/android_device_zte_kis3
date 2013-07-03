@@ -1337,12 +1337,12 @@ SectionVerb
 
         EnableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:1
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:1
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
         EndSequence
 
         DisableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:0
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:0
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
         EndSequence
 
         # ALSA PCMs
@@ -1924,6 +1924,25 @@ SectionVerb
 	# ALSA PCMs
 	PlaybackPCM 1
 	CapturePCM 1
+
+EndSection
+}
+SectionUseCase."UL REC" {
+Comment "Voice Uplink Recording use case"
+SectionVerb
+	Name "UL REC"
+
+	EnableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 0
+	CapturePCM 0
 
 EndSection
 }
@@ -4453,6 +4472,23 @@ SectionModifier
 EndSection
 
 SectionModifier
+	Name "Capture Voice Uplink"
+
+	EnableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:1
+	EndSequence
+
+	DisableSequence
+		'MultiMedia1 Mixer VOC_REC_UL':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 0
+	CapturePCM 0
+
+EndSection
+
+SectionModifier
         Name "Capture Voice Downlink"
 
         EnableSequence
@@ -4642,12 +4678,12 @@ SectionModifier
 
         EnableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:1
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:1
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
         EndSequence
 
         DisableSequence
                 'SEC_MI2S_RX_Voice Mixer Voice2':1:0
-                'Voice2_Tx Mixer PRI_TX_Voice2':1:0
+                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
         EndSequence
 
         # ALSA PCMs
