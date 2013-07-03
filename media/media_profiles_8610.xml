@@ -654,8 +654,8 @@
         frames) memory.
     -->
     <VideoEditorCap  maxInputFrameWidth="1920"
-        maxInputFrameHeight="1088" maxOutputFrameWidth="1920"
-        maxOutputFrameHeight="1088" maxPrefetchYUVFrames="10"/>
+        maxInputFrameHeight="1088" maxOutputFrameWidth="1280"
+        maxOutputFrameHeight="720" maxPrefetchYUVFrames="10"/>
     <!--
         The VideoEditor Export codec profile and level values
         correspond to the values in OMX_Video.h.
