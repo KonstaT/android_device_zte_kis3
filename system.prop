@@ -79,3 +79,6 @@ ro.qc.sdk.audio.fluencetype=none
 
 # Reduce Background apps limit
 ro.sys.fw.bg_apps_limit=20
+
+# System property for cabl
+ro.qualcomm.cabl=1
