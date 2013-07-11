@@ -2955,6 +2955,7 @@ SectionDevice
 
 	ACDBID	7:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3018,6 +3019,7 @@ SectionDevice
 
 	ACDBID  37:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3033,6 +3035,7 @@ SectionDevice
 
 	ACDBID	103:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3050,6 +3053,7 @@ SectionDevice
 
 	ACDBID	15:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3071,6 +3075,7 @@ SectionDevice
 
 	ACDBID	10:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3142,6 +3147,7 @@ SectionDevice
 
 	ACDBID	10:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3157,6 +3163,7 @@ SectionDevice
 
 	ACDBID	26:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3172,6 +3179,7 @@ SectionDevice
 
 	ACDBID	26:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3685,6 +3693,7 @@ SectionDevice
 
 	ACDBID  15:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
@@ -3776,6 +3785,7 @@ SectionDevice
 
 	ACDBID  15:1
 	EffectsMixerCTL "SRS TruMedia"
+	EC_REF_RXMixerCTL "I2S_RX"
 
 EndSection
 
