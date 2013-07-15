@@ -10,7 +10,7 @@ endif
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := true
 
--include vendor/qcom/proprietary/common/msm8610/BoardConfigVendor.mk
+-include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
 
 #TODO: For bring-up only; disable QC display path
 TARGET_BYPASS_QCUI := true
