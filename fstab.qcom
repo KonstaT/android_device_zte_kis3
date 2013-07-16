@@ -8,5 +8,6 @@
 #<src>                                                <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
 /dev/block/platform/msm_sdcc.1/by-name/system         /system      ext4    ro,barrier=1                                wait
 /dev/block/platform/msm_sdcc.1/by-name/userdata       /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc      wait,check,encryptable=footer
+/devices/msm_sdcc.2/mmc_host                     /storage/sdcard1  vfat    nosuid,nodev                                wait,voldmanaged=sdcard:auto
 #/dev/block/mmcblk0p11         /system      ext4    ro,barrier=1                                wait
 #/dev/block/mmcblk0p12       /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc      wait,check,encryptable=footer
