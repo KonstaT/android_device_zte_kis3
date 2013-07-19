@@ -17,6 +17,7 @@ persist.rild.nitz_short_ons_2=
 persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
+persist.radio.msgtunnel.start=false
 # Start in cdma mode
 ro.telephony.default_network=5
 
