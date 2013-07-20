@@ -61,6 +61,10 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
+#Start the qcom-system-daemon service
+service qcomsysd /system/bin/qcom-system-daemon
+   class main
+
 service time_daemon /system/bin/time_daemon
    class late_start
    user root
