@@ -35,16 +35,12 @@ export PATH
 # Set a default value
 setprop qcom.thermal thermal-engine
 
-hw_platform=`cat /sys/devices/system/soc/soc0/hw_platform`
+platformid=`cat /sys/devices/system/soc/soc0/id`
 
 THERMAL_ENGINE_CONF_SYMLINK=/etc/thermal-engine.conf
 # symlink already exists, exit
 if [ ! -h $THERMAL_ENGINE_CONF_SYMLINK ]; then
- case "$hw_platform" in
-     "QRD") #MSM8610 QRD
-     ln -s /etc/thermal-engine-8610-qrd.conf $THERMAL_ENGINE_CONF_SYMLINK 2>/dev/null
-     ;;
-
+ case "$platformid" in
      *) #MSM8610, etc
      ln -s /etc/thermal-engine-8610.conf $THERMAL_ENGINE_CONF_SYMLINK 2>/dev/null
      ;;
