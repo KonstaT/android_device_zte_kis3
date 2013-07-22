@@ -157,6 +157,19 @@
              channels="2" />
     </EncoderProfile>
 
+    <EncoderProfile quality="fwvga" fileFormat="3gp" duration="30">
+      <Video codec="h264"
+             bitRate="2000000"
+             width="864"
+             height="480"
+             frameRate="30" />
+
+      <Audio codec="aac"
+             bitRate="156000"
+             sampleRate="48000"
+             channels="2" />
+    </EncoderProfile>
+
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -292,6 +305,7 @@
              channels="2" />
     </EncoderProfile>
 
+
     <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -392,6 +406,19 @@
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
+    </EncoderProfile>
+
+     <EncoderProfile quality="fwvga" fileFormat="3gp" duration="30">
+      <Video codec="h264"
+             bitRate="2000000"
+             width="864"
+             height="480"
+             frameRate="30" />
+
+      <Audio codec="aac"
+             bitRate="96000"
+             sampleRate="16000"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
