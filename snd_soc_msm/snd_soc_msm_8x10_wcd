@@ -1352,7 +1352,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallBT SCO Rx"
+        Name "Voice2BT SCO Rx"
 
         EnableSequence
         EndSequence
@@ -1370,7 +1370,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallBT SCO Tx"
+        Name "Voice2BT SCO Tx"
 
         EnableSequence
                 'Internal BTSCO SampleRate':1:8000
@@ -1388,7 +1388,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallBT SCO WB Rx"
+        Name "Voice2BT SCO WB Rx"
 
         EnableSequence
         EndSequence
@@ -1406,7 +1406,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallBT SCO WB Tx"
+        Name "Voice2BT SCO WB Tx"
 
         EnableSequence
                 'Internal BTSCO SampleRate':1:16000
@@ -1424,7 +1424,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallPROXY Rx"
+        Name "Voice2PROXY Rx"
 
         EnableSequence
         EndSequence
@@ -1441,7 +1441,7 @@ SectionVerb
 EndSection
 
 SectionVerb
-        Name "Voice2 CallPROXY Tx"
+        Name "Voice2PROXY Tx"
 
         EnableSequence
                 'AFE_PCM_RX_Voice Mixer Voice2':1:1
@@ -4684,21 +4684,93 @@ SectionModifier
 EndSection
 
 SectionModifier
-        Name "Play Voice2"
+	Name "Play Voice2"
 
-        EnableSequence
-                'SEC_MI2S_RX_Voice Mixer Voice2':1:1
-                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
-        EndSequence
+	EnableSequence
+		'SEC_MI2S_RX_Voice Mixer Voice2':1:1
+		'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:1
+	EndSequence
 
-        DisableSequence
-                'SEC_MI2S_RX_Voice Mixer Voice2':1:0
-                'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
-        EndSequence
+	DisableSequence
+		'SEC_MI2S_RX_Voice Mixer Voice2':1:0
+		'Voice2_Tx Mixer PRI_MI2S_TX_Voice2':1:0
+	EndSequence
 
-        # ALSA PCMs
-        CapturePCM 13
-        PlaybackPCM 13
+	# ALSA PCMs
+	CapturePCM 13
+	PlaybackPCM 13
+
+EndSection
+
+SectionModifier
+	Name "Play Voice2BT SCO Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice2':1:0
+		'Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 13
+	CapturePCM 13
+
+EndSection
+
+SectionModifier
+	Name "Play Voice2BT SCO Tx"
+
+	EnableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice2':1:1
+		'Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 13
+	CapturePCM 13
+
+EndSection
+
+SectionModifier
+	Name "PlayVoice2BT SCO WB Rx"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+		'Internal BTSCO SampleRate':1:8000
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice2':1:0
+		'Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2':1:0
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 13
+	CapturePCM 13
+
+EndSection
+
+SectionModifier
+	Name "Play Voice2BT SCO WB Tx"
+
+	EnableSequence
+		'Internal BTSCO SampleRate':1:16000
+		'INTERNAL_BT_SCO_RX_Voice Mixer Voice2':1:1
+		'Voice2_Tx Mixer INTERNAL_BT_SCO_TX_Voice2':1:1
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	# ALSA PCMs
+	PlaybackPCM 13
+	CapturePCM 13
 
 EndSection
 
