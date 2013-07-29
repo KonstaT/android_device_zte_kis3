@@ -3042,12 +3042,12 @@ SectionDevice
 
 	EnableSequence
 		'RX3 MIX1 INP1':0:RX1
-		'RDAC4 MUX':0:RDAC4 RX3
+		'RDAC4 MUX':0:RX3
 	EndSequence
 
 	DisableSequence
 		'RX3 MIX1 INP1':0:ZERO
-		'RDAC4 MUX':0:RDAC4 RX2
+		'RDAC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	15:1
@@ -3133,7 +3133,7 @@ SectionDevice
 		'RX1 MIX1 INP1':0:RX1
 		'RX2 MIX1 INP1':0:RX2
 		'HPHL DAC Switch':1:1
-		'RDAC4 MUX':0:RDAC4 RX3
+		'RDAC4 MUX':0:RX3
 	EndSequence
 
 	DisableSequence
@@ -3141,7 +3141,7 @@ SectionDevice
 		'RX1 MIX1 INP1':0:ZERO
 		'RX2 MIX1 INP1':0:ZERO
 		'HPHL DAC Switch':1:0
-		'RDAC4 MUX':0:RDAC4 RX2
+		'RDAC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	10:1
@@ -3681,12 +3681,12 @@ SectionDevice
 
 	EnableSequence
 		'RX3 MIX1 INP1':0:RX1
-		'RDAC4 MUX':0:RDAC4 RX3
+		'RDAC4 MUX':0:RX3
 	EndSequence
 
 	DisableSequence
 		'RX3 MIX1 INP1':0:ZERO
-		'RDAC4 MUX':0:RDAC4 RX2
+		'RDAC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID  15:1
@@ -3724,7 +3724,7 @@ SectionDevice
 		'RX1 MIX1 INP1':0:RX1
 		'RX2 MIX1 INP1':0:RX2
 		'HPHL DAC Switch':1:1
-		'RDAC4 MUX':0:RDAC4 RX3
+		'RDAC4 MUX':0:RX3
 	EndSequence
 
 	DisableSequence
@@ -3732,7 +3732,7 @@ SectionDevice
 		'RX1 MIX1 INP1':0:ZERO
 		'RX2 MIX1 INP1':0:ZERO
 		'HPHL DAC Switch':1:0
-		'RDAC4 MUX':0:RDAC4 RX2
+		'RDAC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	10:1
@@ -3776,12 +3776,12 @@ SectionDevice
 
 	EnableSequence
 		'RX3 MIX1 INP1':0:RX1
-		'RDAC4 MUX':0:RDAC4 RX3
+		'RDAC4 MUX':0:RX3
 	EndSequence
 
 	DisableSequence
 		'RX3 MIX1 INP1':0:ZERO
-		'RDAC4 MUX':0:RDAC4 RX2
+		'RDAC4 MUX':0:ZERO
 	EndSequence
 
 	ACDBID  15:1
