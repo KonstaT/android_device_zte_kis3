@@ -3215,11 +3215,13 @@ SectionDevice
 
 	EnableSequence
 		'DEC1 MUX':0:ADC2
+		'ADC2 MUX':0:INP2
 		'IIR1 INP1 MUX':0:DEC1
 	EndSequence
 
 	DisableSequence
 		'DEC1 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
 		'IIR1 INP1 MUX':0:ZERO
 	EndSequence
 
@@ -3445,11 +3447,13 @@ SectionDevice
 	EnableSequence
 		'TTY Mode':0:HCO
 		'DEC1 MUX':0:ADC2
+		'ADC2 MUX':0:INP2
 	EndSequence
 
 	DisableSequence
 		'TTY Mode':0:ZERO
 		'DEC1 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	16:2
@@ -3485,10 +3489,12 @@ SectionDevice
 
 	EnableSequence
 		'DEC1 MUX':0:ADC2
+		'ADC2 MUX':0:INP2
 	EndSequence
 
 	DisableSequence
 		'DEC1 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
 	EndSequence
 
 	ACDBID	16:2
