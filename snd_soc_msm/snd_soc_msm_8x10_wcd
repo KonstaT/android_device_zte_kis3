@@ -3354,9 +3354,17 @@ SectionDevice
 	Comment "Dual MIC Endfire Tx device"
 
 	EnableSequence
+	'DEC1 MUX':0:ADC1
+	'DEC2 MUX':0:ADC2
+	'MI2S_TX Channels':0:Two
+	'ADC2 MUX':0:INP3
 	EndSequence
 
 	DisableSequence
+	'DEC1 MUX':0:ZERO
+	'DEC2 MUX':0:ZERO
+	'ADC2 MUX':0:ZERO
+	'MI2S_TX Channels':0:One
 	EndSequence
 
 	ACDBID	6:2
@@ -3384,9 +3392,17 @@ SectionDevice
 	Comment "Dual MIC Endfire Tx device"
 
 	EnableSequence
+	'DEC1 MUX':0:ADC1
+	'DEC2 MUX':0:ADC2
+	'MI2S_TX Channels':0:Two
+	'ADC2 MUX':0:INP3
 	EndSequence
 
 	DisableSequence
+	'DEC1 MUX':0:ZERO
+	'DEC2 MUX':0:ZERO
+	'ADC2 MUX':0:ZERO
+	'MI2S_TX Channels':0:One
 	EndSequence
 
 	ACDBID	13:2
