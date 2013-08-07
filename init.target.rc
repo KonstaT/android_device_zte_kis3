@@ -61,6 +61,10 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
+on boot
+    insmod /system/lib/modules/adsprpc.ko
+
+
 #Start the qcom-system-daemon service
 service qcomsysd /system/bin/qcom-system-daemon
    class main
@@ -109,3 +113,10 @@ service audiod /system/bin/audiod
    class late_start
    user system
    group system
+
+service adsprpcd /system/bin/adsprpcd
+   class main
+   user media
+   group media
+
+
