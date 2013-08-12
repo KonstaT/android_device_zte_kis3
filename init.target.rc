@@ -107,7 +107,7 @@ service qrngd /system/bin/qrngd -f
 service qcamerasvr /system/bin/mm-qcamera-daemon
    class late_start
    user camera
-   group media system inet input graphics
+   group camera system inet input graphics
 
 service audiod /system/bin/audiod
    class late_start
