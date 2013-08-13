@@ -79,3 +79,5 @@ ADD_RADIO_FILES ?= false
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
 TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:oem-services:qcom.fmradio
+
+HAVE_FT_FW_UPGRADE := true
