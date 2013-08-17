@@ -103,6 +103,16 @@ service qrngd /system/bin/qrngd -f
    user root
    group root
 
+service qrngp /system/bin/qrngp
+    class main
+    user root
+    group root
+    oneshot
+    disabled
+
+on property:sys.boot_completed=1
+    start qrngp
+
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
    class late_start
