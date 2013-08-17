@@ -35,7 +35,11 @@ export PATH
 # Set a default value
 setprop qcom.thermal thermal-engine
 
-platformid=`cat /sys/devices/system/soc/soc0/id`
+if [ -f /sys/devices/soc0/soc_id ]; then
+    platformid=`cat /sys/devices/soc0/soc_id`
+else
+    platformid=`cat /sys/devices/system/soc/soc0/id`
+fi
 
 THERMAL_ENGINE_CONF_SYMLINK=/etc/thermal-engine.conf
 # symlink already exists, exit
