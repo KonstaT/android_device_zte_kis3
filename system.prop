@@ -51,6 +51,11 @@ media.aac_51_output_enabled=true
 #codecs: AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
 mm.enable.qcom_parser=37491
 
+# VIDC: debug_levels
+# 1:ERROR 2:HIGH 4:LOW 0:NOlogs 7:AllLogs
+vidc.debug.level=1
+
+#
 #
 # system props for the data modules
 #
