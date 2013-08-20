@@ -78,4 +78,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 ADD_RADIO_FILES ?= false
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 
+# Added to indicate that protobuf-c is supported in this build
+PROTOBUF_SUPPORTED := true
+
 TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:oem-services:qcom.fmradio
