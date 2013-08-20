@@ -87,3 +87,12 @@ ro.sys.fw.bg_apps_limit=20
 
 # System property for cabl
 ro.qualcomm.cabl=1
+
+#
+#DASH video streaming
+#Specify max allowed resolution/bandwidth for representations
+#Set allowed avsync window during playback
+#
+persist.dash.max.rep.resolution=1280*720
+persist.dash.max.rep.bandwidth=4000000
+persist.dash.avsync.window.msec=100
