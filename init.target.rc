@@ -32,7 +32,7 @@ on early-init
     symlink /data/tombstones /tombstones
 
 on init
-    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/oem-services.jar
+    export BOOTCLASSPATH ${BOOTCLASSPATH}:/system/framework/oem-services.jar:/system/framework/qcmediaplayer.jar
 
 on fs
     mount_all fstab.qcom
