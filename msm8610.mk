@@ -19,17 +19,17 @@ PRODUCT_DEVICE := msm8610
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
+    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf
 
 # audio UCM files
 PRODUCT_COPY_FILES += \
     device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd \
     device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab \
-    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa \
+    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf \
+    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
