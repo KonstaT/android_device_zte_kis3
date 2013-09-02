@@ -81,6 +81,6 @@ TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-TARGET_ADDITIONAL_BOOTCLASSPATH := qcmediaplayer:oem-services:qcom.fmradio
+TARGET_ADDITIONAL_BOOTCLASSPATH := qcom.fmradio:oem-services:qcmediaplayer
 
 HAVE_FT_FW_UPGRADE := true
