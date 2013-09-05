@@ -84,3 +84,6 @@ PROTOBUF_SUPPORTED := true
 TARGET_ADDITIONAL_BOOTCLASSPATH := qcom.fmradio:oem-services:qcmediaplayer
 
 HAVE_FT_FW_UPGRADE := true
+
+# Resource manager for audio-video usecases
+BOARD_USES_RESOURCE_MANAGER:= true
