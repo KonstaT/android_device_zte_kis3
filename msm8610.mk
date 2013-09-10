@@ -43,3 +43,7 @@ PRODUCT_PACKAGES += \
     AntHalService \
     libantradio \
     antradio_app
+
+# Sensors feature definition file/s
+PRODUCT_COPY_FILES += \
+   frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
