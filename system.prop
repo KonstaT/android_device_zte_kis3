@@ -32,6 +32,7 @@ persist.cne.feature=1
 debug.sf.fb_always_on=1
 debug.composition.type=dyn
 debug.gralloc.map_fb_memory=0
+debug.hwc.dynThreshold=1.5
 dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
