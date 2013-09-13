@@ -63,6 +63,10 @@ mm.enable.qcom_parser=37491
 vidc.debug.level=1
 
 #
+# system props for widevine
+#
+persist.gralloc.cp.level3=1
+
 #
 # system props for the data modules
 #
