@@ -3492,6 +3492,387 @@ SectionDevice
 EndSection
 
 SectionDevice
+	Name "DMIC Broadside Fluence Off"
+	Comment "Dual MIC Broadside Tx device, Fluence off"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "DMIC Endfire Fluence off"
+	Comment "Dual MIC Endfire Tx device"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence BS NS"
+	Comment "Dual MIC Broadside Tx device, Fluence NS"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID	6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence EF NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+        DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  110:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Voice Recognition"
+	Comment "Handset Tx device for voice recognition"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Voice Recognition NS"
+	Comment "Handset Tx device for voice recognition, NS effect"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Headset Mic NS"
+	Comment "Headset Tx device, with NS effect"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic AEC"
+	Comment "Handset Tx device, with AEC"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  106:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic NS"
+	Comment "Handset Tx device, with NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID	107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Handset Mic AEC NS"
+	Comment "Handset Tx device, with AEC and NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  108:2
+	EffectsMixerCTL "SRS TruMedia"
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS AEC"
+	Comment "Dual MIC Broadside Tx device, Fluence AEC"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID  4:2
+	EffectsMixerCTL "SRS TruMedia"
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence EF AEC"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  109:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS NS"
+	Comment "Dual MIC Broadside Tx device, Fluence NS"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID  6:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence EF NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  110:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceComm DualMic Fluence BS AEC NS"
+	Comment "Dual MIC Broadside Tx device, Fluence AEC NS"
+
+	EnableSequence
+	EndSequence
+
+	DisableSequence
+	EndSequence
+
+	ACDBID  4:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "VoiceRecog DualMic Fluence EF AEC NS"
+	Comment "Dual MIC Endfire Tx device, Fluence NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'DEC2 MUX':0:ADC2
+		'MI2S_TX Channels':0:Two
+		'ADC2 MUX':0:INP3
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ZERO
+		'DEC2 MUX':0:ZERO
+		'ADC2 MUX':0:ZERO
+		'MI2S_TX Channels':0:One
+	EndSequence
+
+	ACDBID  111:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line AEC"
+	Comment "Speaker Tx device with AEC"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:DEC1
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  106:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line NS"
+	Comment "Speaker Tx device with NS"
+
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:DEC1
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  107:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+
+SectionDevice
+	Name "Line AEC NS"
+	Comment "Speaker Tx device with AEC and NS"
+	EnableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:DEC1
+	EndSequence
+
+	DisableSequence
+		'DEC1 MUX':0:ADC1
+		'IIR1 INP1 MUX':0:ZERO
+	EndSequence
+
+	ACDBID  108:2
+	EffectsMixerCTL "SRS TruMedia"
+
+EndSection
+SectionDevice
 	Name "TTY Full Rx"
 	Comment "TTY Full Rx device"
 
