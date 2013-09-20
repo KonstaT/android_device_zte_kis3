@@ -47,3 +47,13 @@ PRODUCT_PACKAGES += \
 # Sensors feature definition file/s
 PRODUCT_COPY_FILES += \
    frameworks/native/data/etc/android.hardware.sensor.barometer.xml:system/etc/permissions/android.hardware.sensor.barometer.xml
+
+# Enable strict operation
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.strict_op_enable=false
+
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.sys.whitelist=/system/etc/whitelist_appops.xml
+
+PRODUCT_COPY_FILES += \
+    device/qcom/msm8610/whitelist_appops.xml:system/etc/whitelist_appops.xml
