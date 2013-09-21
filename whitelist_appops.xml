@@ -1,0 +1,123 @@
+<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+<!--
+/* Copyright (c) 2013, The Linux Foundation. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *     * Redistributions of source code must retain the above copyright
+ *       notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above
+ *       copyright notice, this list of conditions and the following
+ *       disclaimer in the documentation and/or other materials provided
+ *       with the distribution.
+ *     * Neither the name of The Linux Foundation nor the names of its
+ *       contributors may be used to endorse or promote products derived
+ *       from this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+ * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+ * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+ * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+ * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+-->
+<whitelist-pkgs>
+<pkg name="com.google.android.location"/>
+<pkg name="com.android.voicedialer"/>
+<pkg name="com.android.launcher"/>
+<pkg name="com.android.defcontainer"/>
+<pkg name="com.android.quicksearchbox"/>
+<pkg name="com.android.providers.partnerbookmarks"/>
+<pkg name="com.android.contacts"/>
+<pkg name="com.android.calculator2"/>
+<pkg name="com.android.htmlviewer"/>
+<pkg name="com.google.android.gsf.login"/>
+<pkg name="com.android.cellbroadcastreceiver"/>
+<pkg name="com.android.providers.calendar"/>
+<pkg name="com.android.calendar"/>
+<pkg name="com.android.browser"/>
+<pkg name="com.android.music"/>
+<pkg name="com.android.onetimeinitializer"/>
+<pkg name="com.android.providers.downloads.ui"/>
+<pkg name="com.android.sharedstoragebackup"/>
+<pkg name="com.android.vpndialogs"/>
+<pkg name="com.android.mms"/>
+<pkg name="com.android.provision"/>
+<pkg name="com.android.providers.media"/>
+<pkg name="com.android.lunar"/>
+<pkg name="com.google.android.marvin.talkback"/>
+<pkg name="com.android.certinstaller"/>
+<pkg name="com.google.android.gms"/>
+<pkg name="com.android.dreams.phototable"/>
+<pkg name="com.android.videoeditor"/>
+<pkg name="com.google.android.street"/>
+<pkg name="com.google.android.apps.genie.geniewidget"/>
+<pkg name="com.google.android.googlequicksearchbox"/>
+<pkg name="com.android.gallery3d"/>
+<pkg name="com.android.providers.drm"/>
+<pkg name="com.android.musicvis"/>
+<pkg name="com.google.android.music"/>
+<pkg name="com.android.exchange"/>
+<pkg name="com.android.wallpaper.livepicker"/>
+<pkg name="com.android.packageinstaller"/>
+<pkg name="com.google.android.inputmethod.latin"/>
+<pkg name="com.google.android.tts"/>
+<pkg name="com.svox.pico"/>
+<pkg name="com.android.noisefield"/>
+<pkg name="com.android.email"/>
+<pkg name="com.google.android.apps.maps"/>
+<pkg name="com.android.dialer"/>
+<pkg name="com.android.backupconfirm"/>
+<pkg name="com.android.magicsmoke"/>
+<pkg name="com.android.providers.downloads"/>
+<pkg name="com.google.android.videoeditor"/>
+<pkg name="com.android.musicfx"/>
+<pkg name="com.google.android.apps.books"/>
+<pkg name="com.android.phasebeam"/>
+<pkg name="com.android.soundrecorder"/>
+<pkg name="com.google.android.videos"/>
+<pkg name="com.android.inputmethod.latin"/>
+<pkg name="com.google.android.gallery3d"/>
+<pkg name="com.google.android.partnersetup"/>
+<pkg name="com.google.android.voicesearch"/>
+<pkg name="com.android.qrdfileexplorer"/>
+<pkg name="com.android.wallpaper.holospiral"/>
+<pkg name="com.google.android.feedback"/>
+<pkg name="com.google.android.talk"/>
+<pkg name="com.android.providers.userdictionary"/>
+<pkg name="com.android.inputmethod.pinyin"/>
+<pkg name="com.android.stoptimer"/>
+<pkg name="com.android.galaxy4"/>
+<pkg name="com.playready.junit"/>
+<pkg name="com.google.android.syncadapters.calendar"/>
+<pkg name="com.android.providers.contacts"/>
+<pkg name="com.android.protips"/>
+<pkg name="com.google.android.apps.uploader"/>
+<pkg name="com.android.providers.applications"/>
+<pkg name="com.android.dreams.basic"/>
+<pkg name="com.google.android.apps.plus"/>
+<pkg name="com.android.vending"/>
+<pkg name="com.android.systemui"/>
+<pkg name="com.google.android.gm"/>
+<pkg name="com.google.android.tag"/>
+<pkg name="com.android.wallpaper"/>
+<pkg name="com.google.android.syncadapters.bookmarks"/>
+<pkg name="com.google.android.youtube"/>
+<pkg name="com.google.android.apps.magazines"/>
+<pkg name="com.android.qworldclock"/>
+<pkg name="com.android.deskclock"/>
+<pkg name="com.google.android.gsf"/>
+<pkg name="com.android.facelock"/>
+<pkg name="com.google.android.calendar"/>
+<pkg name="com.android.chrome"/>
+<pkg name="com.google.android.inputmethod.latin.dictionarypack"/>
+<pkg name="com.google.android.syncadapters.contacts"/>
+<pkg name="com.codeaurora.fmrecording"/>
+</whitelist-pkgs>
