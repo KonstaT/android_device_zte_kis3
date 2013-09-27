@@ -1,4 +1,4 @@
-TARGET_USES_QCOM_BSP := true
+TARGET_USES_QCOM_BSP := false
 
 ifeq ($(TARGET_USES_QCOM_BSP), true)
 # Add QC Video Enhancements flag
