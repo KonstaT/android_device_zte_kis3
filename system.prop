@@ -113,3 +113,6 @@ persist.dash.max.rep.bandwidth=4000000
 persist.dash.avsync.window.msec=100
 
 tunnel.audio.encode = false
+
+#use VERY_HIGH_QUALITY for audio resampler
+af.resampler.quality=4
