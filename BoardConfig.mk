@@ -10,10 +10,10 @@ endif
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := true
 
--include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
+# Compile with msm kernel
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
-#TODO: For bring-up only; disable QC display path
-TARGET_BYPASS_QCUI := true
+-include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
 
 #TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
 # to get rid of compilation error.
@@ -82,9 +82,9 @@ TARGET_USES_INTERACTION_BOOST := true
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
-TARGET_ADDITIONAL_BOOTCLASSPATH := qcom.fmradio:oem-services:qcmediaplayer
-
 HAVE_FT_FW_UPGRADE := true
 
 # Resource manager for audio-video usecases
 BOARD_USES_RESOURCE_MANAGER:= true
+
+TARGET_INIT_VENDOR_LIB := libinit_msm
