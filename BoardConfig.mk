@@ -10,8 +10,10 @@ endif
 BOARD_USES_GENERIC_AUDIO := true
 USE_CAMERA_STUB := true
 
+TARGET_USES_AOSP := true
 # Compile with msm kernel
 TARGET_COMPILE_WITH_MSM_KERNEL := true
+TARGET_HAS_QC_KERNEL_SOURCE := true
 
 -include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
 
