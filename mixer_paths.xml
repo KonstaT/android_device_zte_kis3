@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<mixer>
+    <!-- These are the initial mixer settings -->
+    <ctl name="Voice Rx Device Mute" id="0" value="0" />
+    <ctl name="Voice Rx Device Mute" id="1" value="-1" />
+    <ctl name="Voice Rx Device Mute" id="2" value="20" />
+    <ctl name="Voice Tx Mute" id="0" value="0" />
+    <ctl name="Voice Tx Mute" id="1" value="-1" />
+    <ctl name="Voice Tx Mute" id="2" value="500" />
+    <ctl name="Voice Rx Gain" id="0" value="0" />
+    <ctl name="Voice Rx Gain" id="1" value="-1" />
+    <ctl name="Voice Rx Gain" id="2" value="20" />
+    <ctl name="TTY Mode" value="Off" />
+    <ctl name="HPHL Volume" value="9" />
+    <ctl name="HPHR Volume" value="9" />
+    <ctl name="LINEOUT Volume" value="9" />
+    <ctl name="RX1 Digital Volume" value="84" />
+    <ctl name="RX2 Digital Volume" value="84" />
+    <ctl name="RX3 Digital Volume" value="84" />
+    <ctl name="IIR1 INP1 Volume" value="84" />
+    <ctl name="IIR1 INP2 Volume" value="84" />
+    <ctl name="IIR1 INP3 Volume" value="84" />
+    <ctl name="IIR1 INP4 Volume" value="84" />
+    <ctl name="ADC1 Volume" value="13" />
+    <ctl name="ADC2 Volume" value="13" />
+    <ctl name="DEC1 Volume" value="84" />
+    <ctl name="DEC2 Volume" value="84" />
+    <ctl name="DEC2 MUX" value="ZERO" />
+    <ctl name="DEC1 MUX" value="ZERO" />
+    <ctl name="ADC2 MUX" value="ZERO" />
+    <ctl name="RX2 MIX2 INP2" value="ZERO" />
+    <ctl name="RX2 MIX2 INP1" value="ZERO" />
+    <ctl name="RX1 MIX2 INP2" value="ZERO" />
+    <ctl name="RX1 MIX2 INP1" value="ZERO" />
+    <ctl name="RX3 MIX1 INP2" value="ZERO" />
+    <ctl name="RX3 MIX1 INP1" value="ZERO" />
+    <ctl name="RX2 MIX1 INP2" value="ZERO" />
+    <ctl name="RX2 MIX1 INP1" value="ZERO" />
+    <ctl name="RX1 MIX1 INP2" value="ZERO" />
+    <ctl name="RX1 MIX1 INP1" value="ZERO" />
+    <ctl name="HPHL DAC Switch" value="0" />
+    <ctl name="DAC1 Switch" value="0" />
+    <ctl name="SPK DAC Switch" value="0" />
+    <ctl name="EAR PA Gain" value="POS_6_DB" />
+
+    <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
+    <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="0" />
+    <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
+    <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="0" />
+    <ctl name="SEC_MI2S_RX_Voice Mixer CSVoice" value="0" />
+    <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="0" />
+    <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
+    <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
+
+
+    <!-- These are audio route (FE to BE) specific mixer settings -->
+    <path name="deep-buffer-playback">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="deep-buffer-playback bt-sco">
+        <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="1" />
+    </path>
+
+    <path name="low-latency-playback">
+        <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="low-latency-playback bt-sco">
+        <ctl name="'INTERNAL_BT_SCO_RX Audio Mixer MultiMedia5" value="1" />
+    </path>
+
+    <path name="audio-record">
+        <ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="1" />
+    </path>
+
+    <path name="audio-record bt-sco">
+        <ctl name="MultiMedia1 Mixer INTERNAL_BT_SCO_TX" value="1" />
+    </path>
+
+    <path name="voice-call">
+        <ctl name="SEC_MI2S_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer PRI_MI2S_TX_Voice" value="1" />
+    </path>
+
+    <path name="voice-call bt-sco">
+        <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="1" />
+        <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="1" />
+    </path>
+
+    <!-- These are actual sound device specific mixer settings -->
+    <path name="adc1">
+        <ctl name="DEC1 MUX" value="ADC1" />
+    </path>
+
+    <path name="adc2">
+        <ctl name="DEC1 MUX" value="ADC2" />
+    </path>
+
+    <path name="speaker">
+        <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="SPK DAC Switch" value="1" />
+    </path>
+
+    <path name="speaker-mic">
+        <path name="adc1" />
+        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+    </path>
+
+    <path name="handset">
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="DAC1 Switch" value="1" />
+    </path>
+
+    <path name="handset-mic">
+        <path name="adc1" />
+    </path>
+
+    <path name="headphones">
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="HPHL DAC Switch" value="1" />
+    </path>
+
+    <path name="headset-mic">
+        <path name="adc2" />
+        <ctl name="ADC2 MUX" value="INP2" />
+        <ctl name="IIR1 INP1 MUX" value="DEC1" />
+    </path>
+
+    <path name="voice-handset">
+        <path name="handset" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <!-- ToDo: Set IIR bands -->
+        <!-- 'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Enable Band1':1:1 -->
+        <!-- 'IIR1 Enable Band2':1:1 -->
+        <!-- 'IIR1 Enable Band3':1:1 -->
+        <!-- 'IIR1 Enable Band4':1:1 -->
+        <!-- 'IIR1 Enable Band5':1:1 -->
+        <ctl name="IIR1 INP1 Volume" value="53" />
+    </path>
+
+    <path name="voice-speaker">
+        <path name="speaker" />
+    </path>
+
+    <path name="voice-speaker-mic">
+        <path name="speaker-mic" />
+    </path>
+
+    <path name="voice-headphones">
+        <path name="headphones" />
+        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX2 Digital Volume" value="84" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <ctl name="RX2 MIX2 INP1" value="IIR1" />
+        <!-- ToDo: Set IIR specific mixer controls -->
+        <!-- 'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0 -->
+        <!-- 'IIR1 Enable Band1':1:1 -->
+        <!-- 'IIR1 Enable Band2':1:1 -->
+        <!-- 'IIR1 Enable Band3':1:1 -->
+        <!-- 'IIR1 Enable Band4':1:1 -->
+        <!-- 'IIR1 Enable Band5':1:1 -->
+        <ctl name="IIR1 INP1 Volume" value="53" />
+    </path>
+
+    <path name="voice-headset-mic">
+        <path name="headset-mic" />
+    </path>
+
+    <path name="speaker-and-headphones">
+        <path name="speaker" />
+        <path name="headphones" />
+    </path>
+
+    <path name="voice-rec-mic">
+        <path name="handset-mic" />
+    </path>
+
+    <path name="camcorder-mic">
+        <path name="handset-mic" />
+    </path>
+
+    <path name="bt-sco-headset">
+    </path>
+
+    <path name="bt-sco-mic">
+    </path>
+
+    <!-- Dual MIC devices -->
+    <path name="speaker-dmic-endfire">
+        <path name="adc2" />
+        <ctl name="MI2S_TX Channels" value="Two" />
+        <ctl name="ADC2 MUX" value="INP3" />
+    </path>
+
+    <path name="speaker-dmic-broadside">
+    </path>
+
+    <path name="dmic-endfire">
+        <path name="speaker-dmic-endfire" />
+    </path>
+
+    <path name="dmic-broadside">
+        <path name="speaker-dmic-broadside" />
+    </path>
+
+    <path name="voice-dmic-ef-tmus">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-dmic-bs">
+        <path name="dmic-broadside" />
+    </path>
+
+    <path name="voice-speaker-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-speaker-dmic-bs">
+        <path name="speaker-dmic-broadside" />
+    </path>
+
+    <path name="voice-rec-dmic-ef">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-rec-dmic-bs">
+        <path name="dmic-broadside" />
+    </path>
+
+    <path name="voice-rec-dmic-ef-fluence">
+        <path name="dmic-endfire" />
+    </path>
+
+    <path name="voice-rec-dmic-bs-fluence">
+        <path name="dmic-broadside" />
+    </path>
+
+    <!-- TTY devices -->
+
+    <path name="tty-headphones">
+        <ctl name="RX1 MIX1 INP1" value="RX1" />
+        <ctl name="HPHL DAC Switch" value="1" />
+    </path>
+
+    <path name="voice-tty-full-headphones">
+        <ctl name="TTY Mode" value="FULL" />
+        <path name="tty-headphones" />
+    </path>
+
+    <path name="voice-tty-vco-headphones">
+        <ctl name="TTY Mode" value="VCO" />
+        <path name="tty-headphones" />
+    </path>
+
+    <path name="voice-tty-hco-handset">
+        <ctl name="TTY Mode" value="HCO" />
+        <path name="handset" />
+    </path>
+
+    <path name="voice-tty-full-headset-mic">
+        <path name="adc2" />
+        <ctl name="ADC2 MUX" value="INP2" />
+    </path>
+
+    <path name="voice-tty-hco-headset-mic">
+        <path name="voice-tty-full-headset-mic" />
+    </path>
+
+    <path name="voice-tty-vco-handset-mic">
+        <path name="adc1" />
+    </path>
+
+</mixer>

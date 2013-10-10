@@ -21,13 +21,8 @@ PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf
-
-# audio UCM files
-PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd \
-    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuab \
-    device/qcom/msm8610/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa:system/etc/snd_soc_msm/snd_soc_msm_8x10_wcd_skuaa
+    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
+    device/qcom/msm8610/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
