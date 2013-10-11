@@ -96,6 +96,9 @@ persist.fuse_sdcard=true
 ro.qc.sdk.audio.ssr=false
 ##fluencetype can be "fluence" or "fluencepro" or "none"
 ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=true
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=true
 
 # Reduce Background apps limit
 ro.sys.fw.bg_apps_limit=20
