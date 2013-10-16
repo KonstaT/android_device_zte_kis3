@@ -42,6 +42,8 @@
     <ctl name="DAC1 Switch" value="0" />
     <ctl name="SPK DAC Switch" value="0" />
     <ctl name="EAR PA Gain" value="POS_6_DB" />
+    <ctl name="MI2S_RX Channels" value="One" />
+    <ctl name="MI2S_TX Channels" value="One" />
 
     <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_BT_SCO_RX Audio Mixer MultiMedia1" value="0" />
@@ -54,6 +56,37 @@
     <ctl name="INTERNAL_BT_SCO_RX_Voice Mixer CSVoice" value="0" />
     <ctl name="Voice_Tx Mixer INTERNAL_BT_SCO_TX_Voice" value="0" />
 
+    <!-- IIR -->
+    <ctl name="IIR1 Band1" id ="0" value="268435456" />
+    <ctl name="IIR1 Band1" id ="1" value="0" />
+    <ctl name="IIR1 Band1" id ="2" value="0" />
+    <ctl name="IIR1 Band1" id ="3" value="0" />
+    <ctl name="IIR1 Band1" id ="4" value="0" />
+    <ctl name="IIR1 Band2" id ="0" value="268435456" />
+    <ctl name="IIR1 Band2" id ="1" value="0" />
+    <ctl name="IIR1 Band2" id ="2" value="0" />
+    <ctl name="IIR1 Band2" id ="3" value="0" />
+    <ctl name="IIR1 Band2" id ="4" value="0" />
+    <ctl name="IIR1 Band3" id ="0" value="268435456" />
+    <ctl name="IIR1 Band3" id ="1" value="0" />
+    <ctl name="IIR1 Band3" id ="2" value="0" />
+    <ctl name="IIR1 Band3" id ="3" value="0" />
+    <ctl name="IIR1 Band3" id ="4" value="0" />
+    <ctl name="IIR1 Band4" id ="0" value="268435456" />
+    <ctl name="IIR1 Band4" id ="1" value="0" />
+    <ctl name="IIR1 Band4" id ="2" value="0" />
+    <ctl name="IIR1 Band4" id ="3" value="0" />
+    <ctl name="IIR1 Band4" id ="4" value="0" />
+    <ctl name="IIR1 Band5" id ="0" value="268435456" />
+    <ctl name="IIR1 Band5" id ="1" value="0" />
+    <ctl name="IIR1 Band5" id ="2" value="0" />
+    <ctl name="IIR1 Band5" id ="3" value="0" />
+    <ctl name="IIR1 Band5" id ="4" value="0" />
+    <ctl name="IIR1 Enable Band1" value="0" />
+    <ctl name="IIR1 Enable Band2" value="0" />
+    <ctl name="IIR1 Enable Band3" value="0" />
+    <ctl name="IIR1 Enable Band4" value="0" />
+    <ctl name="IIR1 Enable Band5" value="0" />
 
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
@@ -120,6 +153,7 @@
     </path>
 
     <path name="headphones">
+        <ctl name="MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
         <ctl name="HPHL DAC Switch" value="1" />
@@ -131,21 +165,30 @@
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
-    <path name="voice-handset">
-        <path name="handset" />
-        <ctl name="RX1 MIX2 INP1" value="IIR1" />
-        <!-- ToDo: Set IIR bands -->
-        <!-- 'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Enable Band1':1:1 -->
-        <!-- 'IIR1 Enable Band2':1:1 -->
-        <!-- 'IIR1 Enable Band3':1:1 -->
-        <!-- 'IIR1 Enable Band4':1:1 -->
-        <!-- 'IIR1 Enable Band5':1:1 -->
+    <path name="sidetone-iir">
+        <ctl name="IIR1 Enable Band1" value="1" />
+        <ctl name="IIR1 Enable Band2" value="1" />
+        <ctl name="IIR1 Enable Band3" value="1" />
+        <ctl name="IIR1 Enable Band4" value="1" />
+        <ctl name="IIR1 Enable Band5" value="1" />
+    </path>
+
+    <path name="sidetone-handset">
+        <path name="sidetone-iir" />
         <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+    </path>
+
+    <path name="sidetone-headphone">
+        <path name="sidetone-iir" />
+        <ctl name="RX1 MIX2 INP1" value="IIR1" />
+        <ctl name="RX2 MIX2 INP1" value="IIR1" />
+        <ctl name="IIR1 INP1 Volume" value="53" />
+    </path>
+
+    <path name="voice-handset">
+        <path name="sidetone-handset" />
+        <path name="handset" />
     </path>
 
     <path name="voice-speaker">
@@ -158,22 +201,7 @@
 
     <path name="voice-headphones">
         <path name="headphones" />
-        <ctl name="RX1 Digital Volume" value="84" />
-        <ctl name="RX2 Digital Volume" value="84" />
-        <ctl name="RX1 MIX2 INP1" value="IIR1" />
-        <ctl name="RX2 MIX2 INP1" value="IIR1" />
-        <!-- ToDo: Set IIR specific mixer controls -->
-        <!-- 'IIR1 Band1':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band2':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band3':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band4':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Band5':2:0x10000000 0x0 0x0 0x0 0x0 -->
-        <!-- 'IIR1 Enable Band1':1:1 -->
-        <!-- 'IIR1 Enable Band2':1:1 -->
-        <!-- 'IIR1 Enable Band3':1:1 -->
-        <!-- 'IIR1 Enable Band4':1:1 -->
-        <!-- 'IIR1 Enable Band5':1:1 -->
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <path name="sidetone-headphone" />
     </path>
 
     <path name="voice-headset-mic">
@@ -201,20 +229,14 @@
 
     <!-- Dual MIC devices -->
     <path name="speaker-dmic-endfire">
-        <path name="adc2" />
+        <path name="adc1" />
+        <ctl name="DEC2 MUX" value="ADC2" />
         <ctl name="MI2S_TX Channels" value="Two" />
         <ctl name="ADC2 MUX" value="INP3" />
     </path>
 
-    <path name="speaker-dmic-broadside">
-    </path>
-
     <path name="dmic-endfire">
         <path name="speaker-dmic-endfire" />
-    </path>
-
-    <path name="dmic-broadside">
-        <path name="speaker-dmic-broadside" />
     </path>
 
     <path name="voice-dmic-ef-tmus">
@@ -225,32 +247,16 @@
         <path name="dmic-endfire" />
     </path>
 
-    <path name="voice-dmic-bs">
-        <path name="dmic-broadside" />
-    </path>
-
     <path name="voice-speaker-dmic-ef">
         <path name="dmic-endfire" />
-    </path>
-
-    <path name="voice-speaker-dmic-bs">
-        <path name="speaker-dmic-broadside" />
     </path>
 
     <path name="voice-rec-dmic-ef">
         <path name="dmic-endfire" />
     </path>
 
-    <path name="voice-rec-dmic-bs">
-        <path name="dmic-broadside" />
-    </path>
-
     <path name="voice-rec-dmic-ef-fluence">
         <path name="dmic-endfire" />
-    </path>
-
-    <path name="voice-rec-dmic-bs-fluence">
-        <path name="dmic-broadside" />
     </path>
 
     <!-- TTY devices -->
