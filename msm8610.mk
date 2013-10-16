@@ -1,9 +1,12 @@
-TARGET_USES_QCOM_BSP := false
+TARGET_USES_QCOM_BSP := true
 
 ifeq ($(TARGET_USES_QCOM_BSP), true)
 # Add QC Video Enhancements flag
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 endif #TARGET_USES_QCOM_BSP
+
+TARGET_DISABLE_DASH := true
+TARGET_DISABLE_OMX_SECURE_TEST_APP := true
 
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 # media_profiles and media_codecs xmls for 8610
