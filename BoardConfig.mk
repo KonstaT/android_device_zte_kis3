@@ -90,3 +90,10 @@ HAVE_FT_FW_UPGRADE := true
 BOARD_USES_RESOURCE_MANAGER:= true
 
 TARGET_INIT_VENDOR_LIB := libinit_msm
+
+# Board specific SELinux policy variable definitions
+BOARD_SEPOLICY_DIRS := \
+       device/qcom/common/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+       netd.te
