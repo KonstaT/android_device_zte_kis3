@@ -252,6 +252,11 @@
         <ctl name="SPK DAC Switch" value="1" />
     </path>
 
+    <path name="speaker-skuab">
+        <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="RDAC4 MUX" value="RX3" />
+    </path>
+
     <path name="speaker-mic">
         <path name="adc1" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
@@ -325,6 +330,11 @@
 
     <path name="speaker-and-headphones">
         <path name="speaker" />
+        <path name="headphones" />
+    </path>
+
+    <path name="speaker-and-headphones-skuab">
+        <path name="speaker-skuab" />
         <path name="headphones" />
     </path>
 
