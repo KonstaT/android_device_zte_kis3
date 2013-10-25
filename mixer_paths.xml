@@ -65,6 +65,11 @@
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia1" value="0" />
     <ctl name="INTERNAL_FM_RX Audio Mixer MultiMedia5" value="0" />
     <!-- fm end -->
+
+    <!-- Incall Recording -->
+    <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
+    <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
+
     <!-- IIR -->
     <ctl name="IIR1 Band1" id ="0" value="268435456" />
     <ctl name="IIR1 Band1" id ="1" value="0" />
@@ -189,6 +194,19 @@
     <path name="voice-call bt-sco-wb">
         <ctl name="Internal BTSCO SampleRate" value="16000" />
         <path name="voice-call bt-sco" />
+    </path>
+
+    <path name="incall-rec-uplink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="1" />
+    </path>
+
+    <path name="incall-rec-downlink">
+        <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="1" />
+    </path>
+
+    <path name="incall-rec-uplink-and-downlink">
+        <path name="incall-rec-uplink" />
+        <path name="incall-rec-downlink" />
     </path>
 
     <!-- These are actual sound device specific mixer settings -->
