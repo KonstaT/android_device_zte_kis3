@@ -200,8 +200,8 @@
     </path>
 
     <path name="voice2-call">
-        <ctl name="SEC_MI2S_RX_Voice Mixer Voice2" value="0" />
-        <ctl name="Voice2_Tx Mixer PRI_MI2S_TX_Voice2" value="0" />
+        <ctl name="SEC_MI2S_RX_Voice Mixer Voice2" value="1" />
+        <ctl name="Voice2_Tx Mixer PRI_MI2S_TX_Voice2" value="1" />
     </path>
 
     <path name="voice2-call bt-sco">
@@ -215,8 +215,8 @@
     </path>
 
     <path name="voice2-call usb-headphones">
-       <ctl name="AFE_PCM_RX_Voice Mixer Voice2" value="0" />
-       <ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice2" value="0" />
+       <ctl name="AFE_PCM_RX_Voice Mixer Voice2" value="1" />
+       <ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice2" value="1" />
     </path>
 
     <path name="play-fm">
