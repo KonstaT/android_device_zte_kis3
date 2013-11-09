@@ -130,4 +130,8 @@ service adsprpcd /system/bin/adsprpcd
    user media
    group media
 
-
+service wcnss-service /system/bin/wcnss_service
+    class late_start
+    user root
+    group system wifi
+    oneshot
