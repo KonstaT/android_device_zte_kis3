@@ -25,7 +25,12 @@ PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Perf
 # Audio configuration file
 PRODUCT_COPY_FILES += \
     device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
+    device/qcom/msm8610/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     device/qcom/msm8610/mixer_paths.xml:system/etc/mixer_paths.xml
+
+PRODUCT_PACKAGES += \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
