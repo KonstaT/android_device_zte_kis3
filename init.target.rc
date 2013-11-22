@@ -54,6 +54,7 @@ on fs
 
 on boot
    write /sys/bus/i2c/drivers/ft5x06_ts/1-0038/update_fw 1
+   write /proc/sys/vm/page-cluster 0
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
