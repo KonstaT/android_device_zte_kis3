@@ -121,3 +121,4 @@ tunnel.audio.encode = false
 af.resampler.quality=4
 #disable tunnel mode playback by default
 audio.offload.disable=1
+ro.config.low_ram=true
