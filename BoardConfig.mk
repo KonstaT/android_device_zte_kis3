@@ -89,6 +89,9 @@ HAVE_FT_FW_UPGRADE := true
 # Resource manager for audio-video usecases
 BOARD_USES_RESOURCE_MANAGER:= true
 
+VSYNC_EVENT_PHASE_OFFSET_NS := 7500000
+SF_VSYNC_EVENT_PHASE_OFFSET_NS := 5000000
+
 TARGET_INIT_VENDOR_LIB := libinit_msm
 
 # Board specific SELinux policy variable definitions
