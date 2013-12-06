@@ -37,12 +37,6 @@ dalvik.vm.heapsize=36m
 dev.pm.dyn_samplingrate=1
 
 ro.hdmi.enable=true
-tunnel.decode=true
-#8x10 does not support tunnel av playback
-#this prop should be set to false all the time
-tunnel.audiovideo.decode=false
-lpa.decode=false
-lpa.use-stagefright=true
 
 #system props for the MM modules
 
@@ -119,6 +113,11 @@ tunnel.audio.encode = false
 
 #use VERY_HIGH_QUALITY for audio resampler
 af.resampler.quality=4
-#disable tunnel mode playback by default
-audio.offload.disable=1
 ro.config.low_ram=true
+
+#Buffer size in kbytes for compress offload playback
+audio.offload.buffer.size.kbytes=32
+
+#8x10 does not support tunnel av playback
+#this prop should be set to false all the time
+av.offload.enable=false
