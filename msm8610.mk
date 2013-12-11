@@ -22,7 +22,7 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 PRODUCT_NAME := msm8610
 PRODUCT_DEVICE := msm8610
 
-PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance
+PRODUCT_BOOT_JARS += oem-services:org.codeaurora.Performance
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
