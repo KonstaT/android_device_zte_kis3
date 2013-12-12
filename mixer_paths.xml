@@ -101,6 +101,12 @@
     <!-- Incall Recording -->
     <ctl name="MultiMedia1 Mixer VOC_REC_UL" value="0" />
     <ctl name="MultiMedia1 Mixer VOC_REC_DL" value="0" />
+    <!-- Incall Recording end -->
+
+    <!-- Incall Music -->
+    <ctl name="Incall_Music Audio Mixer MultiMedia2" value="0" />
+    <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="0" />
+    <!-- Incall Music End -->
 
     <!-- QCHAT -->
     <ctl name="SEC_MI2S_RX_Voice Mixer QCHAT" value="0" />
@@ -327,6 +333,14 @@
 
     <path name="incall-rec-uplink-and-downlink bt-sco-wb">
         <path name="incall-rec-uplink-and-downlink" />
+    </path>
+
+    <path name="incall_music_uplink">
+       <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
+    </path>
+
+    <path name="incall_music_uplink2">
+        <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
     </path>
 
     <path name="compress-voip-call">
