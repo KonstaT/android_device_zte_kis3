@@ -124,3 +124,7 @@ av.offload.enable=false
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
+#
+#System property for FM transmitter
+#
+ro.fm.transmitter=false
