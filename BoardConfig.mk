@@ -99,3 +99,5 @@ BOARD_SEPOLICY_UNION := \
        netd.te
 
 TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+
+PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
