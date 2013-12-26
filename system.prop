@@ -116,7 +116,7 @@ af.resampler.quality=4
 ro.config.low_ram=true
 
 #Buffer size in kbytes for compress offload playback
-audio.offload.buffer.size.kbytes=32
+audio.offload.buffer.size.kb=32
 
 #8x10 does not support tunnel av playback
 #this prop should be set to false all the time
@@ -124,3 +124,7 @@ av.offload.enable=false
 
 #enable voice path for PCM VoIP by default
 use.voice.path.for.pcm.voip=true
+#
+#System property for FM transmitter
+#
+ro.fm.transmitter=false
