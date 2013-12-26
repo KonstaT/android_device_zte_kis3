@@ -143,7 +143,7 @@ service adsprpcd /system/bin/adsprpcd
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
-    user root
+    user system
     group system wifi
     oneshot
 
