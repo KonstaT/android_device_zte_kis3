@@ -50,7 +50,6 @@ on fs
 
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
-    write /sys/kernel/boot_adsp/boot 1
 
 on boot
    write /sys/bus/i2c/drivers/ft5x06_ts/1-0038/update_fw 1
@@ -143,7 +142,7 @@ service adsprpcd /system/bin/adsprpcd
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
-    user root
+    user system
     group system wifi
     oneshot
 
