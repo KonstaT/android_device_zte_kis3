@@ -100,6 +100,10 @@ ro.sys.fw.bg_apps_limit=20
 # System property for cabl
 ro.qualcomm.cabl=1
 
+
+# system prop for NFC DT
+ro.nfc.port=I2C
+
 #
 #DASH video streaming
 #Specify max allowed resolution/bandwidth for representations
