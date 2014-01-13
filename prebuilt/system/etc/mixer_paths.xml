@@ -544,6 +544,12 @@
     <path name="bt-sco-mic">
     </path>
 
+    <path name="bt-sco-headset-wb">
+    </path>
+
+    <path name="bt-sco-mic-wb">
+    </path>
+
     <path name="usb-headset-mic">
     </path>
 
