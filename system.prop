@@ -132,3 +132,6 @@ use.voice.path.for.pcm.voip=true
 #System property for FM transmitter
 #
 ro.fm.transmitter=false
+
+#enable dsp gapless mode by default
+audio.offload.gapless.enabled=true
