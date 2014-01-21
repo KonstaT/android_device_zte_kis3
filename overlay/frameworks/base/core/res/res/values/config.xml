@@ -31,4 +31,5 @@
 <resources>
    <!-- Whether cpu boost is enabled for overscroller fling. -->
    <bool name="config_enableCpuBoostForOverScrollerFling">true</bool>
+   <bool name="config_button_light_enabled">true</bool>
 </resources>
