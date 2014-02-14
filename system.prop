@@ -80,10 +80,6 @@ ro.opengles.version=196608
 # System prop to turn on CdmaLTEPhone always
 telephony.lteOnCdmaDevice=1
 
-# simulate sdcard on /data/media
-#
-persist.fuse_sdcard=true
-
 #
 #snapdragon value add features
 #
