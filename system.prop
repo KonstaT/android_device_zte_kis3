@@ -47,6 +47,7 @@ media.stagefright.use-awesome=true
 # Memory
 ro.config.low_ram=true
 ro.ksm.default=1
+config.disable_atlas=true
 
 # Qualcomm
 ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
