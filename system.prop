@@ -22,11 +22,6 @@ persist.radio.atfwd.start=false
 # Start in cdma mode
 ro.telephony.default_network=5
 
-#
-# system props for the cne module
-#
-persist.cne.feature=1
-
 # Skip /sys/power/wait_for_fb_* nodes and
 # force FB to be always on
 debug.sf.fb_always_on=1
