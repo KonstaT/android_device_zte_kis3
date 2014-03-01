@@ -33,7 +33,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    libqcompostprocbundle
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
