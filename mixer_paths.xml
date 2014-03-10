@@ -148,6 +148,11 @@
     <ctl name="IIR1 Enable Band5" value="0" />
     <!-- IIR -->
 
+    <!-- BT SCO WB Sample Rate -->
+    <path name="bt-sco-wb-samplerate">
+        <ctl name="Internal BTSCO SampleRate" value="16000" />
+    </path>
+
     <!-- These are audio route (FE to BE) specific mixer settings -->
     <path name="deep-buffer-playback">
         <ctl name="SEC_MI2S_RX Audio Mixer MultiMedia1" value="1" />
