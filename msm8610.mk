@@ -33,7 +33,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    libqcompostprocbundle
 
 # Bluetooth configuration files
 PRODUCT_COPY_FILES += \
@@ -42,7 +43,6 @@ PRODUCT_COPY_FILES += \
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     device/qcom/msm8610/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/qcom/msm8610/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
 
