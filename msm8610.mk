@@ -20,6 +20,10 @@ endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
+PRODUCT_PROPERTY_OVERRIDES += \
+       ro.moz.omx.hw.max_width=1280 \
+       ro.moz.omx.hw.max_height=720 \
+
 PRODUCT_NAME := msm8610
 PRODUCT_DEVICE := msm8610
 
