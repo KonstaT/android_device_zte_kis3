@@ -356,10 +356,42 @@
        <ctl name="Incall_Music Audio Mixer MultiMedia2" value="1" />
     </path>
 
+    <path name="incall_music_uplink bt-sco">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink bt-sco-wb">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink usb-headphones">
+        <path name="incall_music_uplink" />
+    </path>
+
+    <path name="incall_music_uplink hdmi">
+        <path name="incall_music_uplink" />
+    </path>
+
+
     <path name="incall_music_uplink2">
         <ctl name="Incall_Music_2 Audio Mixer MultiMedia9" value="1" />
     </path>
 
+    <path name="incall_music_uplink2 bt-sco">
+        <path name="incall_music_uplink2" />
+    </path>
+
+    <path name="incall_music_uplink2 bt-sco-wb">
+        <path name="incall_music_uplink2" />
+    </path>
+
+    <path name="incall_music_uplink2 usb-headphones">
+        <path name="incall_music_uplink2" />
+    </path>
+
+    <path name="incall_music_uplink2 hdmi">
+        <path name="incall_music_uplink2" />
+    </path>
     <path name="compress-voip-call">
         <ctl name="SEC_MI2S_RX_Voice Mixer Voip" value="1" />
         <ctl name="Voip_Tx Mixer PRI_MI2S_TX_Voip" value="1" />
