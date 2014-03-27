@@ -142,7 +142,7 @@ service adsprpcd /system/bin/adsprpcd
    group media
 
 service wcnss-service /system/bin/wcnss_service
-    class late_start
+    class main
     user system
     group system wifi
     oneshot
