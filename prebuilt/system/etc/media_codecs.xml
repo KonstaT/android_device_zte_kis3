@@ -52,8 +52,6 @@
             <Quirk name="requires-wma-pro-component" />
         </MediaCodec>
 
-        <MediaCodec name="OMX.qcom.audio.decoder.amrwbplus" type="audio/amr-wb-plus" >
-        </MediaCodec>
         <!-- Audio Software  -->
         <MediaCodec name="OMX.google.vorbis.decoder" type="audio/vorbis" />
         <MediaCodec name="OMX.google.mp3.decoder" type="audio/mpeg" />
