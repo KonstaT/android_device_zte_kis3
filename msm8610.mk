@@ -108,3 +108,15 @@ PRODUCT_COPY_FILES += \
         frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
         frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
 endif # BOARD_HAVE_QCA_NFC
+
+# Gecko low-memory killer setting overrides
+#
+# It would be nice to use PRODUCT_COPY_FILES here instead but that is not
+# currently possible due to various |rm -rf ...| commands in
+# {gaia,gonk-misc}/Android.mk that Make does not know about.
+#
+out/target/product/$(TARGET_PRODUCT)/system/gecko: gaia/profile/defaults/pref/lmk.js
+.PHONY: gaia/profile/defaults/pref/lmk.js
+gaia/profile/defaults/pref/lmk.js: gaia/profile.tar.gz
+	echo 'pref("hal.processPriorityManager.gonk.BACKGROUND.KillUnderKB", 10240);' > $@
+	echo 'pref("hal.processPriorityManager.gonk.notifyLowMemUnderKB", 9216);' >> $@
