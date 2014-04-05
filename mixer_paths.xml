@@ -499,6 +499,10 @@
         <path name="speaker" />
     </path>
 
+    <path name="voice-speaker-skuab">
+        <path name="speaker-skuab" />
+    </path>
+
     <path name="voice-speaker-mic">
         <path name="speaker-mic" />
     </path>
