@@ -141,7 +141,7 @@ service adsprpcd /system/bin/adsprpcd
 service wcnss-service /system/bin/wcnss_service
     class main
     user system
-    group system wifi
+    group system wifi radio
     oneshot
 
 service ztebasebandinit /system/bin/sh /system/etc/init.zte.baseband.sh
