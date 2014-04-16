@@ -27,7 +27,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_NAME := msm8610
 PRODUCT_DEVICE := msm8610
 
-PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance
+PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
