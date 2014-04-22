@@ -126,3 +126,6 @@ ro.fm.transmitter=false
 
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
+
+#Disbale audio tunnel playback till LF 8x10 meta has matching DSP firmware
+audio.offload.disable=1
