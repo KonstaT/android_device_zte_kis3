@@ -120,3 +120,8 @@ out/target/product/$(TARGET_PRODUCT)/system/gecko: gaia/profile/defaults/pref/lm
 gaia/profile/defaults/pref/lmk.js: gaia/profile.tar.gz
 	echo 'pref("hal.processPriorityManager.gonk.BACKGROUND.KillUnderKB", 10240);' > $@
 	echo 'pref("hal.processPriorityManager.gonk.notifyLowMemUnderKB", 9216);' >> $@
+
+# Target-specific Gaia configuration
+LOCAL_PATH:=$(dir $(firstword $(MAKEFILE_LIST)))
+GAIA_DISTRIBUTION_SRC_FILES:=$(GAIA_DISTRIBUTION_SRC_FILES)
+GAIA_DISTRIBUTION_SRC_FILES+=$(wildcard $(LOCAL_PATH)/gaia_distribution/*)
