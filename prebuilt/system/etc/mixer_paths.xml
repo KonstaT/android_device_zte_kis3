@@ -87,7 +87,7 @@
     <!-- Voip end -->
 
     <!-- fm -->
-    <ctl name="Internal FM RX Volume" value="1" />
+    <ctl name="Internal FM RX Volume" value="0" />
     <ctl name="SEC_MI2S_RX Port Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="MultiMedia1 Mixer INTERNAL_FM_TX" value="0" />
     <ctl name="MultiMedia2 Mixer INTERNAL_FM_TX" value="0" />
