@@ -108,6 +108,7 @@
              channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -120,6 +121,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="60">
       <Video codec="h264"
@@ -173,6 +175,7 @@
              channels="2" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -185,6 +188,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -239,6 +243,7 @@
              channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -246,12 +251,12 @@
              height="720"
              frameRate="30" />
 
-      <!-- audio setting is ignored -->
       <Audio codec="aac"
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
       <Video codec="h264"
@@ -352,6 +357,7 @@
     </EncoderProfile>
 
 
+    <!--
     <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -359,12 +365,12 @@
              height="720"
              frameRate="30" />
 
-      <!-- audio setting is ignored -->
       <Audio codec="aac"
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
@@ -388,6 +394,7 @@
              channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -400,6 +407,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="60">
       <Video codec="h264"
@@ -453,6 +461,7 @@
              channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -465,6 +474,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -519,6 +529,7 @@
                    channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
       <Video codec="h264"
                    bitRate="8000000"
@@ -526,12 +537,12 @@
                    height="720"
                    frameRate="30" />
 
-      <!-- audio setting is ignored -->
       <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
                    channels="1" />
     </EncoderProfile>
+    -->
 
     <EncoderProfile quality="timelapseqcif" fileFormat="mp4" duration="30">
       <Video codec="h264"
@@ -631,6 +642,7 @@
                    channels="1" />
     </EncoderProfile>
 
+    <!--
     <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
                    bitRate="8000000"
@@ -638,12 +650,12 @@
                    height="720"
                    frameRate="30" />
 
-      <!-- audio setting is ignored -->
       <Audio codec="aac"
                    bitRate="96000"
                    sampleRate="48000"
                    channels="1" />
     </EncoderProfile>
+    -->
 
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
