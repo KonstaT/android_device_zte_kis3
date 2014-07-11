@@ -13,8 +13,12 @@ DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8610/overlay
 
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 # media_profiles and media_codecs xmls for 8610
-PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml \
-                      device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
+ifeq ($(TARGET_USES_265MB_CONFIG), true)
+PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610_256MB.xml:system/etc/media_profiles.xml
+else
+PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml
+endif #TARGET_USES_265MB_CONFIG
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
