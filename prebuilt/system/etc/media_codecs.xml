@@ -72,42 +72,34 @@
         <MediaCodec name="OMX.qcom.video.decoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vc1" type="video/x-ms-wmv" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.divx" type="video/divx" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.divx4" type="video/divx4" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vp8" type="video/x-vnd.on2.vp8" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" >
             <Quirk name="requires-allocate-on-input-ports" />
             <Quirk name="requires-allocate-on-output-ports" />
-            <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <!-- Video Software  -->
         <!-- ZTE_MODIFY ,huxiaoyu,2013/11/19,  for cts test, 8x10 not supported, only 8x12 supported  ,start -->
