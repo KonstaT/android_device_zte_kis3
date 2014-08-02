@@ -15,7 +15,9 @@ persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
 DEVICE_PROVISIONED=1
 persist.radio.msgtunnel.start=false
-persist.radio.atfwd.start=false
+# konsta_start
+#persist.radio.atfwd.start=false
+# konsta_end
 # Start in cdma mode
 ro.telephony.default_network=0
 
@@ -65,7 +67,9 @@ drm.service.enabled=true
 #
 # system props for the data modules
 #
-ro.use_data_netmgrd=true
+# konsta_start
+#ro.use_data_netmgrd=true
+# konsta_end
 
 #system props for time-services
 persist.timed.enable=true

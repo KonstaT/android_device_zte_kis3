@@ -52,49 +52,23 @@ on fs
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
 on boot
-   write /sys/bus/i2c/drivers/ft5x06_ts/1-0038/update_fw 1
-   write /proc/sys/vm/page-cluster 0
-   write /proc/sys/vm/swappiness 100
-   # Enable writing to brightness node under torch-light from userspace
-   chown system system /sys/class/leds/torch-light/brightness
-
-    #zte-modify by zhengcz 20140506 for accesing fuse partition in apk,start.
-    chmod 0777 /dev/block/mmcblk0p23
-    #zte-modify by zhengcz 20140506, end.
+    write /sys/bus/i2c/drivers/ft5x06_ts/1-0038/update_fw 1
+    write /proc/sys/vm/page-cluster 0
+    write /proc/sys/vm/swappiness 100
 
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,start.
-    #chown system system /sys/class/timed_output/vibrator/enable
-    #chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/button-backlight/brightness
-    #chown system system /sys/class/leds/jogball-backlight/brightness
-    #chown system system /sys/class/leds/red/brightness
-    #chown system system /sys/class/leds/green/brightness
-    #chown system system /sys/class/leds/blue/brightness
-    #chown system system /sys/class/leds/red/device/grpfreq
-    #chown system system /sys/class/leds/red/device/grppwm
-    #chown system system /sys/class/leds/red/device/blink
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
-    #chown system system /sys/class/leds/blue/brightness
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/green/blink
-    #chown system system /sys/class/leds/red/device/grpfreq
-    #chown system system /sys/class/leds/red/device/grppwm
-    #chown system system /sys/class/leds/red/device/blink
     chown system system /sys/class/timed_output/vibrator/enable
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,end.
 
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
-
-    #** ZTE_MODIFY pengyebin10094660, 2012-06-25, create the OMA directories, so as to enforce our permissions #
-    mkdir /data/oma 1777
-    chmod 1777 /data/oma
-    mkdir /data/oma/conf 1777
-    chmod 1777 /data/oma/conf
-    #** ZTE_MODIFY END
 
 # import cne init file
 on post-fs
@@ -107,43 +81,35 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
-on boot
-    insmod /system/lib/modules/adsprpc.ko
-
-
-#Start the qcom-system-daemon service
-service qcomsysd /system/bin/qcom-system-daemon
-   class main
-
 service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
+    class late_start
+    user root
+    group root
 
 service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
-   user root
-   disabled
+    user root
+    disabled
 
 #start GNSS/Sensor interface daemon
 service gsiff_daemon /system/bin/gsiff_daemon
-   class late_start
-   user system
-   group gps net_raw
+    class late_start
+    user system
+    group gps net_raw
 
 service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   group root
+    class main
+    user root
+    group root
 
 service qseecomd /system/bin/qseecomd
-	class late_start
-	user root
-	group root
+    class late_start
+    user root
+    group root
 
 service qrngd /system/bin/qrngd -f
-   class main
-   user root
-   group root
+    class main
+    user root
+    group root
 
 service qrngp /system/bin/qrngp
     class main
@@ -157,14 +123,9 @@ on property:sys.boot_completed=1
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
-   class late_start
-   user camera
-   group camera system inet input graphics
-
-service audiod /system/bin/audiod
-   class late_start
-   user system
-   group system
+    class late_start
+    user camera
+    group camera system inet input graphics
 
 service swapping /system/bin/sh /system/etc/enable_swap.sh
     class core
@@ -172,70 +133,12 @@ service swapping /system/bin/sh /system/etc/enable_swap.sh
     oneshot
 
 service adsprpcd /system/bin/adsprpcd
-   class main
-   user media
-   group media
+    class main
+    user media
+    group media
 
 service wcnss-service /system/bin/wcnss_service
     class late_start
     user system
     group system wifi
     oneshot
-
-#ztemodify 20140325 by wangbin delete cabl start	
-#service ppd /system/bin/mm-pp-daemon
-#    class late_start
-#    user system
-#    socket pps stream 0660 system system
-#    group system graphics
-#ztemodify 20140325 by wangbin delete cabl end
-
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
-
-#ZTE_MODIFY begin yangyulin
-service getlog /system/bin/sh /system/etc/getlogtofile.sh
-    oneshot
-    disabled
-
-service logcat_system /system/bin/logcat -v time -r 1024 -n 5 -b system -f /data/local/logs/logcat/logcat_system.log
-    class logservice
-    oneshot
-
-service logcat_main /system/bin/logcat -v time -r 1024 -n 9 -b main -f /data/local/logs/logcat/logcat_main.log
-    class logservice
-    oneshot
-
-service logcat_radio /system/bin/logcat -v time -r 1024 -n 9 -b radio -f /data/local/logs/logcat/logcat_radio.log
-    class logservice
-    oneshot
-
-service logcat_events /system/bin/logcat -v time -r 1024 -n 3 -b events -f /data/local/logs/logcat/logcat_events.log
-    class logservice
-    oneshot
-
-on property:persist.sys.ztelog.enable=1
-    start getlog
-
-on property:persist.sys.ztelog.enable=0
-    stop getlog
-    class_stop logservice
-
-#zhangfengyu
-service diag_klog /system/bin/diag_klog
-    class main
-    user root
-    group radio cache inet misc audio
-
-#ZTE_MODIFY end yangyulin
-
-#/*--ZTE:added by wang xiang zhi for backup 20131231--*/
-service app6939 /system/bin/app6939
-    class main
-    user root
-#zte-modify by fengminchao for wifi(wcn3620) test tool begin
-service wifi_ftmd /system/bin/wifi_ftmd
-socket wifi_ftmd dgram 0666
-disabled
-oneshot
-#zte-modify by fengminchao for wifi(wcn3620) test tool end

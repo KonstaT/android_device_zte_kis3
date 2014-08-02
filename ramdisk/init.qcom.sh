@@ -113,7 +113,6 @@ esac
 case "$baseband" in
         "svlte2a")
         start gpsone_daemon
-        start bridgemgrd
         ;;
         "sglte" | "sglte2")
         start gpsone_daemon

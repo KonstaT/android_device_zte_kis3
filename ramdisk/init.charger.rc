@@ -66,25 +66,12 @@ on charger-boot
     chmod 0660 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,start.
-    #chown system system /sys/class/timed_output/vibrator/enable
-    #chown system system /sys/class/leds/keyboard-backlight/brightness
     chown system system /sys/class/leds/lcd-backlight/brightness
     chown system system /sys/class/leds/button-backlight/brightness
-    #chown system system /sys/class/leds/jogball-backlight/brightness
-    #chown system system /sys/class/leds/red/brightness
-    #chown system system /sys/class/leds/green/brightness
-    #chown system system /sys/class/leds/blue/brightness
-    #chown system system /sys/class/leds/red/device/grpfreq
-    #chown system system /sys/class/leds/red/device/grppwm
-    #chown system system /sys/class/leds/red/device/blink
     chown system system /sys/class/leds/red/brightness
     chown system system /sys/class/leds/green/brightness
-    #chown system system /sys/class/leds/blue/brightness
     chown system system /sys/class/leds/red/blink
     chown system system /sys/class/leds/green/blink
-    #chown system system /sys/class/leds/red/device/grpfreq
-    #chown system system /sys/class/leds/red/device/grppwm
-    #chown system system /sys/class/leds/red/device/blink
     chown system system /sys/class/timed_output/vibrator/enable
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,end.
 
