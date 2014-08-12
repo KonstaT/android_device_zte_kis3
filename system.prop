@@ -174,9 +174,6 @@ persist.sys.memoryclean.enable=1
 persist.sys.memoryclean.thres=10
 # zte_modify,chenshaohua,for 8x10 default memory optimize,2014.03.11 end
 
-# ZTE_MODIFY caoyaobin disable JIT
-dalvik.vm.jit.codecachesize=0
-
 # zte_modify,xiaolei,for mp3 playback pause after screen is off begin
 audio.offload.disable=1
 # zte_modify,xiaolei,for mp3 playback pause after screen is off end
