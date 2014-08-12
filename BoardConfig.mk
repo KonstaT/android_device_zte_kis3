@@ -87,7 +87,7 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
 # Hardware tunables framework
-#BOARD_HARDWARE_CLASS := device/zte/kis3/cmhw/
+BOARD_HARDWARE_CLASS := device/zte/kis3/cmhw/
 
 # Media
 TARGET_QCOM_MEDIA_VARIANT := caf-new

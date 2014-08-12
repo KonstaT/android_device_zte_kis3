@@ -72,12 +72,12 @@ on post-fs-data
 on post-fs
     export LD_PRELOAD /vendor/lib/libNimsWrap.so
 
-# Allow usb charging to be disabled persistently
-on property:persist.usb.chgdisabled=1
-    write /sys/class/power_supply/battery/charging_enabled 0
+on boot
+    # vibrator intensity
+    chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
 
-on property:persist.usb.chgdisabled=0
-    write /sys/class/power_supply/battery/charging_enabled 1
+    # usb charging
+    chown system system /sys/class/power_supply/battery/charging_enabled
 
 service time_daemon /system/bin/time_daemon
     class late_start
