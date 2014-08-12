@@ -33,10 +33,11 @@ on early-init
     write /sys/kernel/mm/ksm/pages_to_scan 100
     write /sys/kernel/mm/ksm/sleep_millisecs 500
     write /sys/kernel/mm/ksm/run 1
-    write /sys/block/zram0/disksize 192M
 
 on fs
     mount_all fstab.qcom
+    # zRAM
+    swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
     # these partition flashed on the device. Failure to mount any partition in fstab file
@@ -126,11 +127,6 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
-
-service swapping /system/bin/sh /system/etc/enable_swap.sh
-    class core
-    user root
-    oneshot
 
 service adsprpcd /system/bin/adsprpcd
     class main
