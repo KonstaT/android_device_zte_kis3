@@ -141,7 +141,6 @@ tunnel.audio.encode = false
 
 #use VERY_HIGH_QUALITY for audio resampler
 af.resampler.quality=4
-ro.config.low_ram=true
 
 #Buffer size in kbytes for compress offload playback
 audio.offload.buffer.size.kb=32
@@ -193,6 +192,10 @@ persist.loc.nlp_name=com.qualcomm.services.location
 ro.gps.agps_provider=1
 ro.sf.lcd_density=240
 # konsta_end
+
+# Memory
+ro.config.low_ram=true
+ro.ksm.default=1
 
 # Recovery
 ro.cwm.enable_key_repeat=true

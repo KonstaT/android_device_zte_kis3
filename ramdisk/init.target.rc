@@ -30,9 +30,6 @@
 on early-init
     mkdir /firmware 0771 system system
     symlink /data/tombstones /tombstones
-    write /sys/kernel/mm/ksm/pages_to_scan 100
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
-    write /sys/kernel/mm/ksm/run 1
 
 on fs
     mount_all fstab.qcom
