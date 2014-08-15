@@ -167,6 +167,7 @@ vendor/lib/libOmxEvrcDec.so
 vendor/lib/libOmxIttiamVdec.so
 vendor/lib/libOmxQcelp13Dec.so
 vendor/lib/libOmxWmaDec.so
+vendor/lib/libSHIMDivxDrm.so
 
 # Qualcomm framework
 bin/irsc_util
