@@ -152,9 +152,6 @@ vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/libxt_native.so
 
-# Lights
-lib/hw/lights.msm8610.so
-
 # Misc
 bin/port-bridge
 vendor/lib/libNimsWrap.so

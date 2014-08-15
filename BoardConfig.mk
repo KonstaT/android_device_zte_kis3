@@ -89,6 +89,9 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 # Hardware tunables framework
 BOARD_HARDWARE_CLASS := device/zte/kis3/cmhw/
 
+# Lights
+TARGET_PROVIDES_LIBLIGHT := true
+
 # Media
 TARGET_QCOM_MEDIA_VARIANT := caf-new
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
