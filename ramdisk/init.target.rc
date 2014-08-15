@@ -49,6 +49,10 @@ on fs
     wait /dev/block/platform/msm_sdcc.1/by-name/modem
     mount vfat /dev/block/platform/msm_sdcc.1/by-name/modem /firmware ro shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337
 
+on post-fs-data
+    mkdir /data/tombstones 0771 system system
+    mkdir /tombstones/modem 0771 system system
+
 on boot
     write /sys/bus/i2c/drivers/ft5x06_ts/1-0038/update_fw 1
     write /proc/sys/vm/page-cluster 0
@@ -64,15 +68,6 @@ on boot
     chown system system /sys/class/timed_output/vibrator/enable
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,end.
 
-on post-fs-data
-    mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-
-# import cne init file
-on post-fs
-    export LD_PRELOAD /vendor/lib/libNimsWrap.so
-
-on boot
     # vibrator intensity
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
 

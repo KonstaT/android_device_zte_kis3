@@ -154,7 +154,6 @@ vendor/lib/libxt_native.so
 
 # Misc
 bin/port-bridge
-vendor/lib/libNimsWrap.so
 vendor/lib/libxml.so
 
 # OMX

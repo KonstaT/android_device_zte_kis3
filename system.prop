@@ -14,9 +14,6 @@ av.offload.enable=false
 av.streaming.offload.enable=false
 tunnel.audio.encode=false
 
-# CNE
-persist.cne.feature=1
-
 # DASH
 persist.dash.max.rep.resolution=1280*720
 persist.dash.max.rep.bandwidth=4000000
