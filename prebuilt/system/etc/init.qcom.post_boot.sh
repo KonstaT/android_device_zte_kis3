@@ -601,4 +601,7 @@ case "$target" in
         echo 5120 > /proc/sys/vm/min_free_kbytes
      ;;
 esac
+
+# ZTE_MODIFY ssr start
 echo related > /sys/bus/msm_subsys/devices/subsys2/restart_level
+# ZTE_MODIFY ssr end

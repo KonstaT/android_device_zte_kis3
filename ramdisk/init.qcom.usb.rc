@@ -244,7 +244,6 @@ on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,adb,serial,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage,adb
@@ -256,7 +255,6 @@ on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,adb,acm,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage
@@ -267,7 +265,6 @@ on property:sys.usb.config=diag,serial_tty,serial_tty,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/f_serial/transports tty,tty
     write /sys/class/android_usb/android0/functions diag,serial,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
-    start port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,acm_tty,acm_tty,rmnet_smd,mass_storage
@@ -300,7 +297,6 @@ on property:sys.usb.config=diag,acm_smd,acm_tty,rmnet_smd,mass_storage,adb
     write /sys/class/android_usb/android0/functions diag,adb,acm,rmnet_smd,mass_storage
     write /sys/class/android_usb/android0/enable 1
     start adbd
-    start port-bridge
     setprop sys.usb.state ${sys.usb.config}
 
 on property:sys.usb.config=diag,serial_smd,serial_tty,rmnet_smd,mass_storage
