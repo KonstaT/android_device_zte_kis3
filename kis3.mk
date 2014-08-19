@@ -28,6 +28,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     lights.MSM8610
 
+# RIL
+PRODUCT_PACKAGES += \
+    rilproxy
+
 # Wifi
 PRODUCT_PACKAGES += wcnss_service
 
