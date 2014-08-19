@@ -3,12 +3,16 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product-if-exists, vendor/zte/kis3/kis3-vendor.mk)
 
+# Device identifier
 PRODUCT_DEVICE := kis3
 PRODUCT_NAME := kis3
 PRODUCT_BRAND := ZTE
 PRODUCT_MODEL := Kis 3
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_RELEASE_NAME := Kis 3
+
+# Localization
+B2G_LANGUAGE_PACK := full
 
 # Audio
 PRODUCT_PACKAGES += \
