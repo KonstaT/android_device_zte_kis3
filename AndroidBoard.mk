@@ -1,27 +1,8 @@
 LOCAL_PATH := $(call my-dir)
 
 #----------------------------------------------------------------------
-# Compile (L)ittle (K)ernel bootloader and the nandwrite utility
-#----------------------------------------------------------------------
-ifneq ($(strip $(TARGET_NO_BOOTLOADER)),true)
-
-# Compile
-include bootable/bootloader/lk/AndroidBoot.mk
-
-$(INSTALLED_BOOTLOADER_MODULE): $(TARGET_EMMC_BOOTLOADER) | $(ACP)
-	$(transform-prebuilt-to-target)
-$(BUILT_TARGET_FILES_PACKAGE): $(INSTALLED_BOOTLOADER_MODULE)
-
-droidcore: $(INSTALLED_BOOTLOADER_MODULE)
-endif
-
-#----------------------------------------------------------------------
 # Compile Linux Kernel
 #----------------------------------------------------------------------
-ifeq ($(KERNEL_DEFCONFIG),)
-    KERNEL_DEFCONFIG := msm8610_defconfig
-endif
-
 include kernel/AndroidKernel.mk
 
 $(INSTALLED_KERNEL_TARGET): $(TARGET_PREBUILT_KERNEL) | $(ACP)
@@ -161,25 +142,8 @@ $(shell mkdir -p $(TARGET_OUT_ETC)/firmware/wlan/prima; \
 endif
 
 #----------------------------------------------------------------------
-# Radio image
-#----------------------------------------------------------------------
-ifeq ($(ADD_RADIO_FILES), true)
-radio_dir := $(LOCAL_PATH)/radio
-RADIO_FILES := $(shell cd $(radio_dir) ; ls)
-$(foreach f, $(RADIO_FILES), \
-    $(call add-radio-file,radio/$(f)))
-endif
-
-#----------------------------------------------------------------------
 # extra images
 #----------------------------------------------------------------------
 ifeq (, $(wildcard vendor/qcom/build/tasks/generate_extra_images.mk))
 include device/qcom/common/generate_extra_images.mk
-endif
-
-#----------------------------------------------------------------------
-# pick up additional files for Tiny Android builds
-#----------------------------------------------------------------------
-ifeq ($(BUILD_TINY_ANDROID), true)
-include device/qcom/common/rootdir/Android.mk
 endif
