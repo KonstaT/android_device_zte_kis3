@@ -20,23 +20,6 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-USE_CAMERA_STUB := true
-
-TARGET_USES_AOSP := false
-# Compile with msm kernel
-TARGET_COMPILE_WITH_MSM_KERNEL := true
-TARGET_HAS_QC_KERNEL_SOURCE := true
-
--include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
-
-TARGET_NO_RPC := true
-
-TARGET_ARCH_LOWMEM := true
-
-TARGET_USERIMAGES_USE_EXT4 := true
-BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
-
 # Audio
 BOARD_USES_ALSA_AUDIO := true
 AUDIO_FEATURE_DISABLED_ANC_HEADSET := true
@@ -45,11 +28,26 @@ AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_DISABLED_SSR := true
 
+# Bionic
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/kis3/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_SMD_TTY := true
+
+# Camera
+USE_CAMERA_STUB := true
+
+# Dalvik
+TARGET_ARCH_LOWMEM := true
+
+# Charger
+BOARD_CHARGER_ENABLE_SUSPEND := true
+
+# GPS
+TARGET_NO_RPC := true
 
 # Graphics
 BOARD_EGL_CFG := device/zte/kis3/egl.cfg
@@ -71,6 +69,9 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 
 TARGET_SPECIFIC_HEADER_PATH += device/zte/kis3/include
 
+# Media
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00A00000
@@ -82,32 +83,23 @@ BOARD_TOMBSTONESIMAGE_PARTITION_SIZE := 73400320
 BOARD_USBIMAGE_PARTITION_SIZE_KB := 1048576
 BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
 
-# Enable suspend during charger mode
-BOARD_CHARGER_ENABLE_SUSPEND := true
+# QCOM
+TARGET_USES_QCOM_BSP := true
 
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-TARGET_USES_INTERACTION_BOOST := false
+# Recovery
+TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
+TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# Added to indicate that protobuf-c is supported in this build
-PROTOBUF_SUPPORTED := true
-
-HAVE_FT_FW_UPGRADE := true
-
-# Resource manager for audio-video usecases
-BOARD_USES_RESOURCE_MANAGER:= true
-
-TARGET_INIT_VENDOR_LIB := libinit_msm
-
-# Board specific SELinux policy variable definitions
+# SELinux
 BOARD_SEPOLICY_DIRS := \
        device/qcom/common/sepolicy
 
 BOARD_SEPOLICY_UNION := \
        netd.te
 
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
-
-PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
+# Vendor init
+TARGET_INIT_VENDOR_LIB := libinit_msm
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
