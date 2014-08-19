@@ -10,17 +10,19 @@ PRODUCT_MODEL := Kis 3
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_RELEASE_NAME := Kis 3
 
-PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
-
 # Audio
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing \
     libqcompostprocbundle
 
-# Bluetooth configuration files
+# Bluetooth
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.MSM8610
 
 # Wifi
 PRODUCT_PACKAGES += wcnss_service
