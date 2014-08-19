@@ -35,8 +35,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
-#fstab.qcom
-PRODUCT_PACKAGES += fstab.qcom
 PRODUCT_COPY_FILES += \
     device/zte/kis3/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     device/zte/kis3/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
