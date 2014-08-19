@@ -6,18 +6,18 @@ ifeq ($(TARGET_USES_QCOM_BSP), true)
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 endif #TARGET_USES_QCOM_BSP
 
-DEVICE_PACKAGE_OVERLAYS := device/qcom/msm8610/overlay
+DEVICE_PACKAGE_OVERLAYS := device/zte/kis3/overlay
 
 #TARGET_DISABLE_DASH := true
 #TARGET_DISABLE_OMX_SECURE_TEST_APP := true
 
 ifeq ($(TARGET_ENABLE_QC_AV_ENHANCEMENTS), true)
 # media_profiles and media_codecs xmls for 8610
-PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_codecs_8610.xml:system/etc/media_codecs.xml
+PRODUCT_COPY_FILES += device/zte/kis3/media/media_codecs_8610.xml:system/etc/media_codecs.xml
 ifeq ($(TARGET_USES_265MB_CONFIG), true)
-PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610_256MB.xml:system/etc/media_profiles.xml
+PRODUCT_COPY_FILES += device/zte/kis3/media/media_profiles_8610_256MB.xml:system/etc/media_profiles.xml
 else
-PRODUCT_COPY_FILES += device/qcom/msm8610/media/media_profiles_8610.xml:system/etc/media_profiles.xml
+PRODUCT_COPY_FILES += device/zte/kis3/media/media_profiles_8610.xml:system/etc/media_profiles.xml
 endif #TARGET_USES_265MB_CONFIG
 endif #TARGET_ENABLE_QC_AV_ENHANCEMENTS
 
@@ -28,16 +28,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
        ro.moz.omx.hw.max_width=1280 \
        ro.moz.omx.hw.max_height=720 \
 
-PRODUCT_NAME := msm8610
-PRODUCT_DEVICE := msm8610
+PRODUCT_DEVICE := kis3
+PRODUCT_NAME := kis3
+PRODUCT_BRAND := ZTE
+PRODUCT_MODEL := Kis 3
+PRODUCT_MANUFACTURER := ZTE
+PRODUCT_RELEASE_NAME := Kis 3
 
 PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 
 # Audio configuration file
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/audio_policy.conf:system/etc/audio_policy.conf \
-    device/qcom/msm8610/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/qcom/msm8610/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/zte/kis3/audio_policy.conf:system/etc/audio_policy.conf \
+    device/zte/kis3/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    device/zte/kis3/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
@@ -51,8 +55,8 @@ PRODUCT_COPY_FILES += \
 #fstab.qcom
 PRODUCT_PACKAGES += fstab.qcom
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/qcom/msm8610/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
+    device/zte/kis3/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/zte/kis3/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
 
 #ANT stack
 PRODUCT_PACKAGES += \
@@ -78,7 +82,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.whitelist=/system/etc/whitelist_appops.xml
 
 PRODUCT_COPY_FILES += \
-    device/qcom/msm8610/whitelist_appops.xml:system/etc/whitelist_appops.xml
+    device/zte/kis3/whitelist_appops.xml:system/etc/whitelist_appops.xml
 
 # NFC packages
 ifeq ($(TARGET_USES_QCA_NFC),true)
