@@ -1,7 +1,4 @@
 
-PRODUCT_COPY_FILES += device/zte/kis3/media/media_codecs_8610.xml:system/etc/media_codecs.xml
-PRODUCT_COPY_FILES += device/zte/kis3/media/media_profiles_8610.xml:system/etc/media_profiles.xml
-
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product-if-exists, vendor/zte/kis3/kis3-vendor.mk)
@@ -19,12 +16,6 @@ PRODUCT_RELEASE_NAME := Kis 3
 
 PRODUCT_BOOT_JARS += qcmediaplayer:oem-services:qcom.fmradio:org.codeaurora.Performance:vcard
 
-# Audio configuration file
-PRODUCT_COPY_FILES += \
-    device/zte/kis3/audio_policy.conf:system/etc/audio_policy.conf \
-    device/zte/kis3/audio_effects.conf:system/vendor/etc/audio_effects.conf \
-    device/zte/kis3/mixer_paths.xml:system/etc/mixer_paths.xml
-
 # Audio
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
@@ -35,14 +26,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
-PRODUCT_COPY_FILES += \
-    device/zte/kis3/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
-    device/zte/kis3/WCNSS_qcom_wlan_nv.bin:persist/WCNSS_qcom_wlan_nv.bin
-
-PRODUCT_PACKAGES += \
-    wpa_supplicant_overlay.conf \
-    p2p_supplicant_overlay.conf
-
+# Wifi
 PRODUCT_PACKAGES += wcnss_service
 
 # Gecko low-memory killer setting overrides
