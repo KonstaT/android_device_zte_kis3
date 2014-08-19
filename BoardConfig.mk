@@ -16,11 +16,6 @@ TARGET_HAS_QC_KERNEL_SOURCE := true
 
 -include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
 
-#TODO: Fix-me: Setting TARGET_HAVE_HDMI_OUT to false
-# to get rid of compilation error.
-TARGET_HAVE_HDMI_OUT := false
-TARGET_USES_OVERLAY := true
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := false
 TARGET_NO_RADIOIMAGE := true
@@ -40,19 +35,6 @@ TARGET_BOARD_PLATFORM := msm8610
 TARGET_BOOTLOADER_BOARD_NAME := MSM8610
 TARGET_ARCH_LOWMEM := true
 
-# Enables Adreno RS driver
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-# Shader cache config options
-# Maximum size of the  GLES Shaders that can be cached for reuse.
-# Increase the size if shaders of size greater than 12KB are used.
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-
-# Maximum GLES shader cache size for each app to store the compiled shader
-# binaries. Decrease the size if RAM or Flash Storage size is a limitation
-# of the device.
-MAX_EGL_CACHE_SIZE := 2048*1024
-
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
@@ -65,6 +47,15 @@ AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_DISABLED_SSR := true
 
+# Graphics
+BOARD_EGL_CFG := device/zte/kis3/egl.cfg
+USE_OPENGL_RENDERER := true
+TARGET_USES_ION := true
+NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+MAX_EGL_CACHE_KEY_SIZE := 12*1024
+MAX_EGL_CACHE_SIZE := 2048*1024
+
 # Kernel
 KERNEL_DEFCONFIG := msm8610-zte_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 androidboot.selinux=permissive
@@ -75,8 +66,6 @@ BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 
 TARGET_SPECIFIC_HEADER_PATH += device/zte/kis3/include
-
-BOARD_EGL_CFG := device/zte/kis3/egl.cfg
 
 # Partition sizes
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
