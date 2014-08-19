@@ -3,9 +3,22 @@
 # Product-specific compile-time definitions.
 #
 
-ifeq ($(TARGET_ARCH),)
+# Platform
+TARGET_NO_BOOTLOADER := true
+
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno302
+TARGET_BOARD_PLATFORM := msm8610
+TARGET_BOOTLOADER_BOARD_NAME := MSM8610
+
 TARGET_ARCH := arm
-endif
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_CPU_SMP := true
+TARGET_CPU_VARIANT := krait
+TARGET_ARCH_VARIANT := armv7-a-neon
+
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
 USE_CAMERA_STUB := true
 
@@ -16,23 +29,8 @@ TARGET_HAS_QC_KERNEL_SOURCE := true
 
 -include $(QCPATH)/common/msm8610/BoardConfigVendor.mk
 
-TARGET_NO_BOOTLOADER := true
-TARGET_NO_KERNEL := false
-TARGET_NO_RADIOIMAGE := true
 TARGET_NO_RPC := true
 
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_CPU_ABI  := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_CPU_VARIANT := krait
-TARGET_CPU_SMP := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
-
-TARGET_HARDWARE_3D := false
-TARGET_BOARD_PLATFORM := msm8610
-TARGET_BOOTLOADER_BOARD_NAME := MSM8610
 TARGET_ARCH_LOWMEM := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
