@@ -20,6 +20,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8610
+
 # Lights
 PRODUCT_PACKAGES += \
     lights.MSM8610
