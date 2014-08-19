@@ -73,7 +73,8 @@ ro.opengles.version=196608
 #
 # System props for telephony
 # System prop to turn on CdmaLTEPhone always
-telephony.lteOnCdmaDevice=1
+#ZTE_MODIFY
+telephony.lteOnCdmaDevice=0
 
 #
 #snapdragon value add features
@@ -89,7 +90,8 @@ persist.audio.fluence.speaker=true
 ro.sys.fw.bg_apps_limit=20
 
 # System property for cabl
-ro.qualcomm.cabl=1
+#ZTE_MODIFY
+ro.qualcomm.cabl=0
 
 
 # system prop for NFC DT
@@ -127,3 +129,15 @@ ro.fm.transmitter=false
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
 
+# Gecko
+ro.moz.omx.hw.max_width=1280
+ro.moz.omx.hw.max_height=720
+ro.moz.cam.0.sensor_offset=0
+ro.ril.data_auto_attach=true
+
+# GPS
+ro.qc.sdk.izat.service_mask=0x9
+ro.assisted_gps_enabled=0
+ro.qc.sdk.izat.premium_enabled=1
+persist.gps.qc_nlp_in_use=0
+ro.gps.agps_provider=1

@@ -3,10 +3,6 @@ $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 $(call inherit-product, device/qcom/common/common.mk)
 $(call inherit-product-if-exists, vendor/zte/kis3/kis3-vendor.mk)
 
-PRODUCT_PROPERTY_OVERRIDES += \
-       ro.moz.omx.hw.max_width=1280 \
-       ro.moz.omx.hw.max_height=720 \
-
 PRODUCT_DEVICE := kis3
 PRODUCT_NAME := kis3
 PRODUCT_BRAND := ZTE
