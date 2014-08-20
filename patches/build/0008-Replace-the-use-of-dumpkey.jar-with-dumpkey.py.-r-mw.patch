@@ -1,0 +1,133 @@
+From e911edaa980218c9605f16194ce1e3e292a6227d Mon Sep 17 00:00:00 2001
+From: Kaizhen <kli@mozilla.com>
+Date: Tue, 27 Aug 2013 12:14:14 +0800
+Subject: [PATCH 8/9] Replace the use of dumpkey.jar with dumpkey.py. r=mwu
+
+Change-Id: I368f7678e0e7591b6c368353792a14be153e228c
+---
+ core/Makefile    |    4 +--
+ tools/dumpkey.py |   84 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 85 insertions(+), 3 deletions(-)
+ create mode 100755 tools/dumpkey.py
+
+diff --git a/core/Makefile b/core/Makefile
+index 32beaea..dcffdf2 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -702,14 +702,13 @@ OTA_PUBLIC_KEYS := $(DEFAULT_SYSTEM_DEV_CERTIFICATE).x509.pem
+ # recovery binary.
+ RECOVERY_INSTALL_OTA_KEYS := \
+ 	$(call intermediates-dir-for,PACKAGING,ota_keys)/keys
+-#DUMPKEY_JAR := $(HOST_OUT_JAVA_LIBRARIES)/dumpkey.jar
+ $(RECOVERY_INSTALL_OTA_KEYS): PRIVATE_OTA_PUBLIC_KEYS := $(OTA_PUBLIC_KEYS)
+ $(RECOVERY_INSTALL_OTA_KEYS): extra_keys := $(patsubst %,%.x509.pem,$(PRODUCT_EXTRA_RECOVERY_KEYS))
+ $(RECOVERY_INSTALL_OTA_KEYS): $(OTA_PUBLIC_KEYS) $(DUMPKEY_JAR) $(extra_keys)
+ 	@echo "DumpPublicKey: $@ <= $(PRIVATE_OTA_PUBLIC_KEYS) $(extra_keys)"
+ 	@rm -rf $@
+ 	@mkdir -p $(dir $@)
+-	touch $@
++	@./build/tools/dumpkey.py $(PRIVATE_OTA_PUBLIC_KEYS) $(extra_keys) > $@
+ 
+ $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTFS) $(MKBOOTIMG) $(MINIGZIP) $(RECOVERYIMAGE_EXTRA_DEPS) \
+ 		$(INSTALLED_RAMDISK_TARGET) \
+@@ -1116,7 +1115,6 @@ DISTTOOLS :=  $(HOST_OUT_EXECUTABLES)/minigzip \
+ 	  $(HOST_OUT_EXECUTABLES)/zipalign \
+ 	  $(HOST_OUT_EXECUTABLES)/bsdiff \
+ 	  $(HOST_OUT_EXECUTABLES)/imgdiff \
+-	  $(HOST_OUT_JAVA_LIBRARIES)/dumpkey.jar \
+ 	  $(HOST_OUT_JAVA_LIBRARIES)/signapk.jar \
+ 	  $(HOST_OUT_EXECUTABLES)/mkuserimg.sh \
+ 	  $(HOST_OUT_EXECUTABLES)/make_ext4fs \
+diff --git a/tools/dumpkey.py b/tools/dumpkey.py
+new file mode 100755
+index 0000000..5906cff
+--- /dev/null
++++ b/tools/dumpkey.py
+@@ -0,0 +1,84 @@
++#!/usr/bin/env python
++#
++# Copyright (C) 2012 Mozilla Foundation
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#      http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++#
++# A python port of system/core/libmincrypt/tools/DumpPublicKey.java
++# Dumps a C initializer for a given public key. Depends on openssl
++
++from StringIO import StringIO
++import subprocess
++import sys
++
++# http://www.algorithmist.com/index.php/Modular_inverse
++def recursive_egcd(a, b):
++    """Returns a triple (g, x, y), such that ax + by = g = gcd(a,b).
++       Assumes a, b >= 0, and that at least one of them is > 0.
++       Bounds on output values: |x|, |y| <= max(a, b)."""
++    if a == 0:
++        return (b, 0, 1)
++    else:
++        g, y, x = recursive_egcd(b % a, a)
++        return (g, x - (b // a) * y, y)
++
++def modinv(a, m):
++    g, x, y = recursive_egcd(a, m)
++    if g != 1:
++        return None
++    else:
++        return x % m
++
++def write_key(key_path, out):
++    modulus = subprocess.check_output(["openssl", "x509", "-in", key_path, "-modulus", "-noout"])
++    N = long(modulus.replace("Modulus=", ""), 16)
++
++    nwords = N.bit_length() / 32
++    out.write("{%d" % nwords)
++
++    B = 0x100000000L
++    N0inv = B - modinv(N, B)
++    out.write(",")
++    out.write(hex(N0inv)[:-1])
++
++    R = pow(2, N.bit_length())
++    RR = pow(R, 2, N)
++    out.write(",{")
++
++    for i in range(0, nwords):
++        n = N % B
++        out.write(str(n))
++        if i != nwords - 1:
++            out.write(",")
++
++        N = N / B
++
++    out.write("},{")
++    for i in range(0, nwords):
++        rr = RR % B
++        out.write(str(rr))
++        if i != nwords - 1:
++            out.write(",")
++
++        RR = RR / B
++
++    out.write("}}")
++
++if __name__ == "__main__":
++    result = StringIO()
++    for i in range(1, len(sys.argv)):
++        write_key(sys.argv[i], result)
++        if i < len(sys.argv) - 1:
++            result.write(",")
++
++    print result.getvalue()
+-- 
+1.7.9.5
+

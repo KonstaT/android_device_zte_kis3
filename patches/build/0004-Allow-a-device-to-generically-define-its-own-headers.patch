@@ -1,0 +1,45 @@
+From 22271ce1b90679262a3bf9fa86129ed37b152e48 Mon Sep 17 00:00:00 2001
+From: Ricardo Cerqueira <cyanogenmod@cerqueira.org>
+Date: Tue, 12 Apr 2011 10:57:22 +0100
+Subject: [PATCH 4/9] Allow a device to generically define its own headers
+
+We have a few cases of devices including specific versions of projects
+just because of modified headers (msm_mdp.h comes to mind), and I just
+had enough of ifdeffing header files for specific cases (the P990 needs
+a lot of these).
+Now... if a target defines a TARGET_SPECIFIC_HEADER_PATH, any headers in
+there will take precedence over the standard ones; for example, on the
+p990, I have
+
+TARGET_SPECIFIC_HEADER_PATH := device/lge/p990/include
+
+which makes, for example, the
+device/lge/p990/include/hardware_legacy/AudioHardwareInterface.h be
+used instead of
+hardware/libhardware_legacy/include/hardware_legacy/AudioHardwareInterface.h
+whenever a source file uses <hardware_legacy/AudioHardwareInterface.h>
+
+Change-Id: I41b62668b60e3f62a6ebd3738d8d2675103a81e6a
+---
+ core/binary.mk |    5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/core/binary.mk b/core/binary.mk
+index 554b8c7..e488e65 100644
+--- a/core/binary.mk
++++ b/core/binary.mk
+@@ -617,6 +617,11 @@ normal_objects := \
+ 
+ all_objects := $(normal_objects) $(gen_o_objects)
+ 
++## Allow a device's own headers to take precedence over global ones
++ifneq ($(TARGET_SPECIFIC_HEADER_PATH),)
++LOCAL_C_INCLUDES += $(TOPDIR)$(TARGET_SPECIFIC_HEADER_PATH)
++endif
++
+ LOCAL_C_INCLUDES += $(TOPDIR)$(LOCAL_PATH) $(intermediates)
+ 
+ ifndef LOCAL_SDK_VERSION
+-- 
+1.7.9.5
+

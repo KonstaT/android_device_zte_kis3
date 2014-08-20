@@ -1,0 +1,119 @@
+From 796b4329785e70aa3ebeb7f6e2ddb2df197ee7d4 Mon Sep 17 00:00:00 2001
+From: Steve Kondik <shade@chemlab.org>
+Date: Wed, 21 Apr 2010 11:39:48 -0400
+Subject: [PATCH 3/9] Allow override of device asserts, including multi-device
+ support.
+
+Set in board file with TARGET_OTA_ASSERT_DEVICE.
+(cherry-picked from commit 0f452f21fc9323b9d1fe746161761cf40aaa5030)
+
+Change-Id: I3d06bdc0e3e26bde0c0e646accd050364f9713b9
+---
+ core/Makefile                            |    7 +++++++
+ tools/releasetools/edify_generator.py    |   10 ++++++----
+ tools/releasetools/ota_from_target_files |   14 ++++++++++++--
+ 3 files changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/core/Makefile b/core/Makefile
+index 70589b1..0f75ba2 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -1342,6 +1342,12 @@ INTERNAL_OTA_PACKAGE_TARGET := $(PRODUCT_OUT)/$(name).zip
+ 
+ $(INTERNAL_OTA_PACKAGE_TARGET): KEY_CERT_PAIR := $(DEFAULT_KEY_CERT_PAIR)
+ 
++ifeq ($(TARGET_OTA_ASSERT_DEVICE),)
++    $(INTERNAL_OTA_PACKAGE_TARGET): override_device := auto
++else
++    $(INTERNAL_OTA_PACKAGE_TARGET): override_device := $(TARGET_OTA_ASSERT_DEVICE)
++endif
++
+ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
+ 	@echo "Package OTA: $@"
+ 	$(hide) ./build/tools/releasetools/ota_from_target_files -v \
+@@ -1349,6 +1355,7 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(BUILT_TARGET_FILES_PACKAGE) $(DISTTOOLS)
+            -d $(device_type) \
+            -k $(KEY_CERT_PAIR) \
+            -f $(fota) \
++	   --override_device=$(override_device) \
+            $(BUILT_TARGET_FILES_PACKAGE) $@
+ .PHONY: otapackage
+ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
+diff --git a/tools/releasetools/edify_generator.py b/tools/releasetools/edify_generator.py
+index a1d6be4..f8cc371 100755
+--- a/tools/releasetools/edify_generator.py
++++ b/tools/releasetools/edify_generator.py
+@@ -92,11 +92,13 @@ class EdifyGenerator(object):
+ 
+   def AssertDevice(self, device):
+     """Assert that the device identifier is the given string."""
+-    cmd = ('getprop("ro.product.device") == "%s" || '
+-           'abort("This package is for \\"%s\\" devices; '
++    cmd = ('assert(' +
++           ' || \0'.join(['getprop("ro.product.device") == "%s" || getprop("ro.build.product") == "%s"'
++                         % (i, i) for i in device.split(",")]) +
++           ' || abort("This package is for \\"%s\\" devices; '
+            'this is a \\"" + getprop("ro.product.device") + "\\".");'
+-           ) % (device, device)
+-    self.script.append(cmd)
++           ');') % device
++    self.script.append(self._WordWrap(cmd))
+ 
+   def AssertSomeBootloader(self, *bootloaders):
+     """Asert that the bootloader version is one of *bootloaders."""
+diff --git a/tools/releasetools/ota_from_target_files b/tools/releasetools/ota_from_target_files
+index 80d1f3f..dc721da 100755
+--- a/tools/releasetools/ota_from_target_files
++++ b/tools/releasetools/ota_from_target_files
+@@ -58,6 +58,9 @@ Usage:  ota_from_target_files [flags] input_target_files output_ota_package
+   -f  (--fota) <fota>
+       Specify if fota upgrade is used or not. not used by default
+ 
++  --override_device <device>
++      Override device-specific asserts. Can be a comma-separated list.
++
+ """
+ 
+ import sys
+@@ -96,6 +99,7 @@ OPTIONS.aslr_mode = True
+ OPTIONS.worker_threads = 3
+ OPTIONS.device_type = 'MTD'
+ OPTIONS.fota = 0
++OPTIONS.override_device = 'auto'
+ 
+ def MostPopularKey(d, default):
+   """Given a dict, return the key corresponding to the largest
+@@ -349,7 +353,10 @@ def SignOutput(temp_zip_name, output_zip_name):
+ 
+ 
+ def AppendAssertions(script, info_dict):
+-  device = GetBuildProp("ro.product.device", info_dict)
++  if OPTIONS.override_device == "auto":
++    device = GetBuildProp("ro.product.device", info_dict)
++  else:
++    device = OPTIONS.override_device
+   script.AssertDevice(device)
+ 
+ 
+@@ -837,6 +844,8 @@ def main(argv):
+       OPTIONS.device_type = a
+     elif o in ("-f", "--fota"):
+       OPTIONS.fota = a
++    elif o in ("--override_device"):
++      OPTIONS.override_device = a
+     else:
+       return False
+     return True
+@@ -852,7 +861,8 @@ def main(argv):
+                                               "worker_threads=",
+                                               "aslr_mode=",
+                                               "device_type=",
+-                                              "fota="],
++                                              "fota=",
++                                              "override_device="],
+                              extra_option_handler=option_handler)
+ 
+   if len(args) != 2:
+-- 
+1.7.9.5
+

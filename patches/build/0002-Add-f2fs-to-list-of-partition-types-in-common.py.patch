@@ -1,0 +1,26 @@
+From 96c92552356b372343db7a693859de4a20a9a8e3 Mon Sep 17 00:00:00 2001
+From: dhacker29 <davidhackerdvm@gmail.com>
+Date: Tue, 1 Oct 2013 23:05:13 -0500
+Subject: [PATCH 2/9] Add f2fs to list of partition types in common.py
+
+Change-Id: I9a54489c38009ca2970132b530164663b15c1337
+---
+ tools/releasetools/common.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tools/releasetools/common.py b/tools/releasetools/common.py
+index 82f4c42..145d868 100755
+--- a/tools/releasetools/common.py
++++ b/tools/releasetools/common.py
+@@ -976,7 +976,7 @@ def ComputeDifferences(diffs):
+ 
+ # map recovery.fstab's fs_types to mount/format "partition types"
+ PARTITION_TYPES = { "yaffs2": "MTD", "mtd": "MTD",
+-                    "ext4": "EMMC", "emmc": "EMMC" }
++                    "ext4": "EMMC", "emmc": "EMMC", "f2fs": "EMMC" }
+ 
+ def GetTypeAndDevice(mount_point, info):
+   fstab = info["fstab"]
+-- 
+1.7.9.5
+

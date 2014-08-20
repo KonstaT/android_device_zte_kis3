@@ -1,0 +1,26 @@
+From 41707c8d4adaf1d22b1614bdee1e21e19c9f87d9 Mon Sep 17 00:00:00 2001
+From: Gabriele Svelto <gabriele.svelto@gmail.com>
+Date: Wed, 23 Jan 2013 18:48:56 +0100
+Subject: [PATCH 7/9] Bug 825142 - Do not store the Android ringtones in the
+ system image
+
+---
+ target/product/full_base.mk |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/target/product/full_base.mk b/target/product/full_base.mk
+index 059697e..f540060 100644
+--- a/target/product/full_base.mk
++++ b/target/product/full_base.mk
+@@ -53,7 +53,7 @@ PRODUCT_LOCALES := en_US
+ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi
+ 
+ # Get some sounds
+-$(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
++# $(call inherit-product-if-exists, frameworks/base/data/sounds/AllAudio.mk)
+ 
+ # Get the TTS language packs
+ $(call inherit-product-if-exists, external/svox/pico/lang/all_pico_languages.mk)
+-- 
+1.7.9.5
+

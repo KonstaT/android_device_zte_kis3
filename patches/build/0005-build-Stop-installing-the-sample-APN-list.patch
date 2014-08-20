@@ -1,0 +1,28 @@
+From 97c49e45c2957123c0c19740ee48db286c8cc8cd Mon Sep 17 00:00:00 2001
+From: Steve Kondik <shade@chemlab.org>
+Date: Sun, 20 May 2012 22:10:30 -0700
+Subject: [PATCH 5/9] build: Stop installing the sample APN list
+
+ * Sample APN list is always being installed, we don't want this in CM.
+
+Change-Id: I74b97f3af545c4a7568d3001e1435c63cfbc7de8
+---
+ target/product/full_base_telephony.mk |    3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
+index f98e9a2..f00f93d 100644
+--- a/target/product/full_base_telephony.mk
++++ b/target/product/full_base_telephony.mk
+@@ -26,8 +26,5 @@ PRODUCT_PROPERTY_OVERRIDES := \
+     keyguard.no_require_sim=true \
+     ro.com.android.dataroaming=true
+ 
+-PRODUCT_COPY_FILES := \
+-    device/generic/goldfish/data/etc/apns-conf.xml:system/etc/apns-conf.xml
+-
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+-- 
+1.7.9.5
+

@@ -1,0 +1,153 @@
+From 42928940b816921fab364c6f258cdea2c5297ed3 Mon Sep 17 00:00:00 2001
+From: Emerson Pinter <dev@pinter.com.br>
+Date: Mon, 26 Nov 2012 21:48:12 -0200
+Subject: [PATCH 3/6] liblog: add required function
+
+Some Motorola proprietaries require a function named __android_log_loggable. This
+change adds the function and solves problems with radio and other
+binaries on qualcomm based Motorola phones. This code is activated with
+TARGET_USES_MOTOROLA_LOG:=true
+
+Change-Id: I722b42d34198c027f265c3cf9f220d9798814915
+---
+ liblog/Android.mk   |    5 +++
+ liblog/logd_write.c |   91 +++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 96 insertions(+)
+
+diff --git a/liblog/Android.mk b/liblog/Android.mk
+index 6bfb119..19f880b 100644
+--- a/liblog/Android.mk
++++ b/liblog/Android.mk
+@@ -67,15 +67,20 @@ LOCAL_LDLIBS := -lpthread
+ LOCAL_CFLAGS := -DFAKE_LOG_DEVICE=1 -m64
+ include $(BUILD_HOST_STATIC_LIBRARY)
+ 
++ifeq ($(TARGET_USES_MOTOROLA_LOG),true)
++LIBLOG_CFLAGS := -DMOTOROLA_LOG
++endif
+ 
+ # Shared and static library for target
+ # ========================================================
+ include $(CLEAR_VARS)
++LOCAL_CFLAGS += $(LIBLOG_CFLAGS)
+ LOCAL_MODULE := liblog
+ LOCAL_SRC_FILES := $(liblog_sources)
+ include $(BUILD_STATIC_LIBRARY)
+ 
+ include $(CLEAR_VARS)
++LOCAL_CFLAGS += $(LIBLOG_CFLAGS)
+ LOCAL_MODULE := liblog
+ LOCAL_WHOLE_STATIC_LIBRARIES := liblog
+ include $(BUILD_SHARED_LIBRARY)
+diff --git a/liblog/logd_write.c b/liblog/logd_write.c
+index b47a8f8..30a0906 100644
+--- a/liblog/logd_write.c
++++ b/liblog/logd_write.c
+@@ -27,6 +27,12 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
++#ifdef MOTOROLA_LOG
++#if HAVE_LIBC_SYSTEM_PROPERTIES
++#include <sys/system_properties.h>
++#endif
++#endif
++
+ #include <log/logger.h>
+ #include <log/logd.h>
+ #include <log/log.h>
+@@ -72,6 +78,91 @@ int __android_log_dev_available(void)
+     return (g_log_status == kLogAvailable);
+ }
+ 
++#ifdef MOTOROLA_LOG
++/* Fallback when there is neither log.tag.<tag> nor log.tag.DEFAULT.
++ * this is compile-time defaulted to "info". The log startup code
++ * looks at the build tags to see about whether it should be DEBUG...
++ * -- just as is done in frameworks/base/core/jni/android_util_Log.cpp
++ */
++static int prio_fallback = ANDROID_LOG_INFO;
++
++/*
++ * public interface so native code can see "should i log this"
++ * and behave similar to java Log.isLoggable() calls.
++ *
++ * NB: we have (level,tag) here to match the other __android_log entries.
++ * The Java side uses (tag,level) for its ordering.
++ * since the args are (int,char*) vs (char*,char*) we won't get strange
++ * swapped-the-strings errors.
++ */
++
++#define	LOGGING_PREFIX	"log.tag."
++#define	LOGGING_DEFAULT	"log.tag.DEFAULT"
++
++int __android_log_loggable(int prio, const char *tag)
++{
++    int nprio;
++
++#if	HAVE_LIBC_SYSTEM_PROPERTIES
++    char keybuf[PROP_NAME_MAX];
++    char results[PROP_VALUE_MAX];
++    int n;
++
++    /* we can NOT cache the log.tag.<tag> and log.tag.DEFAULT
++     * values because either one can be changed dynamically.
++     *
++     * damn, says the performance compulsive.
++     */
++
++    n = 0;
++    results[0] = '\0';
++    if (tag) {
++	memcpy (keybuf, LOGGING_PREFIX, strlen (LOGGING_PREFIX) + 1);
++	/* watch out for buffer overflow */
++	strncpy (keybuf + strlen (LOGGING_PREFIX), tag,
++		 sizeof (keybuf) - strlen (LOGGING_PREFIX));
++	keybuf[sizeof (keybuf) - 1] = '\0';
++	n = __system_property_get (keybuf, results);
++    }
++
++    if (n == 0) {
++	nprio = prio_fallback;
++    } else {
++	switch (results[0])
++	{
++	case 'E':
++	    nprio = ANDROID_LOG_ERROR;
++	    break;
++	case 'W':
++	    nprio = ANDROID_LOG_WARN;
++	    break;
++	case 'I':
++	    nprio = ANDROID_LOG_INFO;
++	    break;
++	case 'D':
++	    nprio = ANDROID_LOG_DEBUG;
++	    break;
++	case 'V':
++	    nprio = ANDROID_LOG_VERBOSE;
++	    break;
++	case 'S':
++	    nprio = ANDROID_LOG_SILENT;
++	    break;
++	default:
++	    /* unspecified or invalid */
++	    nprio = prio_fallback;
++	    break;
++	}
++    }
++#else
++    /* no system property routines, fallback to a default */
++    nprio = prio_fallback;
++#endif
++
++    return ((prio >= nprio) ? 1 : 0);
++}
++#endif
++
+ static int __write_to_log_null(log_id_t log_fd, struct iovec *vec, size_t nr)
+ {
+     return -1;
+-- 
+1.7.9.5
+

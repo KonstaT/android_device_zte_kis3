@@ -1,0 +1,28 @@
+From d5baa2574156ab5fe035b0bcc3dde7b4dfb29c4b Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Fri, 23 May 2014 18:56:30 +0300
+Subject: [PATCH 5/6] dsds: add second rilproxy service
+
+Change-Id: Idbc27b3a4fb44898f48e34d1be33923698a6dd62
+---
+ rootdir/init.rc |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/rootdir/init.rc b/rootdir/init.rc
+index 0205033..37d35d2 100644
+--- a/rootdir/init.rc
++++ b/rootdir/init.rc
+@@ -576,3 +576,10 @@ service rilproxy /system/bin/rilproxy
+     socket rilproxy stream 660 root system
+     user root
+     group radio
++
++service rilproxy1 /system/bin/rilproxy -c 1
++    class main
++    socket rilproxy1 stream 660 root system
++    user root
++    disabled
++    group radio
+-- 
+1.7.9.5
+

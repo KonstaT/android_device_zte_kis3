@@ -1,0 +1,32 @@
+From bfabe11336b3f26c3d7f4a8839b3bb6e5ecc846e Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Tue, 20 May 2014 16:59:01 +0300
+Subject: [PATCH 2/2] add full language pack
+
+Change-Id: Id0549e9f390820a8f88298e794b15a85b68025f9
+---
+ b2g_product.mk |    8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/b2g_product.mk b/b2g_product.mk
+index b7602a0..9da0483 100644
+--- a/b2g_product.mk
++++ b/b2g_product.mk
+@@ -103,6 +103,14 @@ GAIA_DEFAULT_LOCALE=en-US
+ MOZ_CHROME_MULTILOCALE=cs de hr hu pl sr ro
+ endif
+ 
++ifeq ($(strip $(B2G_LANGUAGE_PACK)),full)
++# Locales to enable for Gaia
++LOCALES_FILE=locales/languages_full.json
++# Default Gaia locale
++GAIA_DEFAULT_LOCALE=en-US
++# Locales to enable for Gecko
++MOZ_CHROME_MULTILOCALE=ar cs de el en-US es-ES fr hr hu pl pt-BR ro sk sr zh-TW
++endif
+ 
+ # Env variables used for Gaia multilocale support
+ LOCALE_BASEDIR=$(abspath gaia-l10n)
+-- 
+1.7.9.5
+

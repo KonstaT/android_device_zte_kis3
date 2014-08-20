@@ -1,0 +1,58 @@
+From 4084600684a6381aec5d6bc9d05a0e408b495d71 Mon Sep 17 00:00:00 2001
+From: Steve Kondik <shade@chemlab.org>
+Date: Sun, 4 May 2014 00:39:25 -0700
+Subject: [PATCH] libbt-qcom: Allow building without proprietary bits
+
+Change-Id: I1a123e84064e441e7b4d3bf3437fa655f38f38c2
+---
+ libbt-vendor/Android.mk           |    6 ++++--
+ libbt-vendor/src/bt_vendor_qcom.c |    2 ++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/libbt-vendor/Android.mk b/libbt-vendor/Android.mk
+index d57ae57..2bae569 100644
+--- a/libbt-vendor/Android.mk
++++ b/libbt-vendor/Android.mk
+@@ -51,8 +51,7 @@ endif #WIFI_BT_STATUS_SYNC
+ 
+ LOCAL_SHARED_LIBRARIES := \
+         libcutils \
+-        liblog \
+-        libbtnv
++        liblog
+ 
+ LOCAL_MODULE := libbt-vendor
+ LOCAL_MODULE_TAGS := optional
+@@ -60,7 +59,10 @@ LOCAL_MODULE_CLASS := SHARED_LIBRARIES
+ LOCAL_MODULE_OWNER := qcom
+ LOCAL_MODULE_PATH := $(TARGET_OUT_VENDOR_SHARED_LIBRARIES)
+ 
++ifneq ($(QCPATH),)
+ LOCAL_CFLAGS += -DBT_NV_SUPPORT
++LOCAL_SHARED_LIBRARIES += libbtnv
++endif
+ 
+ include $(LOCAL_PATH)/vnd_buildcfg.mk
+ 
+diff --git a/libbt-vendor/src/bt_vendor_qcom.c b/libbt-vendor/src/bt_vendor_qcom.c
+index 2f996ee..d5df692 100644
+--- a/libbt-vendor/src/bt_vendor_qcom.c
++++ b/libbt-vendor/src/bt_vendor_qcom.c
+@@ -655,12 +655,14 @@ static int op(bt_vendor_opcode_t opcode, void *param)
+                                 } else {
+                                     ALOGV("rome_soc_init is started");
+                                     property_set("wc_transport.soc_initialized", "0");
++#ifdef BT_NV_SUPPORT
+                                     /* Always read BD address from NV file */
+                                     if(!bt_vendor_nv_read(1, vnd_local_bd_addr))
+                                     {
+                                        /* Since the BD address is configured in boot time We should not be here */
+                                        ALOGI("Failed to read BD address. Use the one from bluedroid stack/ftm");
+                                     }
++#endif
+                                     if(rome_soc_init(fd,vnd_local_bd_addr)<0) {
+                                         retval = -1;
+                                     } else {
+-- 
+1.7.9.5
+
