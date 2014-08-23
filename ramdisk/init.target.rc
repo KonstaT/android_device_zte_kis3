@@ -62,6 +62,54 @@ on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
 
+#[ECID:000000] ZTEBSP wanghaifei 20130905 start, for sensor init
+    chmod 664 /dev/light_sensor
+    chown system root /dev/light_sensor
+
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0019/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0019/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/pollrate_ms
+
+    chmod 664 /dev/akm8963_dev
+    chmod 664 /dev/akm8963
+    chown system root /dev/akm8963_dev
+    chown system root /dev/akm8963
+    chown system root /sys/class/compass/akm8963/enable_acc
+    chown system root /sys/class/compass/akm8963/enable_mag
+    chown system root /sys/class/compass/akm8963/enable_ori
+    chown system root /sys/class/compass/akm863/delay_acc
+    chown system root /sys/class/compass/akm8963/delay_mag
+    chown system root /sys/class/compass/akm8963/delay_ori
+    chown system root /sys/class/compass/akm8963/accel
+
+    chmod 664 /dev/akm09911_dev
+    chmod 664 /dev/akm09911
+    chown system root /dev/akm09911_dev
+    chown system root /dev/akm09911
+    chown system root /sys/class/compass/akm09911/enable_acc
+    chown system root /sys/class/compass/akm09911/enable_mag
+    chown system root /sys/class/compass/akm09911/enable_fusion
+    chown system root /sys/class/compass/akm09911/delay_acc
+    chown system root /sys/class/compass/akm09911/delay_mag
+    chown system root /sys/class/compass/akm09911/delay_fusion
+    chown system root /sys/class/compass/akm09911/accel
+#[ECID:000000] ZTEBSP wanghaifei 20130905 end, for sensor init
+
+#//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,start.
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/timed_output/vibrator/enable
+#//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,end.
+
 # Allow usb charging to be disabled persistently
 on property:persist.usb.chgdisabled=1
     write /sys/class/power_supply/battery/charging_enabled 0
