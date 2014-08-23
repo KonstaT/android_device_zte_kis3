@@ -11,4 +11,4 @@
 /dev/block/platform/msm_sdcc.1/by-name/cache          /cache       ext4    nosuid,nodev,barrier=1,noauto_da_alloc      wait,check
 /dev/block/platform/msm_sdcc.1/by-name/boot           /boot        emmc    defaults                                    recoveryonly
 /dev/block/platform/msm_sdcc.1/by-name/recovery       /recovery    emmc    defaults                                    recoveryonly
-/devices/msm_sdcc.2/mmc_host                     /storage/sdcard0  vfat    nosuid,nodev                                wait,voldmanaged=sdcard0:auto
+/devices/msm_sdcc.2/mmc_host                          auto         vfat    defaults                                    voldmanaged=sdcard0:auto

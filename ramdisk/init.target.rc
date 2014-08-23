@@ -35,6 +35,16 @@ on early-init
     write /sys/kernel/mm/ksm/run 1
     write /sys/block/zram0/disksize 192M
 
+on init
+    # See storage config details at http://source.android.com/tech/storage/
+    mkdir /storage 0050 system sdcard_r
+    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
+    mkdir /storage/sdcard0 0700 root root
+    export EXTERNAL_STORAGE /storage/sdcard0
+    # Support legacy paths
+    symlink /storage/sdcard0 /mnt/sdcard
+    symlink /storage/sdcard0 /sdcard
+
 on fs
     mount_all fstab.qcom
 
@@ -194,3 +204,7 @@ service ppd /system/bin/mm-pp-daemon
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
+
+service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+    class late_start
+    disabled
