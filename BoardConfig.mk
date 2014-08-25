@@ -131,6 +131,13 @@ BOARD_SEPOLICY_UNION += \
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+# TWRP
+DEVICE_RESOLUTION := 480x800
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+HAVE_SELINUX := true
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+
 # Vold
 TARGET_HW_DISK_ENCRYPTION := true
 
