@@ -11,9 +11,6 @@ PRODUCT_MODEL := Kis 3
 PRODUCT_MANUFACTURER := ZTE
 PRODUCT_RELEASE_NAME := Kis 3
 
-# Localization
-B2G_LANGUAGE_PACK := full
-
 # Audio
 PRODUCT_PACKAGES += \
     libqcomvisualizer \
