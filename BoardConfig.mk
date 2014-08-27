@@ -85,7 +85,6 @@ TARGET_USES_QCOM_BSP := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := device/zte/kis3/ramdisk/fstab.qcom
-TARGET_RECOVERY_UPDATER_LIBS := librecovery_updater_msm
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
