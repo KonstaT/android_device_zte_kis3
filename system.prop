@@ -14,6 +14,9 @@ av.offload.enable=false
 av.streaming.offload.enable=false
 tunnel.audio.encode=false
 
+# Camera
+camera2.portability.force_api=1
+
 # Display
 ro.sf.lcd_density=240
 ro.opengles.version=196608
