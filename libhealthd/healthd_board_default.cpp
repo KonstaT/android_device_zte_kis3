@@ -16,6 +16,7 @@
 
 #include <healthd.h>
 #include "minui/minui.h"
+#include <fcntl.h>
 
 void healthd_board_init(struct healthd_config*)
 {
@@ -51,9 +52,25 @@ void healthd_board_mode_charger_battery_update(struct android::BatteryProperties
 
 }
 
-void healthd_board_mode_charger_set_backlight(bool)
+#define BACKLIGHT_PATH "/sys/class/leds/lcd-backlight/brightness"
+#define BACKLIGHT_ON_LEVEL 100
+void healthd_board_mode_charger_set_backlight(bool on)
 {
+    int fd;
+    char buffer[10];
 
+    memset(buffer, '\0', sizeof(buffer));
+    fd = open(BACKLIGHT_PATH, O_RDWR);
+    if (fd < 0) {
+        goto cleanup;
+    }
+    snprintf(buffer, sizeof(buffer), "%d\n", on ? BACKLIGHT_ON_LEVEL : 0);
+    if (write(fd, buffer,strlen(buffer)) < 0) {
+        goto cleanup;
+    }
+cleanup:
+    if (fd >= 0)
+        close(fd);
 }
 
 void healthd_board_mode_charger_init()
