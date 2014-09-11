@@ -28,9 +28,6 @@ AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 AUDIO_FEATURE_DISABLED_MULTI_VOICE_SESSIONS := true
 AUDIO_FEATURE_DISABLED_SSR := true
 
-# Bionic
-TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/zte/kis3/bluetooth
 BOARD_HAVE_BLUETOOTH := true
@@ -39,9 +36,6 @@ QCOM_BT_USE_SMD_TTY := true
 
 # Camera
 USE_CAMERA_STUB := true
-
-# Dalvik
-TARGET_ARCH_LOWMEM := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -90,10 +84,10 @@ BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # SELinux
 BOARD_SEPOLICY_DIRS := \
-       device/qcom/common/sepolicy
+    device/qcom/common/sepolicy
 
 BOARD_SEPOLICY_UNION := \
-       netd.te
+    netd.te
 
 # Vendor init
 TARGET_INIT_VENDOR_LIB := libinit_msm
