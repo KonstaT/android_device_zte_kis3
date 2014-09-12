@@ -130,9 +130,10 @@ ro.fm.transmitter=false
 audio.offload.gapless.enabled=true
 
 # Gecko
+ro.moz.cam.0.sensor_offset=0
 ro.moz.omx.hw.max_width=1280
 ro.moz.omx.hw.max_height=720
-ro.moz.cam.0.sensor_offset=0
+ro.moz.wifi.unloaddriver=1
 ro.ril.data_auto_attach=true
 
 # GPS

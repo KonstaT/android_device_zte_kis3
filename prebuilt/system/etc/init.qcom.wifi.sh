@@ -253,16 +253,16 @@ case "$target" in
       #		/system/lib/modules/wlan.ko
       #ZTE_MODIFY wanghaifei end
       # Populate the writable driver configuration file
-      #if [ ! -s /data/misc/wifi/WCNSS_qcom_cfg.ini ]; then
-      #    cp /system/etc/wifi/WCNSS_qcom_cfg.ini \
-	#	/data/misc/wifi/WCNSS_qcom_cfg.ini
-      #    chown -h system:wifi /data/misc/wifi/WCNSS_qcom_cfg.ini
-      #    chmod -h 660 /data/misc/wifi/WCNSS_qcom_cfg.ini
-      #fi
+      if [ ! -s /data/misc/wifi/WCNSS_qcom_cfg.ini ]; then
+          cp /system/etc/wifi/WCNSS_qcom_cfg.ini \
+		/data/misc/wifi/WCNSS_qcom_cfg.ini
+          chown -h system:wifi /data/misc/wifi/WCNSS_qcom_cfg.ini
+          chmod -h 660 /data/misc/wifi/WCNSS_qcom_cfg.ini
+      fi
 
       # The property below is used in Qcom SDK for softap to determine
       # the wifi driver config file
-      setprop wlan.driver.config /system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini
+      setprop wlan.driver.config /data/misc/wifi/WCNSS_qcom_cfg.ini
 
       # Use different wpa_supplicant.conf template between wcn driver
       # and ath6kl driver
