@@ -108,7 +108,7 @@ case "$usb_config" in
                    setprop persist.sys.cdrom.state 1
                    setprop persist.sys.usb.config cdrom
                else
-                   setprop persist.sys.usb.config diag,adb
+                   setprop persist.sys.usb.config mtp,adb
                fi
           ;;
       esac
