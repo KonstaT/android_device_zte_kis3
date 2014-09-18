@@ -129,3 +129,8 @@ service wcnss-service /system/bin/wcnss_service
     user system
     group system wifi
     oneshot
+
+service ztebasebandinit /system/bin/sh /system/etc/init.zte.baseband.sh
+    class late_start
+    user root
+    oneshot
