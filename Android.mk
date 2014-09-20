@@ -16,6 +16,6 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifeq ($(TARGET_BOARD_PLATFORM),msm8610)
+ifeq ($(TARGET_DEVICE),kis3)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 endif
