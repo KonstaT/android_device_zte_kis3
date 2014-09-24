@@ -128,7 +128,9 @@ BOARD_SEPOLICY_DIRS += \
     device/zte/kis3/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    netd.te
+    file.te \
+    netd.te \
+    ueventd.te
 
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
