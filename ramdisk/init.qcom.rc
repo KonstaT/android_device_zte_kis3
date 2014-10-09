@@ -145,6 +145,8 @@ on boot
 
 # msm specific files that need to be created on /data
 on post-fs-data
+    mkdir /data/misc/camera 0770 camera camera
+
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
 
     # Create the directories used by the Wireless subsystem
