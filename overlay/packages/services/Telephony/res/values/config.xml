@@ -23,9 +23,6 @@
          successfully placing the OTA call -->
     <integer name="OtaShowListeningScreen">1</integer>
 
-    <!-- Flag indicating if the tty is enabled -->
-    <bool name="tty_enabled">true</bool>
-
     <!-- Flag indicating if dtmf tone type is enabled -->
     <bool name="dtmf_type_enabled">true</bool>
 
