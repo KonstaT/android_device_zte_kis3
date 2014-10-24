@@ -72,6 +72,9 @@ TARGET_SYSTEMIMAGE_USE_SQUISHER := true
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
+# Classpath
+PRODUCT_BOOT_JARS := $(subst $(space),:,$(PRODUCT_BOOT_JARS))
+
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
