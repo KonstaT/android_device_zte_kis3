@@ -32,6 +32,14 @@ PRODUCT_PACKAGES += \
 # Wifi
 PRODUCT_PACKAGES += wcnss_service
 
+# Ramdisk
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/zte/kis3/ramdisk,root)
+
+# Prebuilt
+PRODUCT_COPY_FILES += \
+    $(call find-copy-subdir-files,*,device/zte/kis3/prebuilt/system,system)
+
 # Gecko low-memory killer setting overrides
 #
 # It would be nice to use PRODUCT_COPY_FILES here instead but that is not
@@ -48,5 +56,3 @@ gaia/profile/defaults/pref/lmk.js: gaia/profile.tar.gz
 LOCAL_PATH:=$(dir $(firstword $(MAKEFILE_LIST)))
 GAIA_DISTRIBUTION_SRC_FILES:=$(GAIA_DISTRIBUTION_SRC_FILES)
 GAIA_DISTRIBUTION_SRC_FILES+=$(wildcard $(LOCAL_PATH)/gaia_distribution/*)
-
-$(call inherit-product, device/zte/kis3/prebuilt.mk)
