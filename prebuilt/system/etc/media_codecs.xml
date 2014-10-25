@@ -112,10 +112,14 @@
             <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
         <!-- Video Software  -->
+        <!-- ZTE_MODIFY ,huxiaoyu,2013/11/19,  for cts test, 8x10 not supported, only 8x12 supported  ,start -->
+        <!--
         <MediaCodec name="OMX.ittiam.video.decoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-output-ports" />
             <Quirk name="defers-output-buffer-allocation" />
         </MediaCodec>
+        -->
+        <!-- ZTE_MODIFY ,huxiaoyu,2013/11/19, for cts test, 8x10 not supported, only 8x12 supported ,end -->
         <MediaCodec name="OMX.google.h264.decoder" type="video/avc" />
         <MediaCodec name="OMX.google.mpeg4.decoder" type="video/mp4v-es" />
         <MediaCodec name="OMX.google.h263.decoder" type="video/3gpp" />

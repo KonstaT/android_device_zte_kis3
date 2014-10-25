@@ -107,9 +107,9 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="14000000"
-             width="1280"
-             height="720"
+             bitRate="2000000"
+             width="640"
+             height="480"
              frameRate="30" />
 
       <Audio codec="aac"
@@ -147,7 +147,7 @@
     <EncoderProfile quality="480p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
-             width="720"
+             width="640"
              height="480"
              frameRate="30" />
 
@@ -157,6 +157,7 @@
              channels="2" />
     </EncoderProfile>
 
+<!--
     <EncoderProfile quality="fwvga" fileFormat="3gp" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -169,7 +170,9 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+-->
 
+<!--
     <EncoderProfile quality="720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
@@ -182,6 +185,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+-->
 
     <EncoderProfile quality="qcif" fileFormat="3gp" duration="30">
       <Video codec="h264"
@@ -196,6 +200,7 @@
              channels="1" />
     </EncoderProfile>
 
+<!--
     <EncoderProfile quality="wvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
@@ -208,6 +213,7 @@
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+-->
 
     <EncoderProfile quality="vga" fileFormat="mp4" duration="30">
       <Video codec="h264"
@@ -238,9 +244,9 @@
 
     <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="14000000"
-             width="1280"
-             height="720"
+             bitRate="2000000"
+             width="640"
+             height="480"
              frameRate="30" />
 
       <!-- audio setting is ignored -->
@@ -306,33 +312,41 @@
              channels="1" />
     </EncoderProfile>
 
+<!--
     <EncoderProfile quality="timelapsewvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
              width="800"
              height="480"
              frameRate="30" />
+-->
 
       <!-- audio setting is ignored -->
+<!--
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
+-->
 
+<!--
     <EncoderProfile quality="timelapsefwvga" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="2000000"
              width="864"
              height="480"
              frameRate="30" />
+-->
 
       <!-- audio setting is ignored -->
+<!--
       <Audio codec="amrnb"
              bitRate="12200"
              sampleRate="8000"
              channels="1" />
     </EncoderProfile>
+-->
 
     <EncoderProfile quality="timelapse480p" fileFormat="mp4" duration="30">
       <Video codec="h264"
@@ -349,19 +363,23 @@
     </EncoderProfile>
 
 
+<!--
     <EncoderProfile quality="timelapse720p" fileFormat="mp4" duration="30">
       <Video codec="h264"
              bitRate="14000000"
              width="1280"
              height="720"
              frameRate="30" />
+-->
 
       <!-- audio setting is ignored -->
+<!--
       <Audio codec="aac"
              bitRate="156000"
              sampleRate="48000"
              channels="2" />
     </EncoderProfile>
+-->
 
         <ImageEncoding quality="95" />
         <ImageEncoding quality="80" />
@@ -387,15 +405,15 @@
 
     <EncoderProfile quality="high" fileFormat="mp4" duration="30">
       <Video codec="h264"
-             bitRate="14000000"
-             width="1280"
-             height="720"
+             bitRate="2000000"
+             width="640"
+             height="480"
              frameRate="30" />
 
-      <Audio codec="aac"
-             bitRate="156000"
-             sampleRate="48000"
-             channels="2" />
+      <Audio codec="amrnb"
+             bitRate="12200"
+             sampleRate="8000"
+             channels="1" />
     </EncoderProfile>
 
     <EncoderProfile quality="qvga" fileFormat="mp4" duration="60">
@@ -518,9 +536,9 @@
 
     <EncoderProfile quality="timelapsehigh" fileFormat="mp4" duration="30">
       <Video codec="h264"
-                   bitRate="8000000"
-                   width="1280"
-                   height="720"
+                   bitRate="2000000"
+                   width="640"
+                   height="480"
                    frameRate="30" />
 
       <!-- audio setting is ignored -->

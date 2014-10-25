@@ -1,5 +1,5 @@
 #
-# system.prop for msm8610
+# system.prop for kis3
 #
 
 # Use reference RIL for initial bringup
@@ -20,7 +20,7 @@ DEVICE_PROVISIONED=1
 persist.radio.msgtunnel.start=false
 persist.radio.atfwd.start=false
 # Start in cdma mode
-ro.telephony.default_network=5
+ro.telephony.default_network=0
 
 #
 # system props for the cne module
@@ -61,6 +61,10 @@ vidc.debug.level=1
 #
 persist.gralloc.cp.level3=1
 
+# add by ZTE lizhao for widevine 20120517
+drm.service.enabled=true
+# add by ZTE lizhao for widevine 20120517
+
 #
 # system props for the data modules
 #
@@ -68,6 +72,18 @@ ro.use_data_netmgrd=true
 
 #system props for time-services
 persist.timed.enable=true
+
+#ZTEBSP lichuangchuang add for audio start. 20130922
+# System props for audio
+persist.audio.fluence.mode=endfire
+persist.audio.vr.enable=false
+persist.audio.lowlatency.rec=false
+persist.audio.handset.mic=analog
+# System prop to select audio resampler quality
+af.resampler.quality=255
+# System prop to select MPQAudioPlayer by default on mpq8064
+mpq.audio.decode=true
+#ZTEBSP lichuangchuang add for audio end. 20130922
 
 #
 # system prop for opengles version
@@ -98,12 +114,18 @@ persist.audio.fluence.speaker=true
 ro.sys.fw.bg_apps_limit=20
 
 # System property for cabl
-ro.qualcomm.cabl=1
-
+#zte modify 20130904
+ro.qualcomm.cabl=0
 
 # system prop for NFC DT
 ro.nfc.port=I2C
 
+#liangrh add GMS clientid
+ro.com.google.clientidbase= android-zte
+ro.com.google.clientidbase.yt= android-zte
+ro.com.google.clientidbase.gmm= android-zte
+ro.com.google.clientidbase.am = android-zte
+ro.com.google.clientidbase.ms = android-zte
 #
 #DASH video streaming
 #Specify max allowed resolution/bandwidth for representations
@@ -135,3 +157,29 @@ ro.fm.transmitter=false
 
 #enable dsp gapless mode by default
 audio.offload.gapless.enabled=true
+
+# ZTE_MODIFY ,HXY,2013.12.19, System props for streaming ua profile, begin
+ro.streaming.ua.prof = http://www.zte.com.cn/mobile/uaprof/ZTE_Kis_3.xml
+# ZTE_MODIFY ,HXY,2013.12.19, System props for streaming ua profile, end
+# zte_modify,sonlgifeng,for 8x10 default timezone,2013.12.30 begin
+persist.sys.timezone=Europe/Rome
+# zte_modify,sonlgifeng,for 8x10 default timezone,2013.12.30 end
+# ZTE_MODIFY,liyanfang,for 8x10 default MTU size,2014.01.15 begin
+# set default mtu to 1358
+persist.data_netmgrd_mtu=1358
+# ZTE_MODIFY,liyanfang,for 8x10 default MTU size,2014.01.15 end
+# zte_modify,chenshaohua,for 8x10 default memory optimize,2014.03.11 begin
+persist.sys.memoryclean.enable=1
+persist.sys.memoryclean.thres=10
+# zte_modify,chenshaohua,for 8x10 default memory optimize,2014.03.11 end
+
+# zte_modify,xiaolei,for mp3 playback pause after screen is off begin
+audio.offload.disable=1
+# zte_modify,xiaolei,for mp3 playback pause after screen is off end
+
+# GPS
+ro.qc.sdk.izat.premium_enabled=1
+ro.qc.sdk.izat.service_mask=0x5
+persist.gps.qc_nlp_in_use=1
+persist.loc.nlp_name=com.qualcomm.services.location
+ro.gps.agps_provider=1

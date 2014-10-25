@@ -42,8 +42,8 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/platform/msm_sdcc.1/by-name/cache
-    mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
+    #wait /dev/block/platform/msm_sdcc.1/by-name/cache
+    #mount ext4 /dev/block/platform/msm_sdcc.1/by-name/cache /cache nosuid nodev barrier=1
 
     wait /dev/block/platform/msm_sdcc.1/by-name/persist
     mount ext4 /dev/block/platform/msm_sdcc.1/by-name/persist /persist nosuid nodev barrier=1
@@ -61,6 +61,30 @@ on boot
 on post-fs-data
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
+
+#[ECID:000000] ZTEBSP wanghaifei 20130905 start, for sensor init
+    chmod 664 /dev/light_sensor
+    chown system root /dev/light_sensor
+
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0019/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0019/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/pollrate_ms
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/enable_device
+    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/pollrate_ms
+#[ECID:000000] ZTEBSP wanghaifei 20130905 end, for sensor init
+
+#//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,start.
+    chown system system /sys/class/leds/lcd-backlight/brightness
+    chown system system /sys/class/leds/button-backlight/brightness
+    chown system system /sys/class/leds/red/brightness
+    chown system system /sys/class/leds/green/brightness
+    chown system system /sys/class/leds/red/blink
+    chown system system /sys/class/leds/green/blink
+    chown system system /sys/class/timed_output/vibrator/enable
+#//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,end.
 
 # import cne init file
 on post-fs
@@ -148,11 +172,21 @@ service wcnss-service /system/bin/wcnss_service
     group system wifi
     oneshot
 
-service ppd /system/bin/mm-pp-daemon
-    class late_start
-    user system
-    socket pps stream 0660 system system
-    group system graphics
+#ztemodify 20140325 by wangbin delete cabl start
+#service ppd /system/bin/mm-pp-daemon
+#    class late_start
+#    user system
+#    socket pps stream 0660 system system
+#    group system graphics
+#ztemodify 20140325 by wangbin delete cabl end
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
+
+service ztebasebandinit /system/bin/sh /system/etc/init.zte.baseband.sh
+    class late_start
+    user root
+    oneshot
+
+on property:ro.boot.hwversion=wmfA.6
+    setprop persist.radio.multisim.config dsds
