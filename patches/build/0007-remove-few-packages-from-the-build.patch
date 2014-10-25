@@ -1,0 +1,88 @@
+From 83cd972db834c61b27a5a2861a0fe9157ec50ee4 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Fri, 24 Oct 2014 11:49:47 +0300
+Subject: [PATCH 7/7] remove few packages from the build
+
+* Remove VideoEditor and support libs
+* Remove exotic input methods
+* Default to Launcher3
+* Disable data roaming by default
+
+Change-Id: Ib9fe320cd7b9ebbd99b9d2a98ff1559cb3977b28
+---
+ target/product/core_base.mk            |    1 -
+ target/product/full_base.mk            |    6 ------
+ target/product/full_base_telephony.mk  |    2 +-
+ target/product/generic_no_telephony.mk |    7 +------
+ 4 files changed, 2 insertions(+), 14 deletions(-)
+
+diff --git a/target/product/core_base.mk b/target/product/core_base.mk
+index 9a72a7d..40e71cd 100644
+--- a/target/product/core_base.mk
++++ b/target/product/core_base.mk
+@@ -23,7 +23,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
+ PRODUCT_PACKAGES += \
+     ContactsProvider \
+     DefaultContainerService \
+-    Home \
+     TelephonyProvider \
+     UserDictionaryProvider \
+     atrace \
+diff --git a/target/product/full_base.mk b/target/product/full_base.mk
+index 059697e..4e64715 100644
+--- a/target/product/full_base.mk
++++ b/target/product/full_base.mk
+@@ -21,12 +21,6 @@
+ 
+ PRODUCT_PACKAGES := \
+     libfwdlockengine \
+-    OpenWnn \
+-    PinyinIME \
+-    libWnnEngDic \
+-    libWnnJpnDic \
+-    libwnndict \
+-    VideoEditor \
+     WAPPushManager
+ 
+ PRODUCT_PACKAGES += \
+diff --git a/target/product/full_base_telephony.mk b/target/product/full_base_telephony.mk
+index f00f93d..f5d65d9 100644
+--- a/target/product/full_base_telephony.mk
++++ b/target/product/full_base_telephony.mk
+@@ -24,7 +24,7 @@ PRODUCT_PACKAGES := \
+ 
+ PRODUCT_PROPERTY_OVERRIDES := \
+     keyguard.no_require_sim=true \
+-    ro.com.android.dataroaming=true
++    ro.com.android.dataroaming=false
+ 
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/telephony.mk)
+diff --git a/target/product/generic_no_telephony.mk b/target/product/generic_no_telephony.mk
+index 1155b4e..03240ae 100644
+--- a/target/product/generic_no_telephony.mk
++++ b/target/product/generic_no_telephony.mk
+@@ -33,7 +33,7 @@ PRODUCT_PACKAGES := \
+     InputDevices \
+     Keyguard \
+     LatinIME \
+-    Launcher2 \
++    Launcher3 \
+     Music \
+     MusicFX \
+     OneTimeInitializer \
+@@ -62,11 +62,6 @@ PRODUCT_PACKAGES += \
+ 
+ PRODUCT_PACKAGES += \
+     librs_jni \
+-    libvideoeditor_jni \
+-    libvideoeditor_core \
+-    libvideoeditor_osal \
+-    libvideoeditor_videofilters \
+-    libvideoeditorplayer \
+ 
+ PRODUCT_PACKAGES += \
+     audio.primary.default \
+-- 
+1.7.9.5
+

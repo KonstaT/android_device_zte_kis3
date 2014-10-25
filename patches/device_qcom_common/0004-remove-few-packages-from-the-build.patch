@@ -1,0 +1,81 @@
+From 146016cb38cd021cda12330be8fb2aa3e4005389 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Sat, 17 May 2014 18:16:45 +0300
+Subject: [PATCH 4/4] remove few packages from the build
+
+* Remove VideoEditor and test apps
+* Default to Launcher3
+* Include all languages in the build
+
+Change-Id: I8e62f2a3044869f92f1d8807df85260deb107831
+---
+ common.mk |   19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/common.mk b/common.mk
+index dcca112..bc3aff3 100644
+--- a/common.mk
++++ b/common.mk
+@@ -529,8 +529,6 @@ PRODUCT_PACKAGES := \
+     AlarmProvider \
+     Bluetooth \
+     BluetoothExt \
+-    BTTestApp \
+-    HiddTestApp \
+     Calculator \
+     Calendar \
+     Camera \
+@@ -540,7 +538,7 @@ PRODUCT_PACKAGES := \
+     Email \
+     Gallery2 \
+     LatinIME \
+-    Launcher2 \
++    Launcher3 \
+     Mms \
+     Music \
+     Phone \
+@@ -556,8 +554,7 @@ PRODUCT_PACKAGES := \
+     IM \
+     VoiceDialer \
+     FM2 \
+-    FMRecord \
+-    VideoEditor
++    FMRecord
+ 
+ PRODUCT_PACKAGES += $(ALSA_HARDWARE)
+ PRODUCT_PACKAGES += $(ALSA_UCM)
+@@ -685,8 +682,8 @@ endif # BOARD_HAVE_BLUETOOTH_BLUEZ
+ PRODUCT_COPY_FILES += \
+     device/qcom/common/sec_config:system/etc/sec_config
+ 
+-PRODUCT_COPY_FILES += device/qcom/common/media/media_profiles.xml:system/etc/media_profiles.xml \
+-                      device/qcom/common/media/media_codecs.xml:system/etc/media_codecs.xml
++#PRODUCT_COPY_FILES += device/qcom/common/media/media_profiles.xml:system/etc/media_profiles.xml \
++#                      device/qcom/common/media/media_codecs.xml:system/etc/media_codecs.xml
+ 
+ # enable overlays to use our version of
+ # source/resources etc.
+@@ -707,9 +704,9 @@ DEVICE_PACKAGE_OVERLAYS += device/qcom/common/overlay
+ $(call inherit-product-if-exists, $(QCPATH)/common/config/device-vendor.mk)
+ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+ 
+-PRODUCT_BRAND := qcom
+-PRODUCT_LOCALES := en_US es_US de_DE zh_CN
+-PRODUCT_LOCALES += hdpi mdpi
++#PRODUCT_BRAND := qcom
++#PRODUCT_LOCALES := en_US es_US de_DE zh_CN
++#PRODUCT_LOCALES += hdpi mdpi
+ 
+ PRODUCT_PROPERTY_OVERRIDES += \
+     ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
+@@ -717,6 +714,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
+ 
+ PRODUCT_PRIVATE_KEY := device/qcom/common/qcom.key
+ 
+-$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
++#$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
+ #$(call inherit-product, frameworks/base/data/fonts/fonts.mk)
+ #$(call inherit-product, frameworks/base/data/keyboards/keyboards.mk)
+-- 
+1.7.9.5
+

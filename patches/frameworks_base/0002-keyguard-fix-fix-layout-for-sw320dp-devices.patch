@@ -1,0 +1,42 @@
+From 08952485932a71330f4c508c01c550491b0a049f Mon Sep 17 00:00:00 2001
+From: Lorenzo M <djmesias@yahoo.es>
+Date: Sun, 8 Dec 2013 23:05:32 +0100
+Subject: [PATCH 2/2] keyguard: fix-fix layout for sw320dp devices
+
+Default values need to be defined in sw360dp or larger devices will
+pick up sw320dp values automatically.
+
+On the maguro device the keyguard isn't properly centered.
+
+- Before http://review.cyanogenmod.org/54758:
+    http://i.imgur.com/F6sokhA.jpg
+- After http://review.cyanogenmod.org/54758:
+    http://i.imgur.com/OdTkZLL.jpg
+- With this commit:
+    http://i.imgur.com/TThq9da.jpg
+
+Change-Id: Idcc29ec79a12e61b26d2ad5070468e70a8ef39df
+---
+ packages/Keyguard/res/values-sw360dp/dimens.xml |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/packages/Keyguard/res/values-sw360dp/dimens.xml b/packages/Keyguard/res/values-sw360dp/dimens.xml
+index 6e39a42..b2eacc1 100644
+--- a/packages/Keyguard/res/values-sw360dp/dimens.xml
++++ b/packages/Keyguard/res/values-sw360dp/dimens.xml
+@@ -23,6 +23,12 @@
+          keyguard_security_view_margin) -->
+     <dimen name="keyguard_security_height">400dp</dimen>
+ 
++    <!-- Height of the sliding KeyguardSecurityContainer with hidden widget (includes 2x keyguard_security_view_margin) -->
++    <dimen name="keyguard_security_no_widget_height">400dp</dimen>
++
++    <!-- Left padding of num pad key on keyguard -->
++    <dimen name="kg_num_pad_key_padding_left">20dp</dimen>
++
+     <!-- The bottom margin for the GlowPadView container -->
+     <dimen name="glowpadcontainer_bottom_margin">-48dp</dimen>
+ 
+-- 
+1.7.9.5
+

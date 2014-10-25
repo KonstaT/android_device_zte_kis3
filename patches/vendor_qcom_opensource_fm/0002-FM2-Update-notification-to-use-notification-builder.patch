@@ -1,0 +1,238 @@
+From ff1ec9a4c090971b9ca31e4ee282b8b1f69ed5b4 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Tue, 16 Jul 2013 19:15:42 +0300
+Subject: [PATCH 2/3] FM2: Update notification to use notification builder
+
+Make FM notifications look like something from this decade. :P
+
+Change-Id: Ib0e310a320c49e92224d8d4fc2fab530ff28d974
+---
+ fmapp2/res/layout/statusbar.xml                    |   56 --------------------
+ fmapp2/res/values/strings.xml                      |    5 +-
+ fmapp2/src/com/caf/fmradio/FMRadioService.java     |   44 ++++++++-------
+ .../src/com/caf/fmradio/FMTransmitterService.java  |   43 ++++++++-------
+ 4 files changed, 51 insertions(+), 97 deletions(-)
+ delete mode 100644 fmapp2/res/layout/statusbar.xml
+
+diff --git a/fmapp2/res/layout/statusbar.xml b/fmapp2/res/layout/statusbar.xml
+deleted file mode 100644
+index 677ed74..0000000
+--- a/fmapp2/res/layout/statusbar.xml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-/*
+- * Copyright (C) 2012, The Linux Foundation. All rights reserved.
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions are
+- * met:
+- *     * Redistributions of source code must retain the above copyright
+- *       notice, this list of conditions and the following disclaimer.
+- *     * Redistributions in binary form must reproduce the above
+- *       copyright notice, this list of conditions and the following
+- *       disclaimer in the documentation and/or other materials provided
+- *       with the distribution.
+- *     * Neither the name of The Linux Foundation, Inc. nor the names of its
+- *       contributors may be used to endorse or promote products derived
+- *       from this software without specific prior written permission.
+- *
+- * THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+- * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+- * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+- * ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+- * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+- * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+- * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+- * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+- */
+- -->
+-
+-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:layout_width="fill_parent"
+-    android:layout_height="fill_parent"
+-    android:orientation="horizontal">
+-
+-    <ImageView android:id="@+id/icon"
+-        android:layout_gravity="center_vertical"
+-        android:paddingLeft="10dp"
+-        android:paddingRight="10dp"
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content">
+-    </ImageView>
+-
+-    <TextView android:id="@+id/frequency"
+-        android:textAppearance="?android:attr/textAppearanceMediumInverse"
+-        android:textColor="#FFFFFFFF"
+-        android:focusable="true"
+-        android:ellipsize="marquee"
+-        android:singleLine="true"
+-        android:layout_gravity="center"
+-        android:layout_width="wrap_content"
+-       android:layout_height="wrap_content" />
+-
+-</LinearLayout>
+diff --git a/fmapp2/res/values/strings.xml b/fmapp2/res/values/strings.xml
+index 8083b98..bb36f2c 100644
+--- a/fmapp2/res/values/strings.xml
++++ b/fmapp2/res/values/strings.xml
+@@ -84,9 +84,8 @@
+     <string name="preset_search">Search for "<xliff:g id="preset_pi">%1$s</xliff:g>"
+         </string>
+ 
+-    <string name="stat_notif_frequency">FM Radio Station "<xliff:g id="frequency">%1$s</xliff:g>" MHz</string>
+-    <string name="stat_notif_tx_frequency">FM Transmitting at: "<xliff:g id="frequency">%1$s</xliff:g>"</string>
+-
++    <string name="stat_notif_frequency">"<xliff:g id="frequency">%1$s</xliff:g>" MHz</string>
++    <string name="stat_notif_tx_frequency">Transmitting at: "<xliff:g id="frequency">%1$s</xliff:g>"</string>
+ 
+     <string name="sel_band_menu">Select Regional Band</string>
+     <string name="test_menu">Select Test</string>
+diff --git a/fmapp2/src/com/caf/fmradio/FMRadioService.java b/fmapp2/src/com/caf/fmradio/FMRadioService.java
+index b23aac1..d79c78f 100644
+--- a/fmapp2/src/com/caf/fmradio/FMRadioService.java
++++ b/fmapp2/src/com/caf/fmradio/FMRadioService.java
+@@ -34,6 +34,7 @@ import java.io.IOException;
+ import java.lang.ref.WeakReference;
+ 
+ import android.app.AlarmManager;
++import android.app.Notification.Builder;
+ import android.app.Notification;
+ import android.app.NotificationManager;
+ import android.app.PendingIntent;
+@@ -176,6 +177,10 @@ public class FMRadioService extends Service
+    static final int RECORD_START = 1;
+    static final int RECORD_STOP = 0;
+ 
++   private Notification.Builder mRadioNotification;
++   private Notification mNotificationInstance;
++   private NotificationManager mNotificationManager;
++
+    public FMRadioService() {
+    }
+ 
+@@ -1148,27 +1153,28 @@ public class FMRadioService extends Service
+ 
+    /* Show the FM Notification */
+    public void startNotification() {
+-      RemoteViews views = new RemoteViews(getPackageName(), R.layout.statusbar);
+-      views.setImageViewResource(R.id.icon, R.drawable.stat_notify_fm);
+-      if (isFmOn())
+-      {
+-         views.setTextViewText(R.id.frequency, getTunedFrequencyString());
+-      } else
+-      {
+-         views.setTextViewText(R.id.frequency, "");
++      mRadioNotification = new Notification.Builder(this)
++              .setSmallIcon(R.drawable.stat_notify_fm)
++              .setOngoing(true)
++              .setWhen(0);
++
++      PendingIntent resultIntent = PendingIntent.getActivity(this, 0,
++              new Intent("com.caf.fmradio.FMRADIO_ACTIVITY"), 0);
++      mRadioNotification.setContentIntent(resultIntent);
++
++      mNotificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
++      if (isFmOn()) {
++          mRadioNotification.setContentTitle(getString(R.string.app_name))
++                  .setContentText(getTunedFrequencyString());
++      } else {
++          mRadioNotification.setContentTitle("")
++                  .setContentText("");
+       }
++      mNotificationInstance = mRadioNotification.getNotification();
++      mNotificationManager.notify(FMRADIOSERVICE_STATUS, mNotificationInstance);
++
++      startForeground(FMRADIOSERVICE_STATUS, mNotificationInstance);
+ 
+-      Notification status = new Notification();
+-      status.contentView = views;
+-      status.flags |= Notification.FLAG_ONGOING_EVENT;
+-      status.icon = R.drawable.stat_notify_fm;
+-      status.contentIntent = PendingIntent.getActivity(this, 0,
+-                                                       new Intent("com.caf.fmradio.FMRADIO_ACTIVITY"), 0);
+-      startForeground(FMRADIOSERVICE_STATUS, status);
+-      //NotificationManager nm = (NotificationManager)
+-      //                         getSystemService(Context.NOTIFICATION_SERVICE);
+-      //nm.notify(FMRADIOSERVICE_STATUS, status);
+-      //setForeground(true);
+       mFMOn = true;
+    }
+ 
+diff --git a/fmapp2/src/com/caf/fmradio/FMTransmitterService.java b/fmapp2/src/com/caf/fmradio/FMTransmitterService.java
+index efe2698..21f79e1 100644
+--- a/fmapp2/src/com/caf/fmradio/FMTransmitterService.java
++++ b/fmapp2/src/com/caf/fmradio/FMTransmitterService.java
+@@ -30,6 +30,7 @@ package com.caf.fmradio;
+ 
+ import java.lang.ref.WeakReference;
+ 
++import android.app.Notification.Builder;
+ import android.app.Notification;
+ import android.app.NotificationManager;
+ import android.app.PendingIntent;
+@@ -108,6 +109,9 @@ public class FMTransmitterService extends Service
+    // interval after which we stop the service when idle
+    private static final int IDLE_DELAY = 60000;
+ 
++   private Notification.Builder mRadioNotification;
++   private Notification mNotificationInstance;
++   private NotificationManager mNotificationManager;
+    private static String RText = " ";
+    private IAudioService mAudioService;
+    private AudioManager mAudioManager;
+@@ -278,27 +282,28 @@ public class FMTransmitterService extends Service
+ 
+    /* Show the FM Notification */
+    public void startNotification() {
+-      RemoteViews views = new RemoteViews(getPackageName(), R.layout.statusbar);
+-      views.setImageViewResource(R.id.icon, R.drawable.ic_status_fm_tx);
+-      if (isFmOn())
+-      {
+-         views.setTextViewText(R.id.frequency, getTunedFrequencyString());
+-      } else
+-      {
+-         views.setTextViewText(R.id.frequency, "");
++      mRadioNotification = new Notification.Builder(this)
++              .setSmallIcon(R.drawable.ic_status_fm_tx)
++              .setOngoing(true)
++              .setWhen(0);
++
++      PendingIntent resultIntent = PendingIntent.getActivity(this, 0,
++              new Intent("com.caf.fmradio.FMTRANSMITTER_ACTIVITY"), 0);
++      mRadioNotification.setContentIntent(resultIntent);
++
++      mNotificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
++      if (isFmOn()) {
++          mRadioNotification.setContentTitle(getString(R.string.app_name))
++                  .setContentText(getTunedFrequencyString());
++      } else {
++          mRadioNotification.setContentTitle("")
++                  .setContentText("");
+       }
++      mNotificationInstance = mRadioNotification.getNotification();
++      mNotificationManager.notify(FMTRANSMITTERSERVICE_STATUS, mNotificationInstance);
++
++      startForeground(FMTRANSMITTERSERVICE_STATUS, mNotificationInstance);
+ 
+-      Notification status = new Notification();
+-      status.contentView = views;
+-      status.flags |= Notification.FLAG_ONGOING_EVENT;
+-      status.icon = R.drawable.ic_status_fm_tx;
+-      status.contentIntent = PendingIntent.getActivity(this, 0,
+-                                                       new Intent("com.caf.fmradio.FMTRANSMITTER_ACTIVITY"), 0);
+-      startForeground(FMTRANSMITTERSERVICE_STATUS, status);
+-      //NotificationManager nm = (NotificationManager)
+-      //                         getSystemService(Context.NOTIFICATION_SERVICE);
+-      //nm.notify(FMTRANSMITTERSERVICE_STATUS, status);
+-      //setForeground(true);
+       mFMOn = true;
+    }
+ 
+-- 
+1.7.9.5
+

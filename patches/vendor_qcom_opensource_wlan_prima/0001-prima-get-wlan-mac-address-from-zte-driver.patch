@@ -1,0 +1,37 @@
+From 5c11f38213da4a5b691cea012686d5eaacd56d7d Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Thu, 23 Oct 2014 20:50:17 +0300
+Subject: [PATCH] prima: get wlan mac address from zte driver
+
+Change-Id: I19d4c92078fdb5ca4d4682e8c0d3b1348f0f3021
+---
+ CORE/HDD/src/wlan_hdd_main.c |    6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/CORE/HDD/src/wlan_hdd_main.c b/CORE/HDD/src/wlan_hdd_main.c
+index f393830..1b54842 100644
+--- a/CORE/HDD/src/wlan_hdd_main.c
++++ b/CORE/HDD/src/wlan_hdd_main.c
+@@ -226,6 +226,7 @@ static void hdd_set_multicast_list(struct net_device *dev);
+ void hdd_wlan_initial_scan(hdd_adapter_t *pAdapter);
+ 
+ extern int hdd_setBand_helper(struct net_device *dev, tANI_U8* ptr);
++extern int zte_wifi_get_mac_addr(unsigned char *addr);
+ 
+ #if  defined (WLAN_FEATURE_VOWIFI_11R) || defined (FEATURE_WLAN_CCX) || defined(FEATURE_WLAN_LFR)
+ void hdd_getBand_helper(hdd_context_t *pHddCtx, int *pBand);
+@@ -8428,7 +8429,10 @@ int hdd_wlan_startup(struct device *dev )
+    }
+ 
+    // Get mac addr from platform driver
+-   ret = wcnss_get_wlan_mac_address((char*)&mac_addr.bytes);
++   //ret = wcnss_get_wlan_mac_address((char*)&mac_addr.bytes);
++
++   // Get mac addr from ZTE driver
++   ret = zte_wifi_get_mac_addr((unsigned char*)&mac_addr);
+ 
+    if ((0 == ret) && (!vos_is_macaddr_zero(&mac_addr)))
+    {
+-- 
+1.7.9.5
+

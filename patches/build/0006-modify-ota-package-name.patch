@@ -1,0 +1,27 @@
+From c1bdf43c57c663fd451e81589c57dfc415722c41 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Wed, 27 Aug 2014 16:31:16 +0300
+Subject: [PATCH 6/7] modify ota package name
+
+Change-Id: I224d63ab010a7da8e500c7b5cd14683022e7cd85
+---
+ core/Makefile |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/core/Makefile b/core/Makefile
+index cd4d2b0..98f7000 100644
+--- a/core/Makefile
++++ b/core/Makefile
+@@ -1325,7 +1325,8 @@ name := $(TARGET_PRODUCT)
+ ifeq ($(TARGET_BUILD_TYPE),debug)
+   name := $(name)_debug
+ endif
+-name := $(name)-ota-$(FILE_NAME_TAG)
++date := $(shell date -u +%Y%m%d)
++name := caf-$(date)-$(name)
+ 
+ ifeq ($(TARGET_HAS_FOTA),true)
+   fota := 1
+-- 
+1.7.9.5
+

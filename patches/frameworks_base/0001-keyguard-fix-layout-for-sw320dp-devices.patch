@@ -1,0 +1,161 @@
+From afc8d6732dec64b086a508e12b730ca41d43eae1 Mon Sep 17 00:00:00 2001
+From: Pawit Pornkitprasan <p.pawit@gmail.com>
+Date: Mon, 10 Dec 2012 09:19:40 +0700
+Subject: [PATCH 1/2] keyguard: fix layout for sw320dp devices
+
+800x480px dpi devices have less screen space than the xhdpi devices
+Google designed the layout for and the layout needs adjustment.
+
+- Reduce the lockscreen security container size such that the clock
+  widget has enough space to display its content.
+- In the SIM PIN/PUK view, Google put an empty widget on top, but
+  we don't have space for that, increase its size such that the
+  widget practically disappears.
+
+This should not have any effect on devices with larger screens.
+
+Ported from cm-10.2.
+* Removed invalid mdpi layout leftover from framework-res
+* Fix keyguard for mdpi devices too
+
+Change-Id: I9e811cfd312abae24a9cad189d19e73848f6c4c1
+---
+ .../res/layout-port/keyguard_host_view.xml         |    2 +-
+ .../Keyguard/res/layout/keyguard_sim_pin_view.xml  |    2 +-
+ .../Keyguard/res/layout/keyguard_sim_puk_view.xml  |    2 +-
+ .../Keyguard/res/values-sw320dp-hdpi/dimens.xml    |   26 ++++++++++++++++++++
+ packages/Keyguard/res/values-sw320dp/dimens.xml    |    8 +++++-
+ packages/Keyguard/res/values/dimens.xml            |    6 +++++
+ packages/Keyguard/res/values/styles.xml            |    2 +-
+ 7 files changed, 43 insertions(+), 5 deletions(-)
+ create mode 100644 packages/Keyguard/res/values-sw320dp-hdpi/dimens.xml
+
+diff --git a/packages/Keyguard/res/layout-port/keyguard_host_view.xml b/packages/Keyguard/res/layout-port/keyguard_host_view.xml
+index 136b296..96f02c1 100644
+--- a/packages/Keyguard/res/layout-port/keyguard_host_view.xml
++++ b/packages/Keyguard/res/layout-port/keyguard_host_view.xml
+@@ -67,7 +67,7 @@
+             android:layout_height="wrap_content"
+             android:clipChildren="false"
+             android:clipToPadding="false"
+-            androidprv:layout_maxHeight="@dimen/keyguard_security_height"
++            androidprv:layout_maxHeight="@dimen/keyguard_security_no_widget_height"
+             androidprv:layout_childType="challenge"
+             android:padding="0dp"
+             android:gravity="bottom|center_horizontal">
+diff --git a/packages/Keyguard/res/layout/keyguard_sim_pin_view.xml b/packages/Keyguard/res/layout/keyguard_sim_pin_view.xml
+index eccac19..975ad36 100644
+--- a/packages/Keyguard/res/layout/keyguard_sim_pin_view.xml
++++ b/packages/Keyguard/res/layout/keyguard_sim_pin_view.xml
+@@ -25,7 +25,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+-    androidprv:layout_maxHeight="@dimen/keyguard_security_height"
++    androidprv:layout_maxHeight="@dimen/keyguard_security_no_widget_height"
+     android:gravity="center_horizontal">
+ 
+     <ImageView
+diff --git a/packages/Keyguard/res/layout/keyguard_sim_puk_view.xml b/packages/Keyguard/res/layout/keyguard_sim_puk_view.xml
+index fe37203..d5ab55c 100644
+--- a/packages/Keyguard/res/layout/keyguard_sim_puk_view.xml
++++ b/packages/Keyguard/res/layout/keyguard_sim_puk_view.xml
+@@ -26,7 +26,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+-    androidprv:layout_maxHeight="@dimen/keyguard_security_height"
++    androidprv:layout_maxHeight="@dimen/keyguard_security_no_widget_height"
+     android:gravity="center_horizontal">
+ 
+     <ImageView
+diff --git a/packages/Keyguard/res/values-sw320dp-hdpi/dimens.xml b/packages/Keyguard/res/values-sw320dp-hdpi/dimens.xml
+new file mode 100644
+index 0000000..e61542c
+--- /dev/null
++++ b/packages/Keyguard/res/values-sw320dp-hdpi/dimens.xml
+@@ -0,0 +1,26 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++/* //device/apps/common/assets/res/any/dimens.xml
++**
++** Copyright 2006, The Android Open Source Project
++**
++** Licensed under the Apache License, Version 2.0 (the "License");
++** you may not use this file except in compliance with the License.
++** You may obtain a copy of the License at
++**
++**     http://www.apache.org/licenses/LICENSE-2.0
++**
++** Unless required by applicable law or agreed to in writing, software
++** distributed under the License is distributed on an "AS IS" BASIS,
++** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++** See the License for the specific language governing permissions and
++** limitations under the License.
++*/
++-->
++<resources>
++    <!-- Height of the sliding KeyguardSecurityContainer (includes 2x keyguard_security_view_margin) -->
++    <dimen name="keyguard_security_height">345dp</dimen>
++
++    <!-- Height of the sliding KeyguardSecurityContainer with hidden widget (includes 2x keyguard_security_view_margin) -->
++    <dimen name="keyguard_security_no_widget_height">450dp</dimen>
++</resources>
+diff --git a/packages/Keyguard/res/values-sw320dp/dimens.xml b/packages/Keyguard/res/values-sw320dp/dimens.xml
+index 2c209e2..62839a0 100644
+--- a/packages/Keyguard/res/values-sw320dp/dimens.xml
++++ b/packages/Keyguard/res/values-sw320dp/dimens.xml
+@@ -20,6 +20,12 @@
+ <resources>
+ 
+     <!-- Height of the sliding KeyguardSecurityContainer (includes 2x keyguard_security_view_margin) -->
+-    <dimen name="keyguard_security_height">345dp</dimen>
++    <dimen name="keyguard_security_height">300dp</dimen>
++
++    <!-- Height of the sliding KeyguardSecurityContainer with hidden widget (includes 2x keyguard_security_view_margin) -->
++    <dimen name="keyguard_security_no_widget_height">400dp</dimen>
++
++    <!-- Left padding of num pad key on keyguard -->
++    <dimen name="kg_num_pad_key_padding_left">10dp</dimen>
+ 
+ </resources>
+diff --git a/packages/Keyguard/res/values/dimens.xml b/packages/Keyguard/res/values/dimens.xml
+index 71e9924..b816c8f 100644
+--- a/packages/Keyguard/res/values/dimens.xml
++++ b/packages/Keyguard/res/values/dimens.xml
+@@ -119,6 +119,9 @@
+     <!-- Height of the sliding KeyguardSecurityContainer (includes 2x keyguard_security_view_margin) -->
+     <dimen name="keyguard_security_height">400dp</dimen>
+ 
++    <!-- Height of the sliding KeyguardSecurityContainer with hidden widget (includes 2x keyguard_security_view_margin) -->
++    <dimen name="keyguard_security_no_widget_height">400dp</dimen>
++
+     <!-- Margin around the various security views -->
+     <dimen name="keyguard_security_view_margin">8dp</dimen>
+ 
+@@ -150,6 +153,9 @@
+     security mode. -->
+     <dimen name="kg_small_widget_height">160dp</dimen>
+ 
++    <!-- Left padding of num pad key on keyguard -->
++    <dimen name="kg_num_pad_key_padding_left">20dp</dimen>
++
+     <!-- EmergencyCarrierArea overlap - amount to overlap the emergency button and carrier text.
+          Should be 0 on devices with plenty of room (e.g. tablets) -->
+     <dimen name="eca_overlap">-10dip</dimen>
+diff --git a/packages/Keyguard/res/values/styles.xml b/packages/Keyguard/res/values/styles.xml
+index d4f98af..2e6b520 100644
+--- a/packages/Keyguard/res/values/styles.xml
++++ b/packages/Keyguard/res/values/styles.xml
+@@ -30,7 +30,7 @@
+         <item name="android:textColor">#ffffff</item>
+         <item name="android:paddingTop">6dp</item>
+         <item name="android:paddingBottom">8dp</item>
+-        <item name="android:paddingLeft">20dp</item>
++        <item name="android:paddingLeft">@dimen/kg_num_pad_key_padding_left</item>
+         <item name="android:paddingRight">6dp</item>
+     </style>
+     <style name="TextAppearance.NumPadKey"
+-- 
+1.7.9.5
+

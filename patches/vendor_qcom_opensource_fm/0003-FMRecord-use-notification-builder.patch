@@ -1,0 +1,109 @@
+From da178a40615e509b44e98a1549b6e3bf9a87338c Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Sun, 17 Aug 2014 16:34:16 +0300
+Subject: [PATCH 3/3] FMRecord: use notification builder
+
+Change-Id: I84cd1a43e77e53043c21a9c77988d867a5656d4c
+---
+ FMRecord/res/layout/record_status_bar.xml          |   42 --------------------
+ .../codeaurora/fmrecording/FMRecordingService.java |   21 +++++++---
+ 2 files changed, 15 insertions(+), 48 deletions(-)
+ delete mode 100644 FMRecord/res/layout/record_status_bar.xml
+
+diff --git a/FMRecord/res/layout/record_status_bar.xml b/FMRecord/res/layout/record_status_bar.xml
+deleted file mode 100644
+index d2e1151..0000000
+--- a/FMRecord/res/layout/record_status_bar.xml
++++ /dev/null
+@@ -1,42 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+- * Copyright (c) 2013, The Linux Foundation. All rights reserved.
+- *
+- * Redistribution and use in source and binary forms, with or without
+- * modification, are permitted provided that the following conditions are met:
+- *    * Redistributions of source code must retain the above copyright
+- *      notice, this list of conditions and the following disclaimer.
+- *    * Redistributions in binary form must reproduce the above copyright
+- *      notice, this list of conditions and the following disclaimer in the
+- *      documentation and/or other materials provided with the distribution.
+- *    * Neither the name of The Linux Foundation nor
+- *      the names of its contributors may be used to endorse or promote
+- *      products derived from this software without specific prior written
+- *      permission.
+- *
+- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+- * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+- * IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+- * NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+- * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+- * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+- * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
+- * OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+- * WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+- * OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
+- * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+--->
+-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+-   android:id="@+id/fmradio"
+-   android:layout_width="fill_parent"
+-   android:layout_height="fill_parent"
+-   android:orientation="vertical">
+-
+-   <TextView
+-       android:id="@+id/record_label"
+-       android:layout_width="fill_parent"
+-       android:layout_height="wrap_content"
+-       android:textSize="15sp"
+-       android:text="@string/fm_record_progress"/>
+-
+-</RelativeLayout>
+diff --git a/FMRecord/src/com/codeaurora/fmrecording/FMRecordingService.java b/FMRecord/src/com/codeaurora/fmrecording/FMRecordingService.java
+index bf99dd8..e997a53 100644
+--- a/FMRecord/src/com/codeaurora/fmrecording/FMRecordingService.java
++++ b/FMRecord/src/com/codeaurora/fmrecording/FMRecordingService.java
+@@ -57,6 +57,7 @@ import android.os.UserHandle;
+ import android.net.Uri;
+ import android.content.res.Resources;
+ import android.os.StatFs;
++import android.app.Notification.Builder;
+ import android.app.Notification;
+ import android.app.NotificationManager;
+ import android.widget.RemoteViews;
+@@ -95,6 +96,10 @@ public class FMRecordingService extends Service {
+     private String mAudioType = "audio/*";
+     private BroadcastReceiver mSdcardUnmountReceiver = null;
+ 
++    private Notification.Builder mRecordingNotification;
++    private Notification mNotificationInstance;
++    private NotificationManager mNotificationManager;
++
+     public void onCreate() {
+ 
+         super.onCreate();
+@@ -333,12 +338,16 @@ public class FMRecordingService extends Service {
+     }
+ 
+     private void startNotification() {
+-        RemoteViews views = new RemoteViews(getPackageName(), R.layout.record_status_bar);
+-        Notification status = new Notification();
+-        status.contentView = views;
+-        status.flags |= Notification.FLAG_ONGOING_EVENT;
+-        status.icon = R.drawable.ic_menu_record;
+-        startForeground(102, status);
++        mRecordingNotification = new Notification.Builder(this)
++                .setContentTitle(getString(R.string.fm_record_progress))
++                .setSmallIcon(R.drawable.ic_menu_record)
++                .setOngoing(true)
++                .setWhen(0);
++
++        mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
++        mNotificationInstance = mRecordingNotification.getNotification();
++        mNotificationManager.notify(102, mNotificationInstance);
++        startForeground(102, mNotificationInstance);
+     }
+ 
+     private void stopRecord() {
+-- 
+1.7.9.5
+

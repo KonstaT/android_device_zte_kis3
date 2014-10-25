@@ -1,0 +1,28 @@
+From 8c4d12a056fc85b3533a89221057ede4db34da99 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Fri, 24 Oct 2014 10:46:17 +0300
+Subject: [PATCH] don't build on msm8610
+
+Depends on proprietary bits - use a prebuilt instead.
+
+Change-Id: If9f6f3eb097bc2cc673873c8f4a4d1d76d6ff8a9
+---
+ loc_api/Android.mk |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/loc_api/Android.mk b/loc_api/Android.mk
+index 4dde0aa..13c62b5 100644
+--- a/loc_api/Android.mk
++++ b/loc_api/Android.mk
+@@ -6,7 +6,7 @@ LOCAL_PATH := $(call my-dir)
+ QMI_BOARD_PLATFORM_LIST := msm8960
+ QMI_BOARD_PLATFORM_LIST += msm8974
+ QMI_BOARD_PLATFORM_LIST += msm8226
+-QMI_BOARD_PLATFORM_LIST += msm8610
++#QMI_BOARD_PLATFORM_LIST += msm8610
+ QMI_BOARD_PLATFORM_LIST += apq8084
+ 
+ ifneq (,$(filter $(QMI_BOARD_PLATFORM_LIST),$(TARGET_BOARD_PLATFORM)))
+-- 
+1.7.9.5
+

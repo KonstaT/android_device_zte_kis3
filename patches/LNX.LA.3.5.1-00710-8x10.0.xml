@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <remote fetch="git://codeaurora.org/" name="caf" review="codeaurora.org"/>
+  <default remote="caf" revision="LNX.LA.3.5.1_RB1.1"/>
+  <project name="device/common" revision="115e9155a5a27392b984e0b5008d6a6acf193ccd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/armv7-a-neon" revision="bf9bc1b311ca6526371880146c0551ff771726b1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/common" revision="11c092a6cbfcf6207f07a9a8e3398e747e7f5461" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/goldfish" revision="2524d39681566f4eca7afb7950e05ab642978263" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/mini-emulator-armv7-a-neon" revision="77bb98e878409fb714738170a2df2df1223dd57b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/mini-emulator-mips" revision="2ff06dda649ba43507a911057f7854a3373ef7d6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/mini-emulator-x86" revision="a2f05b8c5259c232be5b029b2d5e721ba3f70917" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/mips" revision="cba3ddadffd8f92b453b74ea1f2886df3be35314" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/generic/x86" revision="8933282b14fbbd2f43ff2187174fcdd22bea0ee8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="device" name="device/google/accessory/arduino" revision="abc5159a3ca9dbb5c7e364a1eab99901a4440ac5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="device" name="device/google/accessory/demokit" revision="7dfe7f89a3b174709c773fe319531006e46440d9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="device/qcom/common" revision="76ef14b0fb6986622bc451e2fb0150c145a37c18" upstream="LNX.LA.3.5.1_RB1.1">
+    <copyfile dest="build.sh" src="build.sh"/>
+    <copyfile dest="vendor/qcom/build/tasks/generate_extra_images.mk" src="generate_extra_images.mk"/>
+  </project>
+  <project name="device/qcom/sepolicy" revision="882eb24f08914b13be47b5b5bac7a830e9890f74" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="device/sample" revision="0c1d7ba9592f2070e191c896338cf0f2d425390b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="kernel/lk" path="bootable/bootloader/lk" revision="ff47e295bfb6a794ed53e9bd2548806240831760" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="kernel/msm" path="kernel" revision="385a3f1acd491b3694773ebd1e0152e3f23a9061" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/abi/cpp" path="abi/cpp" revision="18f1b5e28734183ff8073fe86dc46bc4ebba8a59" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/art" path="art" revision="c600cc7cf6338e66225eb2bcb8497a4a69da763a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/bionic" path="bionic" revision="0c94231d327d17be2759eafa8ac024df90c9f19f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/bootable/bootloader/legacy" path="bootable/bootloader/legacy" revision="3c491d6efb8ff2534a6934702760a6273f197918" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/bootable/diskinstaller" path="bootable/diskinstaller" revision="60d078a5924284a452a8fe739247704f8b31c754" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/bootable/recovery" path="bootable/recovery" revision="52ba8a27b44e00b88d2d6e556247050f30bd6be3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/build" path="build" revision="4a2302a15bf2328fb3a937c9484f933023033ac6" upstream="LNX.LA.3.5.1_RB1.1">
+    <copyfile dest="Makefile" src="core/root.mk"/>
+  </project>
+  <project groups="cts" name="platform/cts" path="cts" revision="d32570585a5d958370ff0639411c6a25772a13b3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/dalvik" path="dalvik" revision="a1f48a24a1c8aca0ae766988a363ce3c7dcfa992" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/developers/build" path="developers/build" revision="cff002130014158ef48bd14774e3bd24e66a8132" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/developers/demos" path="developers/demos" revision="a7254542b06878f0c3b34a6c3d91b9e7d3990f74" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/developers/docs" path="developers/docs" revision="c0b835ddd9acc27176dc9a0f7d1aa2faf5d51806" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/developers/samples/android" path="developers/samples/android" revision="63adf61e2c7aafcb05128979cc6b8708fa5077f0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/development" path="development" revision="1c961300cd0ab9fa57743e92f3623d6b39582c4d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/docs/source.android.com" path="docs/source.android.com" revision="48fb042cf314333926a5146ee7acc004a9e953c8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/aac" path="external/aac" revision="fa3eba16446cc8f2f5e2dfc20d86a49dbd37299e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/alljoyn/alljoyn_core" path="external/alljoyn/alljoyn_core" revision="83105a1cd6e448dc0ea8bda96e053362a6b31fd3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/alljoyn/common" path="external/alljoyn/common" revision="1eb5e9356792de821beb0eb7e02e62a3e6e03994" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/android-clat" path="external/android-clat" revision="7799d6752671e81b78aadd7874fdecc936047fff" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/android-mock" path="external/android-mock" revision="1922306d33d16f143d5a01daebba4e2cb477d0f5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ant-glob" path="external/ant-glob" revision="0f189400fd2a36bf11bfb058e7f3917eb7ed163a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ant-wireless/ant_native" path="external/ant-wireless/ant_native" revision="af62bfcc4c0ff59686c07a93c181a61923f25710" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ant-wireless/ant_service" path="external/ant-wireless/ant_service" revision="74923d5dbc85392230b33bc7cff689b94a9b8bdc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/antlr" path="external/antlr" revision="47997265eeb7d954a32ece693bbe6dab740872dd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/apache-harmony" path="external/apache-harmony" revision="12bb45ab43a92cbac0fdb111011906e3c123abec" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/apache-http" path="external/apache-http" revision="4af50ee3d3e77c8b7aefd42dbd22d05d581950d2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/apache-qp" path="external/apache-qp" revision="64ea622b23e6612eb8e7dcae6bfd4314beb022a8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/apache-xml" path="external/apache-xml" revision="2aee886cec3ee44b3df9fd3ab7ac6d01efd592c0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/arduino" path="external/arduino" revision="d06daf9bbc46838400461eb8e15842974e38d82a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/bison" path="external/bison" revision="c2418b886165add7f5a31fc5609f0ce2d004a90e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/blktrace" path="external/blktrace" revision="d345431f16b8f76f30a58193ff2b26d5853e1109" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/bluetooth/bluedroid" path="external/bluetooth/bluedroid" revision="0cea9e28e25029a4faa9b726a784d5f775fb29b8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/bouncycastle" path="external/bouncycastle" revision="b1e4d28d756235ec33e45485994581f4590c37ff" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/brctl" path="external/brctl" revision="85130b403dea07b2230efed3287236fa0caefb1c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/bsdiff" path="external/bsdiff" revision="23e322ab19fb7d74c2c37e40ce364d9f709bdcee" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/bson" path="external/bson" revision="ad6fc5dbb5f4369e08f7543b1517c225281900c0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/bzip2" path="external/bzip2" revision="1cb636bd8e9e5cdfd5d5b2909a122f6e80db62de" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ceres-solver" path="external/ceres-solver" revision="399f7d09e0c45af54b77b4ab9508d6f23759b927" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/checkpolicy" path="external/checkpolicy" revision="0d73ef7049feee794f14cf1af88d05dae8139914" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium" path="external/chromium" revision="d8d0d5cef636d5456bf5f3645959409bdc5499aa" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium-libpac" path="external/chromium-libpac" revision="f34af54bcab917eb5943d1918f32d26364f45578" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/chromium-trace" path="external/chromium-trace" revision="8252ae6b83ea65cf871e7981e981da07379f5a0f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org" path="external/chromium_org" revision="a343be20a62039e63d80cf9ba8144a88fd4f88e7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/sdch/open-vcdiff" path="external/chromium_org/sdch/open-vcdiff" revision="e485ff1fb732be2dff497b6aed11d5c0d681de82" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/testing/gtest" path="external/chromium_org/testing/gtest" revision="3b92be903ac01851c3205ce53f12145a8b3f6791" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/WebKit" path="external/chromium_org/third_party/WebKit" revision="3577b3029e3c2f2309f112035a6831c5073e7598" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/angle_dx11" path="external/chromium_org/third_party/angle_dx11" revision="7bed41e5568f54ab64d56e4850c2d30176ae723d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/eyesfree/src/android/java/src/com/googlecode/eyesfree/braille" path="external/chromium_org/third_party/eyesfree/src/android/java/src/com/googlecode/eyesfree/braille" revision="bb4c72f1deb0b8b2b0468b0bf1050462ebcf6135" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/freetype" path="external/chromium_org/third_party/freetype" revision="1a128719884f567fee007cada3ddf20f8f4785af" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/icu" path="external/chromium_org/third_party/icu" revision="43ef607c93a8799d1b280d9a28cebbc6d06552b8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/leveldatabase/src" path="external/chromium_org/third_party/leveldatabase/src" revision="f8f93bd1c752465317533bbcfeda6019041471ca" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/libjingle/source/talk" path="external/chromium_org/third_party/libjingle/source/talk" revision="06a093c73d10bd918baa95312974108bf37b54b4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/libphonenumber/src/phonenumbers" path="external/chromium_org/third_party/libphonenumber/src/phonenumbers" revision="dbba40937755d507fc4ce0697065bcabadab803a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/libphonenumber/src/resources" path="external/chromium_org/third_party/libphonenumber/src/resources" revision="f676e94142b04d9e5e30697f118e35d4ab66bfdf" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/mesa/src" path="external/chromium_org/third_party/mesa/src" revision="d7621cb4af1fda314f830e0e577e73b317f0a3ec" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/openssl" path="external/chromium_org/third_party/openssl" revision="115e0ec2f3be9a4e0ed3ca11e1b86ed217c7b264" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/opus/src" path="external/chromium_org/third_party/opus/src" revision="85681bca27e8939ac474bb1aa019f28c2b5fcb70" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/ots" path="external/chromium_org/third_party/ots" revision="e1ff72c7e1ba0e0a6ef096e8a965b62937cb1c93" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/skia/gyp" path="external/chromium_org/third_party/skia/gyp" revision="d194b7120ce19bf8fd18b65be7851865b7d88e9c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/skia/include" path="external/chromium_org/third_party/skia/include" revision="425017857b2c8efbc272d8a977d5c009ac6f7ec4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/skia/src" path="external/chromium_org/third_party/skia/src" revision="e7523a4679fbeeaf5216a17320c4998715444c18" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/smhasher/src" path="external/chromium_org/third_party/smhasher/src" revision="262a4a0c4ba340e863c7e693672156ff2fee0715" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/third_party/yasm/source/patched-yasm" path="external/chromium_org/third_party/yasm/source/patched-yasm" revision="c580f3c787d8ad2dcccceb4438b7572d9713a296" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/tools/grit" path="external/chromium_org/tools/grit" revision="646f47f4f3b103f878faabfa7f8a4cd2860822a5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/tools/gyp" path="external/chromium_org/tools/gyp" revision="1cf7b53d022d00310b738b24a51dc98d6ea3eb00" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/chromium_org/v8" path="external/chromium_org/v8" revision="d52979abf7b461b62f1824dfd045641d31965a44" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/clang" path="external/clang" revision="a902511dd22624b15cc61e36d167d1cf3549bc74" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/compiler-rt" path="external/compiler-rt" revision="7cba5f1d950495b02bc8da53d27bdbb1b0d4f117" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/connectivity" path="external/connectivity" revision="04cf3ae005e59d9ff4ebfdc9a4570ca330ee0ab6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/crda" path="external/crda" revision="9f955a71ae065dd9fbd50d05d1a0bdc0605af8db" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/curl" path="external/curl" revision="e68addd988448959ea8157c5de637346b4180c33" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/dexmaker" path="external/dexmaker" revision="ca2c032a062d15181606335703f1b042f06da208" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/dhcpcd" path="external/dhcpcd" revision="84b7252b0a9d0edc9a1db1e0c518771d26b23058" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/dnsmasq" path="external/dnsmasq" revision="48dad42938c9d3d0a4d3c044c522d5d2f4563833" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/doclava" path="external/doclava" revision="a3b0f591f10b29f928d4b4e696cfe178982e4cac" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/droiddriver" path="external/droiddriver" revision="21a0001e2426644dd68e6140b5873ebaeafcc3dc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/dropbear" path="external/dropbear" revision="a34ddbe3819bc465968f3676c734b405e655f8b7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/e2fsprogs" path="external/e2fsprogs" revision="8eb0c6d932ac4346c40e4f516f3392fd1dc5ae24" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/easymock" path="external/easymock" revision="c9a234086537e5fd820b110bbd99e3cdc695004c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ebtables" path="external/ebtables" revision="b070104dcb72b99825d645e9e41a5362bd4ff735" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/eclipse-basebuilder" path="external/eclipse-basebuilder" revision="6134da6347cc997e0cf2921aaadfb46f21c05d85" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/eclipse-windowbuilder" path="external/eclipse-windowbuilder" revision="a5f3ee137e94737538ec3bdf9b3716765d178c17" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/eigen" path="external/eigen" revision="5f6f1967d3ac5aeaebd35f7bf0f53c6111524e1b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/elfutils" path="external/elfutils" revision="b23b2dfb354b3ccf5d1c5d39815f02e7048cf516" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/embunit" path="external/embunit" revision="336b7c65098af0d1be69f2db55f4e75342d73b3f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/emma" path="external/emma" revision="77c73b8b1a0c9e33bf48ebc3212d439e46d3094d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/esd" path="external/esd" revision="224a67f2683a7ee997179fc5dd16115e39987b0f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/expat" path="external/expat" revision="0af0cb3bc7519e567bd9daff3dcd315ab0134a99" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/eyes-free" path="external/eyes-free" revision="16bd4c7a4d1bfe229068b637614dad7c48dd2ceb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/fdlibm" path="external/fdlibm" revision="0da5f683c9ddc9442af3b389b4220e91ccffb320" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/flac" path="external/flac" revision="ab37b6247df0e8c4ec0ccaa870e667f62c74975b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/freetype" path="external/freetype" revision="899c67b6cfcd2010784fbf08c5415af16c526e0c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/fsck_msdos" path="external/fsck_msdos" revision="ecfaa24f1c8fd65a3deeafed9921b14d3d3c2c97" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ganymed-ssh2" path="external/ganymed-ssh2" revision="d3724dabc1cfbacd105fe6c422b4dcba80e4fb2d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/gcc-demangle" path="external/gcc-demangle" revision="9241386b62c353302c2f9eccda0672685b252b4d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/genext2fs" path="external/genext2fs" revision="e11a9c7fe6f1cef99aad2f25afaea37b72fe9f93" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/giflib" path="external/giflib" revision="9aef3ea079a57c98a9207f8c3b95a5dc08ee74b5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/google-diff-match-patch" path="external/google-diff-match-patch" revision="cecbe12841337860291c2d6a5728b681ec5fca2a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/grub" path="external/grub" revision="5c3bee7defca81362e98cf8fbd6c20cf47dff00b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/gtest" path="external/gtest" revision="0f1ce3dd0b880b6ae0cf7f5413702b8ef542efb2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/guava" path="external/guava" revision="87ffc45d2619a0c178a058de887e3050bb577efe" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/hamcrest" path="external/hamcrest" revision="69985f92e2ce80184915655cd0d3dfea78a39900" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/harfbuzz" path="external/harfbuzz" revision="858f2d28ac741ef139f74bdbdbcefa7560f17c91" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/harfbuzz_ng" path="external/harfbuzz_ng" revision="3309edccdbc2a92eb03a285abb27c1c1c4a88e43" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/hyphenation" path="external/hyphenation" revision="bfa84834dfeb7fe8d058c2e7e07b5981451ddf82" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/icu4c" path="external/icu4c" revision="f33a461ea1d66bd49fd118a9ec5ee71ac389eb86" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/iproute2" path="external/iproute2" revision="d57e21117e45bb2a7cb9f728233de230d5027e9a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ipsec-tools" path="external/ipsec-tools" revision="f4cb1ee4b00abbfb6f968dc25818c23b4b47e584" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/iptables" path="external/iptables" revision="8af0f62449f97c1047e81b4e357f58bb56f42f3a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/iputils" path="external/iputils" revision="acadef7a134ea68e65f017078f6c6af56d75dcbf" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jack" path="external/jack" revision="5ceb2025ac5d25ed48183ac2d3dac4691fe761fb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/javasqlite" path="external/javasqlite" revision="3b4db8854c911edfd02f5c6b8ef625084a0f5a93" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/javassist" path="external/javassist" revision="9566207cff5871c672fac1f0d4332d93292036d7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jdiff" path="external/jdiff" revision="e4694302d6a3786c64d954e0b3cf42786283bd3c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/jhead" path="external/jhead" revision="31b17e69a87e4caa50f9c6b1a47c84ef75f79d83" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jmdns" path="external/jmdns" revision="f4eb7466d5c09098f9dc54137ed3235e3c43fc9f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jmonkeyengine" path="external/jmonkeyengine" revision="a6b44658eb1c55295f132a36233a11aa2bd8f9cf" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/jpeg" path="external/jpeg" revision="1808bfd1060d2fde90478691a4da8ead0cb0a345" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jsilver" path="external/jsilver" revision="601ffd7efb82f3dce1c1840b5f8e6c759414cdd1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/jsr305" path="external/jsr305" revision="a82868820d6350811b9ddfde4bf8ed5016084269" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/junit" path="external/junit" revision="21a6768e3a9c21cfef5dfc101081ba286739988e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/kernel-headers" path="external/kernel-headers" revision="d0d4cc2ee71d88d582e20a2eeb7d38b7feec40ac" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/kissfft" path="external/kissfft" revision="fab741e82fa1664d7b8b46b8061dd3f2f4dbf6c5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libcap-ng" path="external/libcap-ng" revision="1d1011a3c5049a7f9eef99d22f3704e4367579cc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libffi" path="external/libffi" revision="bcb9a592a47ec641d7cec89e10fcf556132713aa" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libgsm" path="external/libgsm" revision="50761abed8f4734970874165b386cfd4d9599db4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/liblzf" path="external/liblzf" revision="6946aa575b0949d045722794850896099d937cbb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libmtp" path="external/libmtp" revision="7075348937f6a8c9d9211942fcb6c376f4227776" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libnfc-nci" path="external/libnfc-nci" revision="9b4a02c201d750d988584e870768a1f9c4110850" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libnfc-nxp" path="external/libnfc-nxp" revision="9e987ccb716624d658f98abc7db2097e11e3d8ed" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libnl-headers" path="external/libnl-headers" revision="6ccf7349d61f73ac26a0675d735d903ab919c658" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libogg" path="external/libogg" revision="ec0b24fb1468abe37be4164a6feb16568e036bde" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libpcap" path="external/libpcap" revision="3a7bce5dda6a8db92c9248846d0255e68c3a5b2a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libphonenumber" path="external/libphonenumber" revision="485e6d5c6e48a1fc43cc0a090e687c723dac056c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libpng" path="external/libpng" revision="566a101f7217fe62c0492c7ed9a1c470cf4138ca" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libppp" path="external/libppp" revision="706e567fc5ff6b79738a5f470e5aa7b2cae76459" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libselinux" path="external/libselinux" revision="1e2cf2c4a2d15a9b1ca2d353b99fb6884413ffe1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libsepol" path="external/libsepol" revision="47aebeed14d5358da4ac9142b526b2b0bff1e35a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libusb" path="external/libusb" revision="2801917fe150393d4f4a354165fe89550ae22613" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libusb-compat" path="external/libusb-compat" revision="94867ba54eb7faa8efca81cf2214d00bb9143d27" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="libusb_aah" name="platform/external/libusb_aah" path="external/libusb_aah" revision="14419c9d3d0a82243f69238ce927edb52bf3d727" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libvorbis" path="external/libvorbis" revision="de559619fd4dd0d2d9608436696fd44bdf74eba8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/libvpx" path="external/libvpx" revision="8ea67513b005bdad0f8460086f7fb63db306df19" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libxml2" path="external/libxml2" revision="56d2590ef715e6f2c155d1ec348a7e62c5894092" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/libxslt" path="external/libxslt" revision="98f5140c33273d3bd67ca03566f8417406001016" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="libyuv" name="platform/external/libyuv" path="external/libyuv" revision="482a582884351288fb701532359652970b1ba7c0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/linux-tools-perf" path="external/linux-tools-perf" revision="2db19c77b59c71eef27e9876d4c09ceb6966608d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/littlemock" path="external/littlemock" revision="328b01eada8965cd38feea884d4080c31e3763b0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/llvm" path="external/llvm" revision="5d63c52424acc972d6370c50e1f3930d695790b7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/lzma" path="external/lzma" revision="baa3858d3f5d128a5c8466b700098109edcad5f2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/marisa-trie" path="external/marisa-trie" revision="629ed059b1e85cd8e4de363d8b3dc53c15c3e08a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/markdown" path="external/markdown" revision="6f2e3554ae38cc90518d32e02cb57d05988270a6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/mdnsresponder" path="external/mdnsresponder" revision="c46f53f5e072f23051c4eedef730386f7634dc11" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mesa3d" path="external/mesa3d" revision="b9ba3f4ef0bc010edf2999fe4ac1ac7883bc288a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/mksh" path="external/mksh" revision="f8c396c4d446a038358106a301b329607a04633d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mobicore" path="external/mobicore" revision="c0afb2bd9be7332e9c176ce3ad06f7281ebde593" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mockito" path="external/mockito" revision="34f80a94e45f7110ec3444c1d0ecfacc194d009a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mockwebserver" path="external/mockwebserver" revision="e44762f71ed6eeb718a0bb6f3848beb7696fd97d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mp4parser" path="external/mp4parser" revision="16051e950485c6b62127c0446a760111de1a0cb9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/mtpd" path="external/mtpd" revision="141f77c33bb1f6e4e19b7baff08d963f341e9eb7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/naver-fonts" path="external/naver-fonts" revision="9238a39d60763f81b98d96f02b087d52b9d4fd52" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/netcat" path="external/netcat" revision="444644cfa9a2f3002863caa168fb2d6b34dfd1e8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/netperf" path="external/netperf" revision="58ecd3b7c76263900e38921360e334a416aec362" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/neven" path="external/neven" revision="a800c667ea0839a5b28931270cd78385533e6c9d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/nist-pkits" path="external/nist-pkits" revision="ad3f12ec91a6b419bbf4b24b619ed39bf04589ea" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/nist-sip" path="external/nist-sip" revision="b23dbfce7ea84c39cea75b612868a5832cb9af2b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/noto-fonts" path="external/noto-fonts" revision="90372d894b5d9c9f2a111315d2eb3b8de1979ee4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/oauth" path="external/oauth" revision="bc170f58de82000ed6460f111686a850a1890c07" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/objenesis" path="external/objenesis" revision="e8740d2e04179cd15a85dd055cac90b5aeb52589" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/okhttp" path="external/okhttp" revision="80ead76c6e550b5ce2d9267396701b5e53be319a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/open-vcdiff" path="external/open-vcdiff" revision="6d29f2f083baf8250db94ed0b4807e513a84163d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/opencv" path="external/opencv" revision="1691b57dbad9cfc15b9a8b72f8b376733b934ffe" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/openfst" path="external/openfst" revision="5bf56ba7027cd5f22ff52d0138893f7a585135fb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/openssh" path="external/openssh" revision="47da33088eb8dc14f930f09ba0b5b4ff017b0002" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/openssl" path="external/openssl" revision="bb8428f762b3632f493572c4f73957e1281ade79" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/oprofile" path="external/oprofile" revision="4886329fd53290061515485e7cf3ce497fc1b5b9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/pixman" path="external/pixman" revision="70005f9fa14753353faf0fe2e57359913ed3e75a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/ppp" path="external/ppp" revision="6c569d212164aa9334e27abac8884a3d13999420" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk-java" name="platform/external/proguard" path="external/proguard" revision="54f59ac04f3e21d5aecdd46bb1e7f4577924ab92" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/protobuf" path="external/protobuf" revision="48ee66d295979372ed0234cefda42385daae8312" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/protobuf-c" path="external/protobuf-c" revision="f5acb16b4e8b57f5be4083960023982443bddbca" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/qemu" path="external/qemu" revision="cff7bfa51fed5cfadae400bd81c1e7dde8f31945" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/qemu-pc-bios" path="external/qemu-pc-bios" revision="20349dae98d7de09a7e390d4a706c64f1db6edc2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/qrngd" path="external/qrngd" revision="87cda5b67f3c5cf9a198ec6f975287d590b5b747" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/quake" path="external/quake" revision="0d3007afa9ce224e5dffe65382b425c7317ad4f5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/regex-re2" path="external/regex-re2" revision="0d4c52358a1af421705c54bd8a9fdd8a30558a2e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/replicaisland" path="external/replicaisland" revision="99e2e54c5d036048caf09bb05eea0969de093104" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/robolectric" path="external/robolectric" revision="6bf395c984ed3f69711663b006aeffbb0f7e8a90" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/safe-iop" path="external/safe-iop" revision="aa0725fb1da35e47676b6da30009322eb5ed59be" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/scrypt" path="external/scrypt" revision="eb05b73c3bba21fff55529813109de4bad5ddbd1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/sepolicy" path="external/sepolicy" revision="ada4e28f92444ac0eab2431ef5b64b730631af25" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/sfntly" path="external/sfntly" revision="30d4e1f3d81ad9f7a1aa14ce6d2ceb5df56c15cd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/sil-fonts" path="external/sil-fonts" revision="795a2f4339f8a82d6cff187e2a77bb01d5911aac" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/skia" path="external/skia" revision="6df638e3009cedf7ccf9e418be209e049d34312e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/smack" path="external/smack" revision="d7955ce24d294fb2014c59d11fca184471056f44" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/smali" path="external/smali" revision="884603f0d1cb4df6d1d192b7eaf8e5edb643a9f3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/sonivox" path="external/sonivox" revision="7e40c66b5fb811b96e780d84954cb1e939b8acf9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/speex" path="external/speex" revision="fb7db5853ffb841a4d32fea8b5c3a43e6b875cae" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/sqlite" path="external/sqlite" revision="ac0e0d5f866fbce0ebf00d0ddd615464849aa83b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/srec" path="external/srec" revision="2706e1ca0c118cb78fbbbc977e4e95e14fdedebc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/srtp" path="external/srtp" revision="c9e44e6bd5503e1dcd0c19b02763a673664a17f2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/stlport" path="external/stlport" revision="628e14d37c5b239839a466e81c74bf66255b770b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/strace" path="external/strace" revision="1a4e05d53dec658a061acb9869cb1eb1342cd09d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/stressapptest" path="external/stressapptest" revision="0956427aa995561acb4471764158ae057a36dad5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/svox" path="external/svox" revision="6e406a0772bde653e06e226c440e32edd4da6c46" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/tagsoup" path="external/tagsoup" revision="68c2ec9e0acdb3214b7fb91dbab8c9fab8736817" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/tcpdump" path="external/tcpdump" revision="2c7830ed9e76fc9414e758bfb884a21c76f22113" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/timezonepicker-support" path="external/timezonepicker-support" revision="99e91a76fd74bad10266623d67cdb98d011f709e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/tinyalsa" path="external/tinyalsa" revision="c1b682efcd3b3eac3101408231b58ea92c668756" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/tinycompress" path="external/tinycompress" revision="a85e245a09c028d36cbf04f233be10bc583691f5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/tinyxml" path="external/tinyxml" revision="494e448824844d866e805831d1d5f5acb654065c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/tinyxml2" path="external/tinyxml2" revision="5217689394f82ea86556bc37c136f280a41c85f8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/tremolo" path="external/tremolo" revision="f18d65818477fb42d3c3cfb24ae8895b7bee3672" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/v8" path="external/v8" revision="f53dc205fc8ac4f3e92cb554eb15ef0588667a4b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/valgrind" path="external/valgrind" revision="99cfba5460bef5032a52e432ce0936b731e6d8e2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/webkit" path="external/webkit" revision="232cc770a476a60b7c606fb4438acc49e31d79aa" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/webp" path="external/webp" revision="513e97bd307573e2adc776eb5368bd129aceaa4a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/webrtc" path="external/webrtc" revision="446452f84e9cc4c75d8e80f6f05e24793397a19d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/wpa_supplicant_8" path="external/wpa_supplicant_8" revision="c23c48f3beafabef5f779db5920b3187fb839e99" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/xmlwriter" path="external/xmlwriter" revision="e95d92246ee35273dde2bee8b00485cc14c12be5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/xmp_toolkit" path="external/xmp_toolkit" revision="42ea4dc6d1fc2206a7778029070ed9213e3b0fbf" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/yaffs2" path="external/yaffs2" revision="a2cff2275e1b501ff478b03757d6e4f05fddc2db" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/external/zlib" path="external/zlib" revision="b7469a591d0104169c1b19da5e65ea5f11041c00" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/external/zxing" path="external/zxing" revision="7620644768ffc235607b3a94671e49518c18686f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/av" path="frameworks/av" revision="90c041fc48c6970cfb56f6b6cb64506f6602f140" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/base" path="frameworks/base" revision="cbacf037ae98b8277118ecc7e1944c50d8c942d5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/compile/libbcc" path="frameworks/compile/libbcc" revision="9a1c97bd666b6a5583677f1cdac4495e00e4e801" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/compile/mclinker" path="frameworks/compile/mclinker" revision="89a5648fcb366adb25b75aa69a7ad9a34842dd17" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/compile/slang" path="frameworks/compile/slang" revision="80706836b18127b5733d790613a5d1b9f97cbb1d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/ex" path="frameworks/ex" revision="682244b2d228bcd91da997e67fc339cbda4ac8fd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/mff" path="frameworks/mff" revision="b9669b8540a1e5c953374d53b115514335e23c27" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/ml" path="frameworks/ml" revision="5072d507df1fd827ac7b15900c1f113949f76f12" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/native" path="frameworks/native" revision="b8fcfabe1ff1ca894cf0efde2f0e4154ca80b920" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/calendar" path="frameworks/opt/calendar" revision="71c70024936023647681807849703a55504785c1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/carddav" path="frameworks/opt/carddav" revision="f08aa2df132dd8dc32a0013d3750137d9dd9280a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/colorpicker" path="frameworks/opt/colorpicker" revision="70d2a221d43aff3b8e9bd38023d553a9d3190738" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/connectivity" path="frameworks/opt/connectivity" revision="4060bad7ac1c50d8214922c77538776111c62af2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/datetimepicker" path="frameworks/opt/datetimepicker" revision="59426e7724e4361abf87413bca187a23ddd11aef" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/emoji" path="frameworks/opt/emoji" revision="dbbe673145107e99883f62bafd70c5f43f11065c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/inputmethodcommon" path="frameworks/opt/inputmethodcommon" revision="df9dd39c2047992a43b64e13bb0fc348a1630f3b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/mailcommon" path="frameworks/opt/mailcommon" revision="85ddfd5bab5fd7f29e7a31b7c5984d2d046738d8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/mms" path="frameworks/opt/mms" revision="ceda301f413290c94c8df43de98080f51647a295" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/net/voip" path="frameworks/opt/net/voip" revision="b51ed34abbb70994da221c545678d9dc5fe88141" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/photoviewer" path="frameworks/opt/photoviewer" revision="bcec051978637ed1bb65a0d229fd5e25505bfbb1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/opt/telephony" path="frameworks/opt/telephony" revision="6a1a2b7235de235f1840fa5059fb7e6b6948ad76" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/opt/telephony-msim" path="frameworks/opt/telephony-msim" revision="b7b16636460e5562192f58180cba6bd496f85f50" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/timezonepicker" path="frameworks/opt/timezonepicker" revision="ee817344492d7ca692e2130e9cff1aedc1bd2ebb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/opt/vcard" path="frameworks/opt/vcard" revision="5f55ee296e26d5278fd0d91657edddc92766459e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/frameworks/rs" path="frameworks/rs" revision="60c4916417c70da69d542a71f069cfbfdebda234" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/support" path="frameworks/support" revision="48b2cf966f229873733cfc34fcbbfe73282d7d50" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/testing" path="frameworks/testing" revision="f72b54a89001b7af723f2a8f6dd7703bb7ae8c97" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/uiautomator" path="frameworks/uiautomator" revision="73a6efa2c5f282b748aa6a298ee35807bec4b0b6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/volley" path="frameworks/volley" revision="bd04632e0c5b4a29889c1b70089ac2322229b5e6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/webview" path="frameworks/webview" revision="dcbc78c4fea42f9020bac5bf38ffdae536952f77" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/frameworks/wilhelm" path="frameworks/wilhelm" revision="f0c3b4edf597c40aae4ea311575f39c8bcf203df" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/hardware/akm" path="hardware/akm" revision="251fcca1893dee3648c778789959f016cc8ba794" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/hardware/broadcom/libbt" path="hardware/broadcom/libbt" revision="b92b18714d685438066715c90a5ff580516fcf88" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="broadcom_wlan" name="platform/hardware/broadcom/wlan" path="hardware/broadcom/wlan" revision="861ab410524ffc14df76ddeb21130624a75c5a6c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="invensense" name="platform/hardware/invensense" path="hardware/invensense" revision="e6d9ab28b4f4e7684f6c07874ee819c9ea0002a2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/hardware/libhardware" path="hardware/libhardware" revision="19ab368af10c6162708032a67a8c8cead8c6c70c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/hardware/libhardware_legacy" path="hardware/libhardware_legacy" revision="8feab5ec769028fa0b904097e5b9b28ec91918fc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/audio" path="hardware/qcom/audio" revision="09b6c22d06b92d97aa2896f472c0b18292aa00db" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/bt" path="hardware/qcom/bt" revision="8e8d7b7b3925d488a8d4327463ade8a9309a6d86" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/camera" path="hardware/qcom/camera" revision="d265ee9dc64e98155ec146677f4a62094fed9112" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/display" path="hardware/qcom/display" revision="5ae167c42de2e4bd1aff1f12f13088558ebe3203" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/gps" path="hardware/qcom/gps" revision="87ec5c533583668c19fdf50fc0f2963522bd38e3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom" name="platform/hardware/qcom/keymaster" path="hardware/qcom/keymaster" revision="be3338ff28f8a9ab0d8fc42c1fa899b04f0dbae4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/media" path="hardware/qcom/media" revision="891ca1fe84ed793e3c367bcf52327fe4ccf7d201" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom,default" name="platform/hardware/qcom/sensors" path="hardware/qcom/sensors" revision="ed34df925c6c820f71ffc7e539a1cf284e641a31" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="qcom_wlan,default" name="platform/hardware/qcom/wlan" path="hardware/qcom/wlan" revision="48c00cffad300b1b0aeafaead691a9789db3e7f9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/hardware/ril" path="hardware/ril" revision="4ed96c1521e94d773c7e4f07e4906019fd642604" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/hardware/ti/omap3" path="hardware/ti/omap3" revision="3bbaa29066a684d01df42ddf0365266e59f2dc44" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="omap4" name="platform/hardware/ti/omap4xxx" path="hardware/ti/omap4xxx" revision="2bfd180d5257d72f7c22c80741e6b03470f3aa60" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/hardware/ti/wlan" path="hardware/ti/wlan" revision="495914562a315a5152780709ab622cd987561de5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/hardware/ti/wpan" path="hardware/ti/wpan" revision="9fc27663273414cee93f5219d48a28fe84b0bb7e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/libcore" path="libcore" revision="77c1d2c2a2af9c68d5c5068ff1931f6fdf39c350" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk-java" name="platform/libnativehelper" path="libnativehelper" revision="e83681788121df896ef0fb3d3b7b9b1a9d203d8c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/ndk" path="ndk" revision="e58ef003be4306bb53a8c11331146f39e4eab31f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/BasicSmsReceiver" path="packages/apps/BasicSmsReceiver" revision="89b51513da84c3ce7fdbd9949e422351fd726dc5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Bluetooth" path="packages/apps/Bluetooth" revision="ede96b3bc31861b04f32552faba58f68ea33db3a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Browser" path="packages/apps/Browser" revision="ddf1bbf6c15369564fa962ae3661096ae63356fe" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Calculator" path="packages/apps/Calculator" revision="100db52a8e915fcf7764e7b2062531b5c0ed0b30" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Calendar" path="packages/apps/Calendar" revision="960d10be261a0bdec70e066e429b2b38b855378a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Camera" path="packages/apps/Camera" revision="41f6ab4ea66270c788f90281ee066510be3485c9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Camera2" path="packages/apps/Camera2" revision="54ab7f70ea0dc0cb1c0e35fd0401b1e0c7d13f7b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/CellBroadcastReceiver" path="packages/apps/CellBroadcastReceiver" revision="458cced89fb086b0d8d56ad4b493157a981e219a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/CertInstaller" path="packages/apps/CertInstaller" revision="d7c4ce9c2f4e2917cc1164eb11e3ea65030b068d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Contacts" path="packages/apps/Contacts" revision="6a1fc663c4b93390a0337645c057c75a78129ef8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/ContactsCommon" path="packages/apps/ContactsCommon" revision="d0f6ede33b41db67d17eb7384c21ec9e3732242c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/DeskClock" path="packages/apps/DeskClock" revision="bee058082055d55029b9b7b8c873eb781d4ace10" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Dialer" path="packages/apps/Dialer" revision="31eb536da4ebb8341533f8c5778f65c65c4daa86" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Email" path="packages/apps/Email" revision="1b0e04641fda3d4fdd784449fafab4cbf73f359f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Exchange" path="packages/apps/Exchange" revision="d21b47c62ed9ec69235ed7ce0066c3387ef3a281" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Gallery" path="packages/apps/Gallery" revision="81475bcaaa15b2591f96f3db827a1851422de81d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Gallery2" path="packages/apps/Gallery2" revision="3952bd01017dd9561cf4f396aff79473dced6f44" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/HTMLViewer" path="packages/apps/HTMLViewer" revision="9715e7c99a3a86162718d7932aaa174090abc381" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/InCallUI" path="packages/apps/InCallUI" revision="e60fa0b45301338fccf07f03d33295883ade21e2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/KeyChain" path="packages/apps/KeyChain" revision="5af3677d8bfb4b6eb79056325892c6be33d9f687" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Launcher2" path="packages/apps/Launcher2" revision="bb8e5f8e6b66c61d7f282d390c6f1bb34d411278" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Launcher3" path="packages/apps/Launcher3" revision="a03061912d1e34b31736f803b25e1d6b9dc30803" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/LegacyCamera" path="packages/apps/LegacyCamera" revision="379e0cba9b258670b3bd549a0af32b1993a99502" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Mms" path="packages/apps/Mms" revision="ba17e4fd676d5c3b7e84159a4331ecb3d462015a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Music" path="packages/apps/Music" revision="9aa0c698bc6dc0965839d0408de1eb26bbfdc56b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/MusicFX" path="packages/apps/MusicFX" revision="12952963a12ac70c5e6661548be3a6920d329816" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Nfc" path="packages/apps/Nfc" revision="df17d0556773571180f515bb18401dd57b12c945" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/OneTimeInitializer" path="packages/apps/OneTimeInitializer" revision="01e429c08e51291315890de9677151a7e0b6ad35" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/PackageInstaller" path="packages/apps/PackageInstaller" revision="a18ea2d493f02ee3c43e54b99d64c8d9e9ea54ba" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Phone" path="packages/apps/Phone" revision="65cd2804673d32cf8209ba56eabfd164dbae9c6f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/PhoneCommon" path="packages/apps/PhoneCommon" revision="fe58bc79387e15d90fc1a6878ed64f6a6797626d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Protips" path="packages/apps/Protips" revision="e953b2f84febfbc415951e83ecff40d265deab81" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Provision" path="packages/apps/Provision" revision="78ca0db658fe6253d506916e36319e620476f809" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/QuickSearchBox" path="packages/apps/QuickSearchBox" revision="58fdb753c9d580bd299ee5a8270ccb08c8fc9b29" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Settings" path="packages/apps/Settings" revision="4816dab37f484f7ab380838a9511f0f1d33c6eed" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/SmartCardService" path="packages/apps/SmartCardService" revision="29eae320a4bd222b5ff1c092f84f1aebba88d0b7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/SoundRecorder" path="packages/apps/SoundRecorder" revision="992a71a0bbb36d3421971c57e54a2cdfbe5713c3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/SpareParts" path="packages/apps/SpareParts" revision="4db997871e3f4c3f84660815096e5276b47c5c91" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/SpeechRecorder" path="packages/apps/SpeechRecorder" revision="536aa74ff3a77186bef29dc9333a34688fa59d13" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Stk" path="packages/apps/Stk" revision="4bdfe5121d1bab9937ddb5c616671f1c9fd0c928" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/Tag" path="packages/apps/Tag" revision="f2e42cab45e71315965d01dbc41e9ed0abc8aed8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/UnifiedEmail" path="packages/apps/UnifiedEmail" revision="1c33edb1dd1205521531f28af39dd2260940bf05" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/VideoEditor" path="packages/apps/VideoEditor" revision="80481dcad4ae4255ad2c855c3faab217d388a03d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/apps/VoiceDialer" path="packages/apps/VoiceDialer" revision="3a1db314a3c0021217b926491ae1c6e05ef08850" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/experimental" path="packages/experimental" revision="1a64d7b489d1c572dc9fd2edfd88d53005653c75" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/inputmethods/LatinIME" path="packages/inputmethods/LatinIME" revision="1d0a5cb88e150d784b108e47ed802ad3caeef76e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/inputmethods/OpenWnn" path="packages/inputmethods/OpenWnn" revision="d7b59e82caa3235eadf3b469523187474f7bbabb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/inputmethods/PinyinIME" path="packages/inputmethods/PinyinIME" revision="28fb7155d6c46054c2fe92cfb1c0cfdc3a7670eb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/ApplicationsProvider" path="packages/providers/ApplicationsProvider" revision="3347f31bd268ca3153abe5def9361f625bd73efd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/CalendarProvider" path="packages/providers/CalendarProvider" revision="d6570440bad0ade747b012543128f2b9bb607353" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/ContactsProvider" path="packages/providers/ContactsProvider" revision="44eca90d07827f90ce701dcc69000b29744a0fcd" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/DownloadProvider" path="packages/providers/DownloadProvider" revision="15c506ca259782854d5138a4d4a5c336901b1546" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/MediaProvider" path="packages/providers/MediaProvider" revision="08592ed99552ad0144129e44a329821daff9a1ff" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/PartnerBookmarksProvider" path="packages/providers/PartnerBookmarksProvider" revision="96d0a80af45923767baf449fc8c735c2f71d64ae" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/TelephonyProvider" path="packages/providers/TelephonyProvider" revision="20fa3f46291bc971c13b787ce0cd972b73deba4d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/providers/UserDictionaryProvider" path="packages/providers/UserDictionaryProvider" revision="361f35b7b1fe758d93e0952536a298b2ed045a89" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/screensavers/Basic" path="packages/screensavers/Basic" revision="6117c111d7e09c6fad2d84368c3dac9566b4923c" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/screensavers/PhotoTable" path="packages/screensavers/PhotoTable" revision="37a3dee9730ded47a6ed5cd0bd2e5b7e9c3ffc8f" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/screensavers/WebView" path="packages/screensavers/WebView" revision="6e0a80f6faed6191acc8ce1b6c79eada09e9e042" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/services/Telephony" path="packages/services/Telephony" revision="3b9cdd077e36c270964435394c85cd54fdd75c59" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/Basic" path="packages/wallpapers/Basic" revision="137630c2376784b0ecd57a6d333fbdfba7d27fab" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/Galaxy4" path="packages/wallpapers/Galaxy4" revision="73c9c36be07c09426f977b7a3d119f48eafbda06" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/HoloSpiral" path="packages/wallpapers/HoloSpiral" revision="32466d1b116d9339a1427338780b02aeb20bc3d9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/LivePicker" path="packages/wallpapers/LivePicker" revision="3e3615233034c9d7a05c3373b660dd5a05f3dab3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/MagicSmoke" path="packages/wallpapers/MagicSmoke" revision="5fb10178b0d92900cfaf4f21d7a52c63b4195d2e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/MusicVisualization" path="packages/wallpapers/MusicVisualization" revision="6a143a7af6b49c81529b2f602e8da5fcfd40d640" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/NoiseField" path="packages/wallpapers/NoiseField" revision="53db91c32eda6a5c46b5070d2db256bfb7c47018" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/packages/wallpapers/PhaseBeam" path="packages/wallpapers/PhaseBeam" revision="d820f2943126c7155e164436a1f059f426cfc935" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/pdk" path="pdk" revision="8dbc49a9c359986d31e5e73724afa7490b1e7f9a" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin" name="platform/prebuilts/clang/darwin-x86/3.1" path="prebuilts/clang/darwin-x86/3.1" revision="426233405bef3c7c825095ab14256c3773894b9b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin" name="platform/prebuilts/clang/darwin-x86/3.2" path="prebuilts/clang/darwin-x86/3.2" revision="af856d77b3cbb1f6afccdc531bee991403c28907" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="darwin,arm" name="platform/prebuilts/clang/darwin-x86/arm/3.3" path="prebuilts/clang/darwin-x86/arm/3.3" revision="54acc51e28850485e380b55916868a4e1ff17998" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="darwin" name="platform/prebuilts/clang/darwin-x86/host/3.3" path="prebuilts/clang/darwin-x86/host/3.3" revision="682de6b44a68579f40e39faf9766196158759154" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="darwin,mips" name="platform/prebuilts/clang/darwin-x86/mips/3.3" path="prebuilts/clang/darwin-x86/mips/3.3" revision="da3dad928542362835082b2eda44e4dc315d65bb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="darwin,x86" name="platform/prebuilts/clang/darwin-x86/x86/3.3" path="prebuilts/clang/darwin-x86/x86/3.3" revision="f67a83f35e30f92b312fbee852184c3f6dc38f34" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux" name="platform/prebuilts/clang/linux-x86/3.1" path="prebuilts/clang/linux-x86/3.1" revision="e95b4ce22c825da44d14299e1190ea39a5260bde" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux" name="platform/prebuilts/clang/linux-x86/3.2" path="prebuilts/clang/linux-x86/3.2" revision="471afab478649078ad7c75ec6b252481a59e19b8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="linux,arm" name="platform/prebuilts/clang/linux-x86/arm/3.3" path="prebuilts/clang/linux-x86/arm/3.3" revision="2f6d2db9e2af3507d132cf5d286a42fe1d47f7bc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="linux" name="platform/prebuilts/clang/linux-x86/host/3.3" path="prebuilts/clang/linux-x86/host/3.3" revision="bba7eb9ee3ec2af12b926023256dbe4799995645" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="linux,mips" name="platform/prebuilts/clang/linux-x86/mips/3.3" path="prebuilts/clang/linux-x86/mips/3.3" revision="51f8e2760628588fe268438d612d942c30d13fb2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="linux,x86" name="platform/prebuilts/clang/linux-x86/x86/3.3" path="prebuilts/clang/linux-x86/x86/3.3" revision="017a8a67f92a66b29ab17772e50642a7b9d0f8e6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/prebuilts/devtools" path="prebuilts/devtools" revision="dfcc84d17a59383eb25fba209a0c38b74c1ea653" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/prebuilts/eclipse" path="prebuilts/eclipse" revision="76f99d69c6843137da55d1a28c81920ac453ec15" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.6" path="prebuilts/gcc/darwin-x86/arm/arm-eabi-4.6" revision="21b2cba584638ed5ffad8e3fd3e6808bfa299cf0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-eabi-4.7" path="prebuilts/gcc/darwin-x86/arm/arm-eabi-4.7" revision="26cb1865482ce3d9dd47ff5766180f3e7ade98ec" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.6" path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.6" revision="0f74cbc89b93c4db7fbf737f561cd69221f779a7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,arm" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.7" path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.7" revision="9a80d8ace620a6ba1396bfef04ff97c476a7f8ee" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin" name="platform/prebuilts/gcc/darwin-x86/host/headers" path="prebuilts/gcc/darwin-x86/host/headers" revision="4ac4f7cc41cf3c9e36fc3d6cf37fd1cfa9587a68" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin" name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" path="prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" revision="59fe3fb4c1e10aaf994fc975f46eb8e560eb7508" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,mips" name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.6" path="prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.6" revision="837cdd9b3ac7231daaf961056c7505843130f667" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,mips" name="platform/prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.7" path="prebuilts/gcc/darwin-x86/mips/mipsel-linux-android-4.7" revision="23b86b6afa0287d2b45ba03ef347a6a6fcd104f3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,x86" name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.6" path="prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.6" revision="042d6130038c95be86fcea5dddda2db07bd5aa27" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,x86" name="platform/prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.7" path="prebuilts/gcc/darwin-x86/x86/i686-linux-android-4.7" revision="b8d6b5d787751a78c0a1d38f209037a933b2371b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,darwin,x86" name="platform/prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.7" path="prebuilts/gcc/darwin-x86/x86/x86_64-linux-android-4.7" revision="4ddebe05a38829b8630c9271019895ed68d78ec1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.6" path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.6" revision="d73a051b1fd1d98f5c2463354fb67898f0090bdb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" path="prebuilts/gcc/linux-x86/arm/arm-eabi-4.7" revision="8b880805d454664b3eed11d0f053cdeafa1ff06e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6" revision="71c99ec3db1503a2124d5e287097d58b964deef7" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,arm" name="platform/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.7" path="prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.7" revision="a1e239a0bb5cd1d69680bf1075883aa9a7bf2429" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux" name="platform/prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.4.3" path="prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.4.3" revision="10191e2f442c5409cb70783508658d474612a97e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux" name="platform/prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6" path="prebuilts/gcc/linux-x86/host/i686-linux-glibc2.7-4.6" revision="95bb5b66b3ec5769c3de8d3f25d681787418e7d2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux" name="platform/prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6" path="prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6" revision="ebdad82e61c16772f6cd47e9f11936bf6ebe9aa0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,mips" name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.6" path="prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.6" revision="90fc0bd53f2d07ef2383bfad53671f76801c740e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,mips" name="platform/prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.7" path="prebuilts/gcc/linux-x86/mips/mipsel-linux-android-4.7" revision="e5c0976a142054784f7b695018448f7288c4fe58" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,x86" name="platform/prebuilts/gcc/linux-x86/x86/i686-linux-android-4.6" path="prebuilts/gcc/linux-x86/x86/i686-linux-android-4.6" revision="b9ebba077c2f62e930b16240d7f3ad61f1ad1dfc" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,x86" name="platform/prebuilts/gcc/linux-x86/x86/i686-linux-android-4.7" path="prebuilts/gcc/linux-x86/x86/i686-linux-android-4.7" revision="c7931763d41be602407ed9d71e2c0292c6597e00" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,linux,x86" name="platform/prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.7" path="prebuilts/gcc/linux-x86/x86/x86_64-linux-android-4.7" revision="bbe08f8958377ba3a06f4081ed13b2399db448fb" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/prebuilts/maven_repo/android" path="prebuilts/maven_repo/android" revision="84da01fa4991736839db006caf681a367fae7644" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/prebuilts/misc" path="prebuilts/misc" revision="cd7ef23e7d596cffbb7ccbd30fac551682dae631" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/prebuilts/ndk" path="prebuilts/ndk" revision="c792f0bd9fff7aea2887c60bbb3a9bbdb534ffa3" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="darwin" name="platform/prebuilts/python/darwin-x86/2.7.5" path="prebuilts/python/darwin-x86/2.7.5" revision="5a12c0d0a3b131e0ceba8a22f2aee59527a172c8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="linux" name="platform/prebuilts/python/linux-x86/2.7.5" path="prebuilts/python/linux-x86/2.7.5" revision="3953bfac7f26ccc74f4c4ae2f178fa8d9f94c4db" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/prebuilts/qemu-kernel" path="prebuilts/qemu-kernel" revision="21a68e06a104be3f98d776a5bb34ec98643c5bc9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/prebuilts/runtime" path="prebuilts/runtime" revision="cf91192a5e0014fe7b98827abbf6daf9337c472e" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/prebuilts/sdk" path="prebuilts/sdk" revision="66be2ae5d600b08970cb86f8111eea37f6e9f424" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk,tools" name="platform/prebuilts/tools" path="prebuilts/tools" revision="5a48c04c4bb5f079bc757e29864a42427378e051" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/sdk" path="sdk" revision="86de8a911717ce2581b2b8eafd4ad3fd86577e08" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/bluetooth" path="system/bluetooth" revision="985bf15264d865fe7b9c5b45f61c451cbaafa43d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/core" path="system/core" revision="bdb576e57f0db231b3c9fd870e3b91da5417a2db" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/extras" path="system/extras" revision="d984f48f2e0a39b41fea8a859bd8909ed7f6d8c2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/media" path="system/media" revision="50bce942678f52d7319c7a17b4a6b4d36afaebf9" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/netd" path="system/netd" revision="1ecac6e4e1b11116053a5d3148f673c93e27f161" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/system/qcom" path="system/qcom" revision="eaaa9e2386c7a23f5d259ec82fb44a7a4e9a8a2d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/security" path="system/security" revision="ee8068b9e7bfb2770635062fc9c2035be2142bd8" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/system/vold" path="system/vold" revision="5a1ab40759de3cacad3b30451674fd43c62d2d4b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/tools/base" path="tools/base" revision="aca3dbe3fc617175bfb715bc573048ab2e14c18d" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="tools" name="platform/tools/external/fat32lib" path="tools/external/fat32lib" revision="5b54b0e25a4b55fa6a180d225f8f1790fb63287b" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="tools" name="platform/tools/external/gradle" path="tools/external/gradle" revision="8ff4a755637a21ac7b5918d86302e22ba3f7fa37" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project groups="pdk" name="platform/tools/swt" path="tools/swt" revision="fe30ee3a716015332e696d34d19bc27146a92cb6" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/bluetooth" path="vendor/qcom/opensource/bluetooth" revision="2d110db94b1ae86c02bf75f2bb77f335ddcf4970" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/fm" path="vendor/qcom/opensource/fm" revision="5d4c1abb6e788e03a2dbeff2649aa606d8ab7ba5" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/kernel/kernel-tests" path="vendor/qcom/opensource/kernel-tests" revision="cf01c5759d58ac49cc4b1098705a009a56f718af" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/location" path="vendor/qcom/opensource/location" revision="3f695a44630331368bf86cf247e803b2185b84e0" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/stm-log" path="vendor/qcom/opensource/stm-log" revision="f802c8b4d21bad8d3c665292f683cef9249594f4" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/testframework" path="vendor/qcom/opensource/testframework" revision="a97b3583e088f4ee85f0495a9af416426f5d5e25" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/time-services" path="vendor/qcom/opensource/time-services" revision="2baccc1e8b705ac8ec93a6129dd849c9c6998074" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom-opensource/wlan/prima" path="vendor/qcom/opensource/wlan/prima" revision="101171d2e918c40531acf1bd4ccf55deb5431c88" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/copper" path="device/qcom/msm8974" revision="4646136a389d1cf5fcfd2136bc3a0df68fc8bbc2" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/mpq8064" path="device/qcom/mpq8064" revision="10824b590c00fd880199e7eca7c66fa73c4fe187" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm7627a" path="device/qcom/msm7627a" revision="c83a8a54538066778dd3ae7c74a3477b0b6cdf95" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm7630_surf" path="device/qcom/msm7630_surf" revision="e44a22897120fd27b3cc17525862b6ce55364860" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm8226" path="device/qcom/msm8226" revision="780924136fa8abd4b897b42c7c9a5db52d5dbcf1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm8610" path="device/qcom/msm8610" revision="055bf238c93793c54650996ca96117c5032287ef" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm8660_surf" path="device/qcom/msm8660_surf" revision="ec4fa1c202ba3c699bbf4b775e892c7cc2dea267" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/msm8960" path="device/qcom/msm8960" revision="307ef9729331e58b4afa9bdccbea0c0b471b33d1" upstream="LNX.LA.3.5.1_RB1.1"/>
+  <project name="platform/vendor/qcom/zinc" path="device/qcom/apq8084" revision="1a15900e35eb3aa4bbfa213710f02654a07ec9d4" upstream="LNX.LA.3.5.1_RB1.1"/>
+</manifest>

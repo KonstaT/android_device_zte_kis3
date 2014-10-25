@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="github"
+        fetch="git://github.com/" />
+
+    <remove-project name="kernel/msm" />
+
+    <!-- ZTE Open C / Kis 3 -->
+    <project path="device/zte/kis3" name="KonstaT/android_device_zte_kis3" remote="github" revision="LNX.LA.3.5.1" />
+    <project path="kernel" name="KonstaT/android_kernel_zte_msm8610" remote="github" revision="LNX.LA.3.5.1" />
+    <project path="vendor/zte" name="KonstaT/proprietary_vendor_zte" remote="github" revision="LNX.LA.3.5.1" />
+
+    <!-- Prima - update to LNX.LA.3.5.1-08310 -->
+    <remove-project name="platform/vendor/qcom-opensource/wlan/prima" />
+    <project name="platform/vendor/qcom-opensource/wlan/prima" path="vendor/qcom/opensource/wlan/prima" revision="48008c2d311a747649ae766107d3d3054424b0a1" upstream="LNX.LA.3.5.1_RB1.2"/>
+
+    <!-- BusyBox -->
+    <project name="CyanogenMod/android_external_busybox" path="external/busybox" remote="github" revision="2955fd17ef950705005d1a69b59d192e728a1bb1" />
+</manifest>

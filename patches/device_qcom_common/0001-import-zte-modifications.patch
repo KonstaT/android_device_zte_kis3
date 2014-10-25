@@ -1,0 +1,781 @@
+From 7d26d62404349611d274b2b69a6a506f837b9b84 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Sat, 28 Jun 2014 12:46:19 +0300
+Subject: [PATCH 1/4] import zte modifications
+
+Change-Id: Ib621c64d8e9e15eabd1d5aa7eb9ff242558838e4
+---
+ common.mk                                          |    7 +-
+ .../frameworks/base/core/res/res/values/config.xml |   15 ++
+ .../base/core/res/res/xml/power_profile.xml        |   63 +++++
+ .../base/core/res/res/xml/storage_list.xml         |   12 +-
+ .../services/Telephony/res/values/config.xml       |    6 -
+ rootdir/etc/init.class_main.sh                     |    5 +-
+ rootdir/etc/init.qcom.bt.sh                        |   20 +-
+ rootdir/etc/init.qcom.factory.sh                   |    1 +
+ rootdir/etc/init.qcom.post_boot.sh                 |    1 +
+ rootdir/etc/init.qcom.rc                           |   59 ++---
+ rootdir/etc/init.qcom.usb.rc                       |  255 ++++++++++++++++++--
+ rootdir/etc/init.qcom.usb.sh                       |    9 +-
+ rootdir/etc/init.qcom.wifi.sh                      |   16 +-
+ 13 files changed, 372 insertions(+), 97 deletions(-)
+ create mode 100644 overlay/frameworks/base/core/res/res/xml/power_profile.xml
+
+diff --git a/common.mk b/common.mk
+index a0c628d..dcca112 100644
+--- a/common.mk
++++ b/common.mk
+@@ -655,10 +655,7 @@ PRODUCT_PACKAGES_DEBUG :=
+ 
+ 
+ PRODUCT_COPY_FILES := \
+-    frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
+-    frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+-    frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+     frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+     frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+@@ -667,9 +664,7 @@ PRODUCT_COPY_FILES := \
+     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+     frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+     frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+-    frameworks/native/data/etc/android.hardware.sensor.gyroscope.xml:system/etc/permissions/android.hardware.sensor.gyroscope.xml \
+     frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+-    frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+     packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+ 
+@@ -718,7 +713,7 @@ PRODUCT_LOCALES += hdpi mdpi
+ 
+ PRODUCT_PROPERTY_OVERRIDES += \
+     ro.vendor.extension_library=/vendor/lib/libqc-opt.so \
+-    persist.radio.apm_sim_not_pwdn=1
++    persist.radio.apm_sim_not_pwdn=0
+ 
+ PRODUCT_PRIVATE_KEY := device/qcom/common/qcom.key
+ 
+diff --git a/overlay/frameworks/base/core/res/res/values/config.xml b/overlay/frameworks/base/core/res/res/values/config.xml
+index 45758b7..400ad9b 100644
+--- a/overlay/frameworks/base/core/res/res/values/config.xml
++++ b/overlay/frameworks/base/core/res/res/values/config.xml
+@@ -199,4 +199,19 @@
+     <!-- Whether camera shutter sound is forced or not  (country specific). -->
+     <bool name="config_camera_sound_forced">true</bool>
+ 
++    <!-- Indicate whether the SD card is accessible without removing the battery. -->
++    <bool name="config_batterySdCardAccessibility">true</bool>
++
++    <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
++    <bool name="config_intrusiveNotificationLed">true</bool>
++
++    <!-- Minimum screen brightness setting allowed by the power manager.
++         The user is forbidden from setting the brightness below this level. -->
++    <integer name="config_screenBrightnessSettingMinimum">20</integer>
++
++    <!-- Screen brightness used to dim the screen when the user activity
++         timeout expires.  May be less than the minimum allowed brightness setting
++         that can be set by the user. -->
++    <integer name="config_screenBrightnessDim">20</integer>
++
+ </resources>
+diff --git a/overlay/frameworks/base/core/res/res/xml/power_profile.xml b/overlay/frameworks/base/core/res/res/xml/power_profile.xml
+new file mode 100644
+index 0000000..f5a528f
+--- /dev/null
++++ b/overlay/frameworks/base/core/res/res/xml/power_profile.xml
+@@ -0,0 +1,63 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++**
++** Copyright 2009, The Android Open Source Project
++**
++** Licensed under the Apache License, Version 2.0 (the "License")
++** you may not use this file except in compliance with the License.
++** You may obtain a copy of the License at
++**
++**     http://www.apache.org/licenses/LICENSE-2.0
++**
++** Unless required by applicable law or agreed to in writing, software
++** distributed under the License is distributed on an "AS IS" BASIS,
++** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++** See the License for the specific language governing permissions and
++** limitations under the License.
++*/
++-->
++
++<device name="Android">
++    <item name="none">0</item>
++    <item name="screen.on">72</item>
++    <item name="screen.full">146</item>
++    <item name="bluetooth.active">7.5</item>
++    <item name="bluetooth.on">1.5</item>
++    <item name="wifi.on">3.5</item>
++    <item name="wifi.active">55</item>
++    <item name="wifi.scan">52.1</item>
++    <item name="dsp.audio">50</item>
++    <item name="dsp.video">113.5</item>
++    <item name="radio.active">185.6</item>
++    <item name="radio.scanning">122.68</item>
++    <item name="gps.on">49.7</item>
++    <array name="radio.on">
++        <value>1.6</value>
++        <value>2.4</value>
++    </array>
++    <array name="cpu.speeds">
++        <value>300000</value>
++        <value>400000</value>
++        <value>600000</value>
++        <value>800000</value>
++        <value>1000000</value>
++        <value>1200000</value>
++    </array>
++    <item name="cpu.idle">1.4</item>
++    <array name="cpu.active">
++        <value>28.5</value>
++        <value>35.33</value>
++        <value>76</value>
++        <value>127</value>
++        <value>206</value>
++        <value>293</value>
++    </array>
++    <item name="battery.capacity">1400</item>
++    <array name="wifi.batchedscan">
++        <value>.0002</value>
++        <value>.002</value>
++        <value>.02</value>
++        <value>.2</value>
++        <value>2</value>
++    </array>
++</device>
+diff --git a/overlay/frameworks/base/core/res/res/xml/storage_list.xml b/overlay/frameworks/base/core/res/res/xml/storage_list.xml
+index 2eb5a31..eb6c110 100755
+--- a/overlay/frameworks/base/core/res/res/xml/storage_list.xml
++++ b/overlay/frameworks/base/core/res/res/xml/storage_list.xml
+@@ -35,17 +35,9 @@
+ -->
+ 
+ <StorageList xmlns:android="http://schemas.android.com/apk/res/android">
+-    <!-- internal emulated storage -->
+-    <storage android:mountPoint="/storage/sdcard0"
+-            android:storageDescription="@string/storage_internal"
+-            android:primary="true"
+-            android:emulated="true"
+-            android:removable="false"
+-            android:mtpReserve="100" />
+-        <storage android:mountPoint="/storage/sdcard1"
++        <storage android:mountPoint="/storage/sdcard0"
+             android:storageDescription="@string/storage_sd_card"
+-            android:primary="false"
+-            android:emulated="false"
++            android:primary="true"
+             android:removable="true"
+             android:allowMassStorage="true" />
+ </StorageList>
+diff --git a/overlay/packages/services/Telephony/res/values/config.xml b/overlay/packages/services/Telephony/res/values/config.xml
+index afb1bde..d7e85b2 100644
+--- a/overlay/packages/services/Telephony/res/values/config.xml
++++ b/overlay/packages/services/Telephony/res/values/config.xml
+@@ -23,12 +23,6 @@
+          successfully placing the OTA call -->
+     <integer name="OtaShowListeningScreen">1</integer>
+ 
+-    <!-- Flag indicating if the phone is a world phone -->
+-    <bool name="world_phone">true</bool>
+-
+-    <!-- Flag indicating if the tty is enabled -->
+-    <bool name="tty_enabled">true</bool>
+-
+     <!-- Flag indicating if dtmf tone type is enabled -->
+     <bool name="dtmf_type_enabled">true</bool>
+ 
+diff --git a/rootdir/etc/init.class_main.sh b/rootdir/etc/init.class_main.sh
+index b95b754..ffccc4b 100755
+--- a/rootdir/etc/init.class_main.sh
++++ b/rootdir/etc/init.class_main.sh
+@@ -60,8 +60,9 @@ case "$baseband" in
+     multisim=`getprop persist.radio.multisim.config`
+ 
+     if [ "$multisim" = "dsds" ] || [ "$multisim" = "dsda" ]; then
+-        stop ril-daemon
+-        start ril-daemon
++        # ZTE_MODIFY maxiaoqiang for ril-daemon not starting
++        #stop ril-daemon
++        #start ril-daemon
+         start ril-daemon1
+     elif [ "$multisim" = "tsts" ]; then
+         stop ril-daemon
+diff --git a/rootdir/etc/init.qcom.bt.sh b/rootdir/etc/init.qcom.bt.sh
+index a153217..f557ee8 100644
+--- a/rootdir/etc/init.qcom.bt.sh
++++ b/rootdir/etc/init.qcom.bt.sh
+@@ -105,6 +105,7 @@ config_bt ()
+         setprop ro.bluetooth.sap true
+         setprop ro.bluetooth.dun false
+         ;;
++    # ZTE_MODIFY cuiningning for bluetooth SIG certification disable MAP,SAP,DUN 20140409
+     "msm")
+         setprop ro.qualcomm.bluetooth.opp true
+         setprop ro.qualcomm.bluetooth.hfp true
+@@ -112,14 +113,14 @@ config_bt ()
+         setprop ro.qualcomm.bluetooth.pbap true
+         setprop ro.qualcomm.bluetooth.ftp true
+         setprop ro.qualcomm.bluetooth.nap true
+-        setprop ro.bluetooth.sap true
+-        setprop ro.bluetooth.dun true
++        setprop ro.bluetooth.sap false
++        setprop ro.bluetooth.dun false
+         case $btsoc in
+           "ath3k")
+               setprop ro.qualcomm.bluetooth.map false
+               ;;
+           *)
+-              setprop ro.qualcomm.bluetooth.map true
++              setprop ro.qualcomm.bluetooth.map false
+               ;;
+         esac
+         ;;
+@@ -129,14 +130,16 @@ config_bt ()
+         setprop ro.qualcomm.bluetooth.hsp true
+         setprop ro.qualcomm.bluetooth.pbap true
+         setprop ro.qualcomm.bluetooth.ftp true
+-        setprop ro.qualcomm.bluetooth.map true
++        setprop ro.qualcomm.bluetooth.map false
+         setprop ro.qualcomm.bluetooth.nap true
+-        setprop ro.bluetooth.sap true
+-        setprop ro.bluetooth.dun true
++        setprop ro.bluetooth.sap false
++        setprop ro.bluetooth.dun false
+         ;;
+   esac
++  # ZTE_MODIFY end 20140409
+ 
+   #Enable Bluetooth Profiles specific to target Dynamically
++  # ZTE_MODIFY cuiningning for bluetooth SIG certification change hfp version 1.5 20140409 
+   case $target in
+     "msm8960")
+        if [ "$btsoc" != "ath3k" ] && [ "$soc_hwid" != "130" ]
+@@ -148,7 +151,7 @@ config_bt ()
+     "msm8974" | "msm8226" | "msm8610" )
+        if [ "$btsoc" != "ath3k" ]
+        then
+-           setprop ro.bluetooth.hfp.ver 1.6
++           setprop ro.bluetooth.hfp.ver 1.5
+            setprop ro.qualcomm.bt.hci_transport smd
+        fi
+        ;;
+@@ -159,7 +162,7 @@ config_bt ()
+        elif [ "$btsoc" = "rome" ]
+        then
+            setprop ro.bluetooth.hfp.ver 1.6
+-           setprop ro.bluetooth.dun true
++           setprop ro.bluetooth.dun false
+        fi
+        ;;
+     *)
+@@ -169,6 +172,7 @@ config_bt ()
+ if [ -f /system/etc/bluetooth/stack.conf ]; then
+ stack=`cat /system/etc/bluetooth/stack.conf`
+ fi
++  # ZTE_MODIFY end 20140409
+ 
+ case "$stack" in
+     "bluez")
+diff --git a/rootdir/etc/init.qcom.factory.sh b/rootdir/etc/init.qcom.factory.sh
+index 77e531a..8472f1e 100644
+--- a/rootdir/etc/init.qcom.factory.sh
++++ b/rootdir/etc/init.qcom.factory.sh
+@@ -246,3 +246,4 @@
+     start qcom-usb-sh
+     start qcomsysd
+     start ptt_ffbm
++    start diag_klog
+diff --git a/rootdir/etc/init.qcom.post_boot.sh b/rootdir/etc/init.qcom.post_boot.sh
+index 2e26549..0db34a5 100755
+--- a/rootdir/etc/init.qcom.post_boot.sh
++++ b/rootdir/etc/init.qcom.post_boot.sh
+@@ -601,3 +601,4 @@ case "$target" in
+         echo 5120 > /proc/sys/vm/min_free_kbytes
+      ;;
+ esac
++echo related > /sys/bus/msm_subsys/devices/subsys2/restart_level
+\ No newline at end of file
+diff --git a/rootdir/etc/init.qcom.rc b/rootdir/etc/init.qcom.rc
+index 6812cad..8a8ac13 100644
+--- a/rootdir/etc/init.qcom.rc
++++ b/rootdir/etc/init.qcom.rc
+@@ -35,22 +35,12 @@ on init
+     # Set permissions for persist partition
+     mkdir /persist 0771 system system
+     # See storage config details at http://source.android.com/tech/storage/
+-    mkdir /mnt/shell/emulated 0700 shell shell
+-    mkdir /storage 0050 system sdcard_r
+-    mkdir /storage/emulated 0555 root root
+-    mkdir /storage/emulated/legacy 0555 root root
+-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+-    mkdir /storage/sdcard1 0700 root root
+-
+-    export EXTERNAL_STORAGE /storage/emulated/legacy
+-    export SECONDARY_STORAGE /storage/sdcard1
+-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
+-    export EMULATED_STORAGE_TARGET /storage/emulated
+-
++    mkdir /mnt/media_rw/sdcard0 0700 media_rw media_rw
++    mkdir /storage/sdcard0 0700 root root
++    export EXTERNAL_STORAGE /storage/sdcard0
+     # Support legacy paths
+-    symlink /storage/emulated/legacy /sdcard
+-    symlink /storage/emulated/legacy /mnt/sdcard
+-    symlink /storage/emulated/legacy /storage/sdcard0
++    symlink /storage/sdcard0 /mnt/sdcard
++    symlink /storage/sdcard0 /sdcard
+ 
+ on early-boot
+     # set RLIMIT_MEMLOCK to 64MB
+@@ -174,10 +164,6 @@ on boot
+ 
+ # msm specific files that need to be created on /data
+ on post-fs-data
+-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
+-    mkdir /data/media 0770 media_rw media_rw
+-    chown media_rw media_rw /data/media
+-
+     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+ 
+     # Create the directories used by the Wireless subsystem
+@@ -530,17 +516,19 @@ service iprenew_p2p /system/bin/dhcpcd -n
+     disabled
+     oneshot
+ 
+-service ptt_socket_app /system/bin/ptt_socket_app -d
+-    class main
+-    user root
+-    group root
+-    oneshot
+-
+-service ptt_ffbm /system/bin/ptt_socket_app -f -d
+-    user root
+-    group root
+-    disabled
+-    oneshot
++# modified by fengminchao delete ptt_socket_app 20140312 begin
++#service ptt_socket_app /system/bin/ptt_socket_app -d
++#    class main
++#    user root
++#    group root
++#    oneshot
++#
++#service ptt_ffbm /system/bin/ptt_socket_app -f -d
++#    user root
++#    group root
++#    disabled
++#    oneshot
++# modified by fengminchao delete ptt_socket_app 20140312  end
+ 
+ service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
+     class late_start
+@@ -728,16 +716,9 @@ service profiler_daemon /system/bin/profiler_daemon
+     group root
+     disabled
+ 
+-service sdcard /system/bin/sdcard /data/media /mnt/shell/emulated 1023 1023
++service fuse_sdcard0 /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard0 /storage/sdcard0
+     class late_start
+-
+-service fuse_sdcard /system/bin/sdcard -u 1023 -g 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
+-    class late_start
+-
+-# Binding fuse mount point to /storage/emulated/legacy
+-on property:init.svc.sdcard=running
+-    wait /mnt/shell/emulated/0
+-    mount none /mnt/shell/emulated/0 /storage/emulated/legacy bind
++    disabled
+ 
+ service hcidump /system/bin/sh /system/etc/hcidump.sh
+     user bluetooth
+diff --git a/rootdir/etc/init.qcom.usb.rc b/rootdir/etc/init.qcom.usb.rc
+index 29d3cd3..3fb7ac2 100644
+--- a/rootdir/etc/init.qcom.usb.rc
++++ b/rootdir/etc/init.qcom.usb.rc
+@@ -93,8 +93,12 @@ service qcom-usb-sh /system/bin/sh /init.qcom.usb.sh
+ # USB compositions
+ on property:sys.usb.config=diag,adb
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 901D
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID start
++    #write /sys/class/android_usb/android0/idVendor 05C6
++    #write /sys/class/android_usb/android0/idProduct 901D
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0249
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID end
+     write /sys/class/android_usb/android0/f_diag/clients diag
+     write /sys/class/android_usb/android0/functions diag,adb
+     write /sys/class/android_usb/android0/enable 1
+@@ -448,16 +452,24 @@ on property:sys.usb.config=diag,diag_qsc,serial_smd,serial_tty,serial_hsuart,rmn
+ 
+ on property:sys.usb.config=rndis
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct F00E
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID start
++    #write /sys/class/android_usb/android0/idVendor 05C6
++    #write /sys/class/android_usb/android0/idProduct F00E
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1365
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID end
+     write /sys/class/android_usb/android0/functions rndis
+     write /sys/class/android_usb/android0/enable 1
+     setprop sys.usb.state ${sys.usb.config}
+ 
+ on property:sys.usb.config=rndis,adb
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 9024
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID start
++    # write /sys/class/android_usb/android0/idVendor 05C6
++    # write /sys/class/android_usb/android0/idProduct 9024
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1373
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID end
+     write /sys/class/android_usb/android0/functions rndis,adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+@@ -522,16 +534,24 @@ on property:sys.usb.config=rndis,diag,diag_mdm,diag_qsc,adb
+ 
+ on property:sys.usb.config=ptp
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 904D
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120412 VID/PID start
++    # write /sys/class/android_usb/android0/idVendor 05C6
++    # write /sys/class/android_usb/android0/idProduct 904D
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0311
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120412 VID/PID END
+     write /sys/class/android_usb/android0/functions ptp
+     write /sys/class/android_usb/android0/enable 1
+     setprop sys.usb.state ${sys.usb.config}
+ 
+ on property:sys.usb.config=ptp,adb
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 904E
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120412 VID/PID start
++    # write /sys/class/android_usb/android0/idVendor 05C6
++    # write /sys/class/android_usb/android0/idProduct 904E
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0310
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120412 VID/PID END
+     write /sys/class/android_usb/android0/functions ptp,adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+@@ -539,16 +559,24 @@ on property:sys.usb.config=ptp,adb
+ 
+ on property:sys.usb.config=mtp
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct F003
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID start
++    #write /sys/class/android_usb/android0/idVendor 05C6
++    #write /sys/class/android_usb/android0/idProduct F003
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0244
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID end
+     write /sys/class/android_usb/android0/functions mtp
+     write /sys/class/android_usb/android0/enable 1
+     setprop sys.usb.state ${sys.usb.config}
+ 
+ on property:sys.usb.config=mtp,adb
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 9039
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID start
++    #write /sys/class/android_usb/android0/idVendor 05C6
++    #write /sys/class/android_usb/android0/idProduct 9039
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0245
++    # [ECID:000000] ZTEBSP modify by zhangjing 20120329 VID/PID end
+     write /sys/class/android_usb/android0/functions mtp,adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+@@ -630,11 +658,23 @@ on property:sys.usb.config=diag,diag_mdm,ccid,adb
+     start adbd
+     setprop sys.usb.state ${sys.usb.config}
+ 
++# [ECID:000000] ZTEBSP add  by zhangjing for usb vid pid mi 20120329 start
++on property:sys.usb.config=diag,modem,nmea,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1350
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd,tty
++    write /sys/class/android_usb/android0/functions diag,serial,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
+ on property:sys.usb.config=mass_storage,adb
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct 9015
+-    write /sys/class/android_usb/android0/functions adb,mass_storage
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1351
++    write /sys/class/android_usb/android0/functions mass_storage,adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+     setprop sys.usb.state ${sys.usb.config}
+@@ -642,12 +682,29 @@ on property:sys.usb.config=mass_storage,adb
+ #Mass-storage only composition
+ on property:sys.usb.config=mass_storage
+     write /sys/class/android_usb/android0/enable 0
+-    write /sys/class/android_usb/android0/idVendor 05C6
+-    write /sys/class/android_usb/android0/idProduct F000
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1353
++    write /sys/class/android_usb/android0/functions mass_storage
++    write /sys/class/android_usb/android0/enable 1
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=charge_only
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1353
+     write /sys/class/android_usb/android0/functions mass_storage
+     write /sys/class/android_usb/android0/enable 1
+     setprop sys.usb.state ${sys.usb.config}
+ 
++on property:sys.usb.config=charge_only,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1351
++    write /sys/class/android_usb/android0/functions mass_storage,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
+ on property:sys.usb.config=diag,qdss
+     write /sys/class/android_usb/android0/enable 0
+     write /sys/class/android_usb/android0/idVendor 05C6
+@@ -725,3 +782,163 @@ on property:sys.usb.config=ncm,adb
+     write /sys/class/android_usb/android0/enable 1
+     start adbd
+     setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=diag
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0112
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/functions diag
++    write /sys/class/android_usb/android0/enable 1
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=serial_smd,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 1354
++    write /sys/class/android_usb/android0/f_serial/transports smd
++    write /sys/class/android_usb/android0/functions serial,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=diag,serial_smd,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0229
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd
++    write /sys/class/android_usb/android0/functions diag,serial,mass_storage,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=rndis,mtp
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0246
++    write /sys/class/android_usb/android0/functions rndis,mtp
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=rndis,mtp,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0247
++    write /sys/class/android_usb/android0/functions rndis,mtp,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=rndis,mtp,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19D2
++    write /sys/class/android_usb/android0/idProduct 0247
++    write /sys/class/android_usb/android0/functions rndis,mtp,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=rndis,diag,adb,modem
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0253
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd
++    write /sys/class/android_usb/android0/functions rndis,diag,adb,serial
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=diag,adb,modem,nmea
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0248
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd,tty
++    write /sys/class/android_usb/android0/functions diag,adb,serial
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=diag,adb,modem,rmnet
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0255
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd
++    write /sys/class/android_usb/android0/functions diag,adb,serial,rmnet_smd
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=mtp,cdrom
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0292
++    # write /sys/class/android_usb/android0/iSerial 00000000000CDROM
++    write /sys/class/android_usb/android0/functions mtp,cdrom
++    write /sys/class/android_usb/android0/enable 1
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=mtp,cdrom,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0292
++    # write /sys/class/android_usb/android0/iSerial 00000000000CDROM
++    write /sys/class/android_usb/android0/functions mtp,cdrom,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=cdrom
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0360
++    write /sys/class/android_usb/f_cdrom/lun/file /system/etc/pcsuite.iso
++    # write /sys/class/android_usb/android0/iSerial 00000000000CDROM
++    write /sys/class/android_usb/android0/functions cdrom
++    write /sys/class/android_usb/android0/enable 1
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=cdrom,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x1361
++    write /sys/class/android_usb/f_cdrom/lun/file /system/etc/pcsuite.iso
++    # write /sys/class/android_usb/android0/iSerial 00000000000CDROM
++    write /sys/class/android_usb/android0/functions cdrom,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=charge
++    stop adbd
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/bDeviceClass 0
++    setprop sys.usb.state ${sys.usb.config}
++#//[ECID:000000] ZTEBSP zhangjing 20120329 end, for adding usb
++
++#//ztebsp zhangjing add for at, 20120725,++
++on property:sys.usb.config=diag,modem,nmea,at
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0398
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd,tty,smd
++    write /sys/class/android_usb/android0/functions diag,serial
++    write /sys/class/android_usb/android0/enable 1
++    setprop sys.usb.state ${sys.usb.config}
++
++on property:sys.usb.config=diag,modem,nmea,at,adb
++    write /sys/class/android_usb/android0/enable 0
++    write /sys/class/android_usb/android0/idVendor 19d2
++    write /sys/class/android_usb/android0/idProduct 0x0398
++    write /sys/class/android_usb/android0/f_diag/clients diag
++    write /sys/class/android_usb/android0/f_serial/transports smd,tty,smd
++    write /sys/class/android_usb/android0/functions diag,serial,adb
++    write /sys/class/android_usb/android0/enable 1
++    start adbd
++    setprop sys.usb.state ${sys.usb.config}
++#//ztebsp zhangjing add for at,20120725,--
+diff --git a/rootdir/etc/init.qcom.usb.sh b/rootdir/etc/init.qcom.usb.sh
+index 5b3f5e8..326a77d 100644
+--- a/rootdir/etc/init.qcom.usb.sh
++++ b/rootdir/etc/init.qcom.usb.sh
+@@ -102,7 +102,14 @@ case "$usb_config" in
+                setprop persist.sys.usb.config diag,diag_mdm,diag_mdm2,serial_hsic,serial_hsusb,rmnet_hsic,rmnet_hsusb,mass_storage,adb
+           ;;
+           *)
+-               setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
++               # [ECID:000000] ZTEBSP modify by zhangjing for default usb vid pid mi 20130905
++               #setprop persist.sys.usb.config diag,serial_smd,serial_tty,rmnet_bam,mass_storage,adb
++               if [ -e /persist/autorun.conf ]; then
++                   setprop persist.sys.cdrom.state 1
++                   setprop persist.sys.usb.config cdrom
++               else
++                   setprop persist.sys.usb.config mtp,adb
++               fi
+           ;;
+       esac
+     ;;
+diff --git a/rootdir/etc/init.qcom.wifi.sh b/rootdir/etc/init.qcom.wifi.sh
+index 89dc2d5..914ea4f 100644
+--- a/rootdir/etc/init.qcom.wifi.sh
++++ b/rootdir/etc/init.qcom.wifi.sh
+@@ -247,9 +247,11 @@ case "$target" in
+       echo "*** WI-FI chip ID is not specified in /persist/wlan_chip_id **"
+       echo "*** Use the default WCN driver.                             **"
+       setprop wlan.driver.ath 0
+-      rm  /system/lib/modules/wlan.ko
+-      ln -s /system/lib/modules/pronto/pronto_wlan.ko \
+-		/system/lib/modules/wlan.ko
++      #ZTE_MODIFY wanghaifei start 2014-05-04, disable link
++      #rm  /system/lib/modules/wlan.ko
++      #ln -s /system/lib/modules/pronto/pronto_wlan.ko \
++      #		/system/lib/modules/wlan.ko
++      #ZTE_MODIFY wanghaifei end
+       # Populate the writable driver configuration file
+       if [ ! -e /data/misc/wifi/WCNSS_qcom_cfg.ini ]; then
+           cp /system/etc/wifi/WCNSS_qcom_cfg.ini \
+@@ -264,9 +266,11 @@ case "$target" in
+ 
+       # Use different wpa_supplicant.conf template between wcn driver
+       # and ath6kl driver
+-      rm /system/etc/wifi/wpa_supplicant.conf
+-      ln -s /system/etc/wifi/wpa_supplicant_wcn.conf \
+-                /system/etc/wifi/wpa_supplicant.conf
++      #ZTE_MODIFY wanghaifei start 2014-05-04, disable link
++      #rm /system/etc/wifi/wpa_supplicant.conf
++      #ln -s /system/etc/wifi/wpa_supplicant_wcn.conf \
++      #          /system/etc/wifi/wpa_supplicant.conf
++      #ZTE_MODIFY wanghaifei end
+ 
+       # Trigger WCNSS platform driver
+       trigger_wcnss &
+-- 
+1.7.9.5
+
