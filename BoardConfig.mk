@@ -135,9 +135,6 @@ BOARD_SEPOLICY_UNION += \
     netd.te \
     ueventd.te
 
-# Time services
-BOARD_USES_QC_TIME_SERVICES := true
-
 # Vold
 TARGET_HW_DISK_ENCRYPTION := true
 
