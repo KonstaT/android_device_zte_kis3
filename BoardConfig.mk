@@ -135,9 +135,6 @@ BOARD_SEPOLICY_UNION += \
     netd.te \
     ueventd.te
 
-# Vold
-TARGET_HW_DISK_ENCRYPTION := true
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
