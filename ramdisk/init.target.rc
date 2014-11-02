@@ -148,6 +148,3 @@ service ztebasebandinit /system/bin/sh /system/etc/init.zte.baseband.sh
     class late_start
     user root
     oneshot
-
-on property:ro.boot.hwversion=wmfA.6
-    setprop persist.radio.multisim.config dsds
