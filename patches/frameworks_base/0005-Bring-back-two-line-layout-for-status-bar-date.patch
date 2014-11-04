@@ -1,0 +1,87 @@
+From 189fb4134f92e4aa799c65371136ccaf70f23f57 Mon Sep 17 00:00:00 2001
+From: Danny Baumann <dannybaumann@web.de>
+Date: Wed, 7 Aug 2013 10:55:57 +0200
+Subject: [PATCH 5/5] Bring back two-line layout for status bar date.
+
+Change-Id: I4bf7ce61b22da89b3b8c1a3f00e077461061f7b9
+---
+ .../res/layout/status_bar_expanded_header.xml      |    3 +--
+ packages/SystemUI/res/values/donottranslate.xml    |    7 ++++---
+ .../systemui/statusbar/policy/DateView.java        |   16 +++++++++++++---
+ 3 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/packages/SystemUI/res/layout/status_bar_expanded_header.xml b/packages/SystemUI/res/layout/status_bar_expanded_header.xml
+index 9aa7cfd..fdd8c58 100644
+--- a/packages/SystemUI/res/layout/status_bar_expanded_header.xml
++++ b/packages/SystemUI/res/layout/status_bar_expanded_header.xml
+@@ -48,10 +48,9 @@
+         <com.android.systemui.statusbar.policy.DateView android:id="@+id/date"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+-            android:singleLine="true"
+             android:textAppearance="@style/TextAppearance.StatusBar.Expanded.Date"
+             android:layout_toEndOf="@id/clock"
+-            android:layout_alignBaseline="@id/clock"
++            android:layout_centerVertical="true"
+             />
+     </RelativeLayout>
+ 
+diff --git a/packages/SystemUI/res/values/donottranslate.xml b/packages/SystemUI/res/values/donottranslate.xml
+index 351a1fd..4eb49e3 100644
+--- a/packages/SystemUI/res/values/donottranslate.xml
++++ b/packages/SystemUI/res/values/donottranslate.xml
+@@ -17,7 +17,8 @@
+  */
+ -->
+ <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+-    <!-- Date format for display: should match the lockscreen in /policy.  -->
+-    <string name="system_ui_date_pattern">@*android:string/system_ui_date_pattern</string>
+-
++    <!-- DO NOT TRANSLATE. ICU date format for display.  -->
++    <string name="system_ui_date_pattern" translatable="false">MMMMd</string>
++    <!-- DO NOT TRANSLATE. ICU weekday format for display -->
++    <string name="system_ui_weekday_pattern" translatable="false">eeee</string>
+ </resources>
+diff --git a/packages/SystemUI/src/com/android/systemui/statusbar/policy/DateView.java b/packages/SystemUI/src/com/android/systemui/statusbar/policy/DateView.java
+index b7f3cfe..675d01d 100644
+--- a/packages/SystemUI/src/com/android/systemui/statusbar/policy/DateView.java
++++ b/packages/SystemUI/src/com/android/systemui/statusbar/policy/DateView.java
+@@ -39,6 +39,7 @@ public class DateView extends TextView {
+ 
+     private final Date mCurrentTime = new Date();
+ 
++    private SimpleDateFormat mWeekdayFormat;
+     private SimpleDateFormat mDateFormat;
+     private String mLastText;
+ 
+@@ -88,15 +89,24 @@ public class DateView extends TextView {
+ 
+     protected void updateClock() {
+         if (mDateFormat == null) {
++            final String weekdayFormat = getContext().getString(R.string.system_ui_weekday_pattern);
+             final String dateFormat = getContext().getString(R.string.system_ui_date_pattern);
+             final Locale l = Locale.getDefault();
+-            final String fmt = ICU.getBestDateTimePattern(dateFormat, l.toString());
+-            mDateFormat = new SimpleDateFormat(fmt, l);
++            String weekdayFmt = ICU.getBestDateTimePattern(weekdayFormat, l.toString());
++            String dateFmt = ICU.getBestDateTimePattern(dateFormat, l.toString());
++
++            mDateFormat = new SimpleDateFormat(dateFmt, l);
++            mWeekdayFormat = new SimpleDateFormat(weekdayFmt, l);
+         }
+ 
+         mCurrentTime.setTime(System.currentTimeMillis());
+ 
+-        final String text = mDateFormat.format(mCurrentTime);
++        StringBuilder builder = new StringBuilder();
++        builder.append(mWeekdayFormat.format(mCurrentTime));
++        builder.append("\n");
++        builder.append(mDateFormat.format(mCurrentTime));
++
++        final String text = builder.toString();
+         if (!text.equals(mLastText)) {
+             setText(text);
+             mLastText = text;
+-- 
+1.7.9.5
+

@@ -1,4 +1,4 @@
-From 146016cb38cd021cda12330be8fb2aa3e4005389 Mon Sep 17 00:00:00 2001
+From 32fe67ac59dd1de5d7245f34ba526c8962307ada Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 17 May 2014 18:16:45 +0300
 Subject: [PATCH 4/4] remove few packages from the build

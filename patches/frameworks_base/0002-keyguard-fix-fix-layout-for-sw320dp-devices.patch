@@ -1,7 +1,7 @@
 From 08952485932a71330f4c508c01c550491b0a049f Mon Sep 17 00:00:00 2001
 From: Lorenzo M <djmesias@yahoo.es>
 Date: Sun, 8 Dec 2013 23:05:32 +0100
-Subject: [PATCH 2/2] keyguard: fix-fix layout for sw320dp devices
+Subject: [PATCH 2/5] keyguard: fix-fix layout for sw320dp devices
 
 Default values need to be defined in sw360dp or larger devices will
 pick up sw320dp values automatically.

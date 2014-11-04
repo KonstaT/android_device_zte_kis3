@@ -1,0 +1,42 @@
+From 25748df8c9b33f53916bb995afad563cfcf1d756 Mon Sep 17 00:00:00 2001
+From: Konsta <konsta09@gmail.com>
+Date: Sun, 2 Nov 2014 14:47:52 +0200
+Subject: [PATCH 4/5] keyguard: fix chopped layout on hdpi msim devices
+
+* adapted from commit fa06992ab7e49fe1e056787dd281384d92290be1
+
+Change-Id: I23ebb212c96e3ef8aecebb43760cbea7d441b1fd
+---
+ .../res/layout/msim_keyguard_sim_pin_view.xml      |    2 +-
+ .../res/layout/msim_keyguard_sim_puk_view.xml      |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/packages/Keyguard/res/layout/msim_keyguard_sim_pin_view.xml b/packages/Keyguard/res/layout/msim_keyguard_sim_pin_view.xml
+index 4bc1992..0de22bf 100644
+--- a/packages/Keyguard/res/layout/msim_keyguard_sim_pin_view.xml
++++ b/packages/Keyguard/res/layout/msim_keyguard_sim_pin_view.xml
+@@ -27,7 +27,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+-    androidprv:layout_maxHeight="@dimen/keyguard_security_height"
++    androidprv:layout_maxHeight="@dimen/keyguard_security_no_widget_height"
+     android:gravity="center_horizontal">
+ 
+     <ImageView
+diff --git a/packages/Keyguard/res/layout/msim_keyguard_sim_puk_view.xml b/packages/Keyguard/res/layout/msim_keyguard_sim_puk_view.xml
+index fe4baff..c50fbf6 100644
+--- a/packages/Keyguard/res/layout/msim_keyguard_sim_puk_view.xml
++++ b/packages/Keyguard/res/layout/msim_keyguard_sim_puk_view.xml
+@@ -28,7 +28,7 @@
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     androidprv:layout_maxWidth="@dimen/keyguard_security_width"
+-    androidprv:layout_maxHeight="@dimen/keyguard_security_height"
++    androidprv:layout_maxHeight="@dimen/keyguard_security_no_widget_height"
+     android:gravity="center_horizontal">
+ 
+     <ImageView
+-- 
+1.7.9.5
+

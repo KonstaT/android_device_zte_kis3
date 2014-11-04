@@ -1,4 +1,4 @@
-From df9df796d38a4f30c45c2ee382c5657002eabb33 Mon Sep 17 00:00:00 2001
+From 60fcc4f31668b3685a620d35f7a10860d42f1895 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sun, 24 Aug 2014 09:56:11 +0300
 Subject: [PATCH 3/4] remove vendorsetup.sh

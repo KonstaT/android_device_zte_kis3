@@ -1,10 +1,11 @@
-From 7d26d62404349611d274b2b69a6a506f837b9b84 Mon Sep 17 00:00:00 2001
+From a942c166f1654cdd1fb4984c1766f3e33ee2d5c9 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 28 Jun 2014 12:46:19 +0300
 Subject: [PATCH 1/4] import zte modifications
 
 Change-Id: Ib621c64d8e9e15eabd1d5aa7eb9ff242558838e4
 ---
+ bdroid_buildcfg.h                                  |    2 +-
  common.mk                                          |    7 +-
  .../frameworks/base/core/res/res/values/config.xml |   15 ++
  .../base/core/res/res/xml/power_profile.xml        |   63 +++++
@@ -18,9 +19,22 @@ Change-Id: Ib621c64d8e9e15eabd1d5aa7eb9ff242558838e4
  rootdir/etc/init.qcom.usb.rc                       |  255 ++++++++++++++++++--
  rootdir/etc/init.qcom.usb.sh                       |    9 +-
  rootdir/etc/init.qcom.wifi.sh                      |   16 +-
- 13 files changed, 372 insertions(+), 97 deletions(-)
+ 14 files changed, 373 insertions(+), 98 deletions(-)
  create mode 100644 overlay/frameworks/base/core/res/res/xml/power_profile.xml
 
+diff --git a/bdroid_buildcfg.h b/bdroid_buildcfg.h
+index 1a63809..debe576 100644
+--- a/bdroid_buildcfg.h
++++ b/bdroid_buildcfg.h
+@@ -21,7 +21,7 @@
+ 
+ #ifndef _BDROID_BUILDCFG_H
+ #define _BDROID_BUILDCFG_H
+-#define BTM_DEF_LOCAL_NAME   "QCOM-BTD"
++#define BTM_DEF_LOCAL_NAME   "Kis 3"
+ // Enables Interleave scan
+ #define BTA_HOST_INTERLEAVE_SEARCH  TRUE
+ // Disables read remote device feature
 diff --git a/common.mk b/common.mk
 index a0c628d..dcca112 100644
 --- a/common.mk

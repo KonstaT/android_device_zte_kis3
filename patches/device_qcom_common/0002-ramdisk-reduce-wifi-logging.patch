@@ -1,4 +1,4 @@
-From 5f2b7ea7ff7bb7ab118dc3f4993ca5283e58b6fa Mon Sep 17 00:00:00 2001
+From 52fd2adec7dcff49e096c7756a1ec989d7969b69 Mon Sep 17 00:00:00 2001
 From: Konsta <konsta09@gmail.com>
 Date: Sat, 23 Aug 2014 14:21:18 +0300
 Subject: [PATCH 2/4] ramdisk: reduce wifi logging

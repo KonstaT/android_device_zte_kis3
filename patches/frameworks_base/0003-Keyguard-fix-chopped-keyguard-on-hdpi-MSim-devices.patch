@@ -1,0 +1,79 @@
+From 8762ad64c5c8b940aabc42e45e51810bda429490 Mon Sep 17 00:00:00 2001
+From: Pawit Pornkitprasan <p.pawit@gmail.com>
+Date: Wed, 17 Sep 2014 17:16:22 +0700
+Subject: [PATCH 3/5] Keyguard: fix chopped keyguard on hdpi MSim devices
+
+Both the CarrierText and MSimCarrierText were in the View, taking
+additional space. Remove CarrierText from the view in case of MSim.
+
+Change-Id: I803695044d06470ef9af59863ba92444e41488f5
+---
+ .../res/layout/msim_keyguard_carrier_area.xml      |    1 +
+ .../com/android/keyguard/EmergencyCarrierArea.java |   14 +++++++++++++-
+ .../src/com/android/keyguard/KeyguardHostView.java |    6 ++++++
+ 3 files changed, 20 insertions(+), 1 deletion(-)
+
+diff --git a/packages/Keyguard/res/layout/msim_keyguard_carrier_area.xml b/packages/Keyguard/res/layout/msim_keyguard_carrier_area.xml
+index 4169403..18525f1 100644
+--- a/packages/Keyguard/res/layout/msim_keyguard_carrier_area.xml
++++ b/packages/Keyguard/res/layout/msim_keyguard_carrier_area.xml
+@@ -31,6 +31,7 @@
+     android:clickable="true">
+ 
+     <com.android.keyguard.MSimCarrierText
++        android:id="@+id/msim_carrier_text"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:singleLine="true"
+diff --git a/packages/Keyguard/src/com/android/keyguard/EmergencyCarrierArea.java b/packages/Keyguard/src/com/android/keyguard/EmergencyCarrierArea.java
+index 6d392fc..1c40df3 100644
+--- a/packages/Keyguard/src/com/android/keyguard/EmergencyCarrierArea.java
++++ b/packages/Keyguard/src/com/android/keyguard/EmergencyCarrierArea.java
+@@ -40,7 +40,12 @@ public class EmergencyCarrierArea extends LinearLayout {
+     @Override
+     protected void onFinishInflate() {
+         super.onFinishInflate();
+-        mCarrierText = (CarrierText) findViewById(R.id.carrier_text);
++
++        if (!KeyguardUpdateMonitor.sIsMultiSimEnabled) {
++            // For MSIM, we need to wait until the view has been inflated to find it
++            mCarrierText = (CarrierText) findViewById(R.id.carrier_text);
++        }
++
+         mEmergencyButton = (EmergencyButton) findViewById(R.id.emergency_call_button);
+ 
+         // The emergency button overlaps the carrier text, only noticeable when highlighted.
+@@ -48,6 +53,13 @@ public class EmergencyCarrierArea extends LinearLayout {
+         mEmergencyButton.setOnTouchListener(new OnTouchListener(){
+             @Override
+             public boolean onTouch(View v, MotionEvent event) {
++
++                if (mCarrierText == null) {
++                    // We're using MSIM
++                    mCarrierText = (CarrierText) findViewById(R.id.msim_keyguard_carrier_area)
++                            .findViewById(R.id.msim_carrier_text);
++                }
++
+                 switch(event.getAction()) {
+                     case MotionEvent.ACTION_DOWN:
+                         mCarrierText.animate().alpha(0);
+diff --git a/packages/Keyguard/src/com/android/keyguard/KeyguardHostView.java b/packages/Keyguard/src/com/android/keyguard/KeyguardHostView.java
+index f7e0777..84f16b5 100644
+--- a/packages/Keyguard/src/com/android/keyguard/KeyguardHostView.java
++++ b/packages/Keyguard/src/com/android/keyguard/KeyguardHostView.java
+@@ -955,6 +955,12 @@ public class KeyguardHostView extends KeyguardViewBase {
+                 ViewStub vStub = (ViewStub) (v.findViewById(R.id.stub_msim_carrier_text));
+                 if (vStub != null) {
+                     vStub.inflate();
++
++                    // Remove the non-MSim carrier text
++                    View carrierText = v.findViewById(R.id.carrier_text);
++                    if (carrierText != null) {
++                        ((EmergencyCarrierArea) carrierText.getParent()).removeView(carrierText);
++                    }
+                 }
+             }
+             mSecurityViewContainer.addView(v);
+-- 
+1.7.9.5
+

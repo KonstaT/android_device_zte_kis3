@@ -1,7 +1,7 @@
 From afc8d6732dec64b086a508e12b730ca41d43eae1 Mon Sep 17 00:00:00 2001
 From: Pawit Pornkitprasan <p.pawit@gmail.com>
 Date: Mon, 10 Dec 2012 09:19:40 +0700
-Subject: [PATCH 1/2] keyguard: fix layout for sw320dp devices
+Subject: [PATCH 1/5] keyguard: fix layout for sw320dp devices
 
 800x480px dpi devices have less screen space than the xhdpi devices
 Google designed the layout for and the layout needs adjustment.
