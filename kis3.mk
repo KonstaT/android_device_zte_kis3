@@ -22,7 +22,6 @@ $(call inherit-product-if-exists, vendor/zte/kis3/kis3-vendor.mk)
 
 # Audio
 PRODUCT_PACKAGES += \
-    audio_policy.msm8610 \
     audio.primary.msm8610 \
     audio.a2dp.default \
     audio.r_submix.default \
