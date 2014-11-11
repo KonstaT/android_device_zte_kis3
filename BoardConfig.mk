@@ -124,9 +124,7 @@ BOARD_SEPOLICY_DIRS += \
     device/zte/kis3/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    file.te \
-    netd.te \
-    ueventd.te
+    netd.te
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
