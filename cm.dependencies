@@ -4,6 +4,10 @@
     "target_path": "device/qcom/common"
   },
   {
+    "repository": "android_device_qcom_sepolicy",
+    "target_path": "device/qcom/sepolicy"
+  },
+  {
     "repository": "android_hardware_qcom_audio",
     "target_path": "hardware/qcom/audio-caf/default",
     "branch": "cm-12.0-caf-8974"

@@ -119,13 +119,6 @@ TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-    device/zte/kis3/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    netd.te
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
