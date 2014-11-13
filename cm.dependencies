@@ -9,7 +9,7 @@
   },
   {
     "repository": "android_hardware_qcom_audio",
-    "target_path": "hardware/qcom/audio-caf/default",
+    "target_path": "hardware/qcom/audio-caf/msm8610",
     "branch": "cm-12.0-caf-8974"
   },
   {
