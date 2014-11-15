@@ -203,6 +203,7 @@ vendor/lib/libqmiservices.so
 -app/qcrilmsgtunnel.apk
 bin/netmgrd
 bin/qmuxd
+bin/radish
 bin/rild
 bin/rfs_access
 bin/rmt_storage
