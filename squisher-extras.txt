@@ -1,35 +1,17 @@
 # CM apps
-app/CMWallpapers.apk
-priv-app/CMUpdater.apk
++app/CMWallpapers
++priv-app/CMUpdater
 
 # Camera effects
 media/LMprec_508.emd
 media/PFFprec_600.emd
 
 # Misc build cruft
-+extras
 lib/crtbegin_so.o
 lib/crtend_so.o
 
 # Ringtones
 media/audio/ringtones/Sheep.mp3
 
-# Recovery
-bin/applypatch
-bin/applypatch_static
-bin/check_prereq
-bin/recovery
-bin/updater
-etc/recovery-resource.dat
-
 # TTS data
 +tts
-
-# Video editor
-app/VideoEditor.apk
-lib/libvideoeditor_core.so
-lib/libvideoeditor_jni.so
-lib/libvideoeditor_osal.so
-lib/libvideoeditor_videofilters
-lib/libvideoeditor_videofilters.so
-lib/libvideoeditorplayer.so
