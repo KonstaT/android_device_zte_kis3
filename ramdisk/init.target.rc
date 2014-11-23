@@ -91,6 +91,9 @@ on boot
     # usb charging
     chown system system /sys/class/power_supply/battery/charging_enabled
 
+    # display color calibration
+    chown system system /sys/devices/virtual/graphics/fb0/kcal
+
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
