@@ -54,7 +54,7 @@ persist.sys.force_highendgfx=true
 # Qualcomm
 ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 ro.qualcomm.cabl=0
-ro.min_freq_0=787000
+ro.min_freq_0=787200
 
 # Recovery
 ro.cwm.enable_key_repeat=true
