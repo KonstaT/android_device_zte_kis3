@@ -117,6 +117,9 @@ TARGET_RECOVERY_LCD_BACKLIGHT_PATH := \"/sys/class/leds/lcd-backlight/brightness
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
