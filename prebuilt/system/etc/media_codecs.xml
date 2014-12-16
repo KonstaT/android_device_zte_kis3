@@ -19,8 +19,6 @@
     <Include href="media_codecs_google_audio.xml" />
     <Include href="media_codecs_google_telephony.xml" />
     <Encoders>
-        <!-- Audio Software  -->
-        <MediaCodec name="AACEncoder" type="audio/mp4a-latm" />
         <!-- Video Hardware  -->
         <MediaCodec name="OMX.qcom.video.encoder.avc" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -46,8 +44,6 @@
         </MediaCodec>
 
         <!-- Audio Software  -->
-        <MediaCodec name="MP3Decoder" type="audio/mpeg" />
-        <MediaCodec name="AACDecoder" type="audio/mp4a-latm" />
         <MediaCodec name="OMX.qcom.audio.decoder.Qcelp13" type="audio/qcelp" >
             <Quirk name="requires-global-flush" />
         </MediaCodec>
