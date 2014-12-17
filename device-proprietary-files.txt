@@ -101,8 +101,6 @@ vendor/lib/libmm-color-convertor.so
 
 # DRM
 bin/qseecomd
-lib/libWVphoneAPI.so
-vendor/lib/drm/libdrmprplugin.so
 vendor/lib/drm/libdrmwvmplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 vendor/lib/libdrmdecrypt.so
@@ -112,7 +110,6 @@ vendor/lib/libdrmtime.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librpmb.so
 vendor/lib/libssd.so
-vendor/lib/libtzplayready.so
 vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L3.so
