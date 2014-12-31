@@ -46,7 +46,6 @@ media.stagefright.use-awesome=true
 
 # Memory
 ro.config.low_ram=true
-ro.ksm.default=1
 config.disable_atlas=true
 ro.config.max_starting_bg=4
 persist.sys.force_highendgfx=true
