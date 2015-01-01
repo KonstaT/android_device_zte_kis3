@@ -103,6 +103,7 @@ service time_daemon /system/bin/time_daemon
     group root
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class main
     user root
     disabled
 
