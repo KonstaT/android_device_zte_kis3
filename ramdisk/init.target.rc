@@ -36,7 +36,6 @@ on early-init
 
 on fs
     mount_all fstab.qcom
-    # zRAM
     swapon_all fstab.qcom
 
     # Keeping following partitions outside fstab file. As user may not have
