@@ -202,13 +202,6 @@
     <!-- Indicate whether the SD card is accessible without removing the battery. -->
     <bool name="config_batterySdCardAccessibility">true</bool>
 
-    <!-- Display low battery warning when battery level dips to this value.
-         Also, the battery stats are flushed to disk when we hit this level.  -->
-    <integer name="config_criticalBatteryWarningLevel">5</integer>
-
-    <!-- Display low battery warning when battery level dips to this value -1 -->
-    <integer name="config_lowBatteryWarningLevel">16</integer>
-
     <!-- Is the notification LED intrusive? Used to decide if there should be a disable option -->
     <bool name="config_intrusiveNotificationLed">true</bool>
 
