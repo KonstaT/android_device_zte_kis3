@@ -42,7 +42,6 @@ mmp.enable.3g2=true
 media.aac_51_output_enabled=true
 mm.enable.qcom_parser=37491
 vidc.debug.level=1
-media.stagefright.use-awesome=true
 
 # Memory
 ro.config.low_ram=true
