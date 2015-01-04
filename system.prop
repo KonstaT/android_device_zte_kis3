@@ -5,6 +5,7 @@ persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicerec=false
 persist.audio.fluence.speaker=true
 use.voice.path.for.pcm.voip=true
+audio.offload.24bit.enable=false
 audio.offload.buffer.size.kb=32
 audio.offload.gapless.enabled=true
 audio.offload.multiple.enabled=false
@@ -32,6 +33,7 @@ persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
 
 # Media
+media.aac_51_output_enabled=true
 media.stagefright.enable-player=true
 media.stagefright.enable-http=true
 media.stagefright.enable-aac=true
@@ -39,8 +41,8 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 mmp.enable.3g2=true
-media.aac_51_output_enabled=true
 mm.enable.qcom_parser=37491
+mm.enable.smoothstreaming=true
 vidc.debug.level=1
 
 # Memory
