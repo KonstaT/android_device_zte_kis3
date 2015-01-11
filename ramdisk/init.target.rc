@@ -90,11 +90,15 @@ on boot
     # vibrator intensity
     chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
 
-    # usb charging
-    chown system system /sys/class/power_supply/battery/charging_enabled
-
     # display color calibration
     chown system system /sys/devices/virtual/graphics/fb0/kcal
+
+# Allow usb charging to be disabled persistently
+on property:persist.usb.chgdisabled=1
+    write /sys/class/power_supply/battery/charging_enabled 0
+
+on property:persist.usb.chgdisabled=0
+    write /sys/class/power_supply/battery/charging_enabled 1
 
 service time_daemon /system/bin/time_daemon
     class late_start
