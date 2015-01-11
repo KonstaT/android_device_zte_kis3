@@ -56,9 +56,6 @@ ro.vendor.extension_library=/system/vendor/lib/libqc-opt.so
 ro.qualcomm.cabl=0
 ro.min_freq_0=787200
 
-# Recovery
-ro.cwm.enable_key_repeat=true
-
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
