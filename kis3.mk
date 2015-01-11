@@ -49,8 +49,7 @@ PRODUCT_PACKAGES += \
     copybit.msm8610 \
     gralloc.msm8610 \
     hwcomposer.msm8610 \
-    memtrack.msm8610 \
-    liboverlay
+    memtrack.msm8610
 
 # Ebtables
 PRODUCT_PACKAGES += \
@@ -88,7 +87,6 @@ PRODUCT_PACKAGES += \
 # OMX
 PRODUCT_PACKAGES += \
     libdashplayer \
-    libdivxdrmdecrypt \
     libmm-omxcore \
     libOmxCore \
     libOmxVdec \
