@@ -1,0 +1,2 @@
+# zte baseband property
+allow init_shell radio_prop:property_service set;
