@@ -30,7 +30,9 @@ PRODUCT_PACKAGES += \
     lights.MSM8610
 
 # Wifi
-PRODUCT_PACKAGES += wcnss_service
+PRODUCT_PACKAGES += \
+    libwcnss_qmi \
+    wcnss_service
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
