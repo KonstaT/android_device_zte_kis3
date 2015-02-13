@@ -111,14 +111,6 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
-# TWRP
-RECOVERY_VARIANT := twrp
-DEVICE_RESOLUTION := 480x800
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-HAVE_SELINUX := true
-BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
-
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
 BOARD_HAS_QCOM_WLAN_SDK := true
