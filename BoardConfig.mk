@@ -72,9 +72,6 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# Dalvik
-TARGET_ARCH_LOWMEM := true
-
 # Graphics
 BOARD_EGL_CFG := device/zte/kis3/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
