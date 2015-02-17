@@ -33,6 +33,10 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcomvoiceprocessing
 
+# Camera
+PRODUCT_PACKAGES += \
+    camera.msm8610
+
 # Charger
 PRODUCT_PACKAGES += \
     charger_res_images

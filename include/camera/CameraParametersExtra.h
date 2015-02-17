@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2015 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,12 +15,12 @@
  */
 
 #define CAMERA_PARAMETERS_EXTRA_C \
-const char CameraParameters::KEY_SUPPORTED_ZTE_BURST_NUM[] = "supported-zte-burst-num"; \
+const char CameraParameters::KEY_SUPPORTED_ZTE_BURST_NUM[] = "zte-burst-num-values"; \
 const char CameraParameters::KEY_ZTE_BURST_NUM[] = "zte-burst-num"; \
-const char CameraParameters::KEY_SUPPORTED_ZTE_HDR_MODES[] = "supported-zte-hdr-modes"; \
+const char CameraParameters::KEY_SUPPORTED_ZTE_HDR_MODES[] = "zte-hdr-mode-values"; \
 const char CameraParameters::KEY_ZTE_HDR_MODE[] = "zte-hdr-mode"; \
-const char CameraParameters::ZTE_HDR_MODE_OFF[] = "zte-hdr-mode-off"; \
-const char CameraParameters::ZTE_HDR_MODE_HDR[] = "zte-hdr-mode-hdr";
+const char CameraParameters::ZTE_HDR_MODE_OFF[] = "Off"; \
+const char CameraParameters::ZTE_HDR_MODE_HDR[] = "HDR";
 
 #define CAMERA_PARAMETERS_EXTRA_H \
     static const char KEY_SUPPORTED_ZTE_BURST_NUM[]; \
