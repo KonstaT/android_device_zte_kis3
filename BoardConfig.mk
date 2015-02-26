@@ -68,6 +68,7 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
+BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Graphics
 BOARD_EGL_CFG := device/zte/kis3/prebuilt/system/lib/egl/egl.cfg
