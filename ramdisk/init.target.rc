@@ -67,14 +67,8 @@ on boot
     chmod 664 /dev/light_sensor
     chown system root /dev/light_sensor
 
-    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/enable_device
-    chown system root /sys/class/i2c-adapter/i2c-0/0-0018/pollrate_ms
     chown system root /sys/class/i2c-adapter/i2c-0/0-0019/enable_device
     chown system root /sys/class/i2c-adapter/i2c-0/0-0019/pollrate_ms
-    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/enable_device
-    chown system root /sys/class/i2c-adapter/i2c-0/0-000f/pollrate_ms
-    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/enable_device
-    chown system root /sys/class/i2c-adapter/i2c-0/0-0068/pollrate_ms
     #[ECID:000000] ZTEBSP wanghaifei 20130905 end, for sensor init
 
     #//[ECID:0000]ZTE_BSP maxiaoping 20130821 modify leds&vibrator feature for 8x26,start.
