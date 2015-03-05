@@ -88,7 +88,7 @@ on boot
     chown system system /sys/devices/virtual/graphics/fb0/kcal
 
     # key disabler
-    chown system system /proc/driver/ts_keypad_enable
+    chown system system /proc/touchscreen/keypad_enable
 
 # Allow usb charging to be disabled persistently
 on property:persist.usb.chgdisabled=1
