@@ -31,7 +31,7 @@ import java.io.File;
 
 public class KeyDisabler {
 
-    private static String CONTROL_PATH = "/proc/driver/ts_keypad_enable";
+    private static String CONTROL_PATH = "/proc/touchscreen/keypad_enable";
 
     public static boolean isSupported() {
         File file = new File(CONTROL_PATH);
