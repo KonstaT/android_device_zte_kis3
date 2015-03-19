@@ -1,2 +1,2 @@
-# zte baseband property
+# gsm.version.baseband property - init.zte.baseband.sh
 allow init_shell radio_prop:property_service set;

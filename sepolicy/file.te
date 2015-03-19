@@ -3,5 +3,5 @@ type display_sysfs, fs_type, sysfs_type;
 type vibeamp_sysfs, fs_type, sysfs_type;
 type proc_touchscreen, fs_type;
 
-# wcnss
+# wcnss - zte wifi mac file
 type wcnss_persist_file, file_type;
