@@ -74,6 +74,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
+# FM radio
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 # Dalvik
 TARGET_ARCH_LOWMEM := true
 

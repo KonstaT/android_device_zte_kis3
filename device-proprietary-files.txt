@@ -118,10 +118,6 @@ vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L3.so
 
-# FM radio
-bin/fm_qsoc_patches
-bin/fmconfig
-
 # GPS
 -app/com.qualcomm.location.apk
 -app/com.qualcomm.services.location.apk
