@@ -70,6 +70,9 @@ USE_DEVICE_SPECIFIC_CAMERA := true
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
+# FM radio
+TARGET_QCOM_NO_FM_FIRMWARE := true
+
 # Graphics
 BOARD_EGL_CFG := device/zte/kis3/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
