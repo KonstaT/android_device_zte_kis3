@@ -125,7 +125,8 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
     file.te \
     netd.te \
-    ueventd.te
+    ueventd.te \
+    zygote.te
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true

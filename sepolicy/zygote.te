@@ -1,0 +1,1 @@
+allow zygote devpts:chr_file { read write };
