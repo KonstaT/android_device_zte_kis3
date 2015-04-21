@@ -183,6 +183,6 @@
         -->
         <!-- ZTE_MODIFY ,huxiaoyu,2013/11/19, for cts test, 8x10 not supported, only 8x12 supported ,end -->
     </Decoders>
-    <Include href="media_codecs_google_video.xml" />
+    <Include href="media_codecs_google_video_le.xml" />
     <Include href="media_codecs_ffmpeg.xml" />
 </MediaCodecs>
