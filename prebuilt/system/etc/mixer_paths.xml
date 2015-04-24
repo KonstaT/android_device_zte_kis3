@@ -433,6 +433,7 @@
 
     <path name="speaker">
         <ctl name="RX3 MIX1 INP1" value="RX1" />
+        <ctl name="RX3 Digital Volume" value="90" />
         <ctl name="SPK DAC Switch" value="1" />
     </path>
 
@@ -448,7 +449,7 @@
 
     <path name="handset">
         <ctl name="RX1 MIX1 INP1" value="RX1" />
-        <ctl name="RX1 Digital Volume" value="84" />
+        <ctl name="RX1 Digital Volume" value="94" />
         <ctl name="DAC1 Switch" value="1" />
     </path>
 
@@ -460,6 +461,8 @@
         <ctl name="MI2S_RX Channels" value="Two" />
         <ctl name="RX1 MIX1 INP1" value="RX1" />
         <ctl name="RX2 MIX1 INP1" value="RX2" />
+        <ctl name="RX1 Digital Volume" value="86" />
+        <ctl name="RX2 Digital Volume" value="86" />
         <ctl name="HPHL DAC Switch" value="1" />
     </path>
 
