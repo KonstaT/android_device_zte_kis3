@@ -1,4 +1,7 @@
 
+# ART
+dalvik.vm.dex2oat-flags=--no-watch-dog
+
 # Audio
 ro.qc.sdk.audio.fluencetype=none
 persist.audio.fluence.voicecall=true
