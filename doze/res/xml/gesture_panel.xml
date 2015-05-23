@@ -18,6 +18,12 @@
         android:title="@string/ambient_display_title" >
 
         <SwitchPreference
+            android:key="ambient_display_enable"
+            android:defaultValue="true"
+            android:title="@string/ambient_display_enable_title"
+            android:summary="@string/ambient_display_enable_summary" />
+
+        <SwitchPreference
             android:key="gesture_hand_wave"
             android:defaultValue="false"
             android:title="@string/hand_wave_gesture_title"
