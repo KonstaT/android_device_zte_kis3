@@ -13,16 +13,22 @@
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <SwitchPreference
-        android:key="gesture_hand_wave"
-        android:defaultValue="false"
-        android:title="@string/hand_wave_gesture_title"
-        android:summary="@string/hand_wave_gesture_summary" />
+    <PreferenceCategory
+        android:key="ambient_display_key"
+        android:title="@string/ambient_display_title" >
 
-    <SwitchPreference
-        android:key="gesture_pocket"
-        android:defaultValue="false"
-        android:title="@string/pocket_gesture_title"
-        android:summary="@string/pocket_gesture_summary" />
+        <SwitchPreference
+            android:key="gesture_hand_wave"
+            android:defaultValue="false"
+            android:title="@string/hand_wave_gesture_title"
+            android:summary="@string/hand_wave_gesture_summary" />
+
+        <SwitchPreference
+            android:key="gesture_pocket"
+            android:defaultValue="false"
+            android:title="@string/pocket_gesture_title"
+            android:summary="@string/pocket_gesture_summary" />
+
+    </PreferenceCategory>
 
 </PreferenceScreen>
