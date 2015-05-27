@@ -45,6 +45,7 @@ public class DozeService extends Service {
     private static final String GESTURE_POCKET_KEY = "gesture_pocket";
 
     private static final int POCKET_DELTA_NS = 1000 * 1000 * 1000;
+    private static final int ENABLE_SENSOR_DELAY = 1000;
 
     private Context mContext;
     private ProximitySensor mSensor;
@@ -156,6 +157,11 @@ public class DozeService extends Service {
     private void onDisplayOff() {
         if (DEBUG) Log.d(TAG, "Display off");
         if (isDozeEnabled()) {
+            try {
+                Thread.sleep(ENABLE_SENSOR_DELAY);
+            } catch (InterruptedException e) {
+                // Ignore
+            }
             mSensor.enable();
         }
     }
