@@ -19,7 +19,7 @@
   <string name="ambient_display_enable_title">环境显示</string>
   <string name="ambient_display_enable_summary">当接收到通知时唤醒屏幕</string>
   <string name="hand_wave_gesture_title">挥手</string>
-  <string name="hand_wave_gesture_summary">挥手时闪烁通知呼吸灯</string>
+  <string name="hand_wave_gesture_summary">挥动手时闪烁通知呼吸灯</string>
   <string name="pocket_gesture_title">口袋</string>
   <string name="pocket_gesture_summary">从口袋中拿出时闪烁通知呼吸灯</string>
 </resources>

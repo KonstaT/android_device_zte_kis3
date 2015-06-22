@@ -17,7 +17,7 @@
   <string name="screen_gestures_panel_summary">Gesten verwenden, um Aktionen auszuführen</string>
   <string name="ambient_display_title">Inaktivitätsdisplay</string>
   <string name="ambient_display_enable_title">Inaktivitätsdisplay</string>
-  <string name="ambient_display_enable_summary">Bildschirm beim Empfang von Benachrichtigungen einschalten</string>
+  <string name="ambient_display_enable_summary">Bildschirm wecken, wenn Sie Benachrichtigungen erhalten</string>
   <string name="hand_wave_gesture_title">Winken</string>
   <string name="pocket_gesture_title">Tasche</string>
 </resources>
