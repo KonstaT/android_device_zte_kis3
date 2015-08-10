@@ -68,7 +68,6 @@ BOARD_CHARGER_SHOW_PERCENTAGE := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Graphics
-BOARD_EGL_CFG := device/zte/kis3/prebuilt/system/lib/egl/egl.cfg
 USE_OPENGL_RENDERER := true
 TARGET_USES_ION := true
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
