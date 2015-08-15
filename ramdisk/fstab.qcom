@@ -1,11 +1,13 @@
 # Android fstab file.
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
-#<src>                                           <mnt_point>  <type>  <mnt_flags and options>                 <fs_mgr_flags>
-/dev/block/platform/msm_sdcc.1/by-name/system    /system      ext4    ro,barrier=1                            wait
-/dev/block/platform/msm_sdcc.1/by-name/userdata  /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc  wait,check,formattable,encryptable=footer,length=-16384
-/dev/block/platform/msm_sdcc.1/by-name/cache     /cache       ext4    nosuid,nodev,barrier=1                  wait,check,formattable
-/dev/block/platform/msm_sdcc.1/by-name/boot      /boot        emmc    defaults                                defaults
-/dev/block/platform/msm_sdcc.1/by-name/recovery  /recovery    emmc    defaults                                defaults
-/devices/msm_sdcc.2/mmc_host                     auto         auto    defaults                                voldmanaged=sdcard0:auto,noemulatedsd
-/dev/block/zram0                                 none         swap    defaults                                zramsize=201326592
+#<src>                                           <mnt_point>  <type>  <mnt_flags and options>                                                                       <fs_mgr_flags>
+/dev/block/platform/msm_sdcc.1/by-name/system    /system      ext4    ro,barrier=1                                                                                  wait
+/dev/block/platform/msm_sdcc.1/by-name/userdata  /data        ext4    nosuid,nodev,barrier=1,noauto_da_alloc                                                        wait,check,formattable,encryptable=footer,length=-16384
+/dev/block/platform/msm_sdcc.1/by-name/cache     /cache       ext4    nosuid,nodev,barrier=1                                                                        wait,check,formattable
+/dev/block/platform/msm_sdcc.1/by-name/persist   /persist     ext4    nosuid,nodev,barrier=1                                                                        wait
+/dev/block/platform/msm_sdcc.1/by-name/modem     /firmware    vfat    ro,shortname=lower,uid=1000,gid=1000,dmask=227,fmask=337,context=u:object_r:firmware_file:s0  wait
+/dev/block/platform/msm_sdcc.1/by-name/boot      /boot        emmc    defaults                                                                                      defaults
+/dev/block/platform/msm_sdcc.1/by-name/recovery  /recovery    emmc    defaults                                                                                      defaults
+/devices/msm_sdcc.2/mmc_host                     auto         auto    defaults                                                                                      voldmanaged=sdcard0:auto,noemulatedsd
+/dev/block/zram0                                 none         swap    defaults                                                                                      zramsize=201326592
