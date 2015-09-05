@@ -158,6 +158,13 @@ vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/libxt_native.so
 
+# Keymaster firmware
+vendor/firmware/keymaster/keymaster.b00
+vendor/firmware/keymaster/keymaster.b01
+vendor/firmware/keymaster/keymaster.b02
+vendor/firmware/keymaster/keymaster.b03
+vendor/firmware/keymaster/keymaster.mdt
+
 # OMX
 vendor/lib/libDivxDrm.so
 vendor/lib/libExtendedExtractor.so
