@@ -109,7 +109,6 @@ BOARD_SEPOLICY_DIRS += \
     device/zte/kis3/sepolicy
 
 BOARD_SEPOLICY_UNION += \
-    bootanim.te \
     file.te \
     file_contexts \
     genfs_contexts \
