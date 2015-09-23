@@ -14,7 +14,7 @@ audio.offload.gapless.enabled=true
 audio.offload.multiple.enabled=false
 audio.offload.pcm.16bit.enable=false
 audio.offload.pcm.24bit.enable=false
-av.offload.enable=false
+audio.offload.video=false
 av.streaming.offload.enable=false
 tunnel.audio.encode=false
 
