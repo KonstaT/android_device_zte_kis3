@@ -57,7 +57,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="108000" />
             <Limit name="bitrate" range="1-6000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -68,7 +68,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="48600" />
             <Limit name="bitrate" range="1-3000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.encoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -79,7 +79,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="48600" />
             <Limit name="bitrate" range="1-3000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
     </Encoders>
     <Decoders>
@@ -105,7 +105,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="195840" />
             <Limit name="bitrate" range="1-4000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
          <MediaCodec name="OMX.qcom.video.decoder.avc.secure" type="video/avc" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -116,7 +116,7 @@
             <Limit name="blocks-per-second" min="1" max="195840" />
             <Limit name="bitrate" range="1-4000000" />
             <Feature name="secure-playback" required="true" />
-            <Limit name="concurrent-instances" max="6" />
+            <Limit name="concurrent-instances" max="3" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.mpeg4" type="video/mp4v-es" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -126,7 +126,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="108000" />
             <Limit name="bitrate" range="1-4000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.h263" type="video/3gpp" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -136,7 +136,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="48600" />
             <Limit name="bitrate" range="1-3000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.vc1" type="video/x-ms-wmv" >
             <Quirk name="requires-allocate-on-input-ports" />
@@ -176,7 +176,7 @@
             <Limit name="block-size" value="16x16" />
             <Limit name="blocks-per-second" min="1" max="48600" />
             <Limit name="bitrate" range="1-3000000" />
-            <Limit name="concurrent-instances" max="8" />
+            <Limit name="concurrent-instances" max="13" />
         </MediaCodec>
         <MediaCodec name="OMX.qcom.video.decoder.hevc" type="video/hevc" >
             <Quirk name="requires-allocate-on-input-ports" />
