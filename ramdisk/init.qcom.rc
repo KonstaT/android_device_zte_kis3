@@ -456,6 +456,7 @@ service wifi-crda /system/bin/sh /system/etc/init.crda.sh
 
 on property:sys.boot_completed=1
     start qcom-post-boot
+    write /sys/block/mmcblk0/queue/scheduler bfq
 
 service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
