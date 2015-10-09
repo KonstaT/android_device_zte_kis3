@@ -4,6 +4,10 @@
     "target_path": "device/qcom/common"
   },
   {
+    "repository": "android_external_sony_boringssl-compat",
+    "target_path": "external/sony/boringssl-compat"
+  },
+  {
     "repository": "android_hardware_qcom_fm",
     "target_path": "hardware/qcom/fm"
   }
