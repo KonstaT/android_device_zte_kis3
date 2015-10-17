@@ -1,0 +1,11 @@
+allow qti_init_shell sysfs_battery_supply:dir search;
+allow qti_init_shell sysfs_battery_supply:file { getattr setattr };
+
+# bluetooth
+allow qti_init_shell btnvtool_exec:file rx_file_perms;
+allow qti_init_shell qmuxd_socket:dir rw_dir_perms;
+allow qti_init_shell qmuxd_socket:sock_file { create setattr };
+unix_socket_connect(qti_init_shell, qmuxd, qmuxd)
+
+# gsm.version.baseband property - init.zte.baseband.sh
+allow qti_init_shell radio_prop:property_service set;

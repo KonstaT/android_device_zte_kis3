@@ -12,5 +12,8 @@
 # sensors
 /dev/light_sensor                                           u:object_r:sensors_device:s0
 
+# thermal
+/system/bin/thermal-engine                                  u:object_r:thermal-engine_exec:s0
+
 # wcnss - zte wifi mac file
 /persist/wifimac.dat                                        u:object_r:wcnss_persist_file:s0

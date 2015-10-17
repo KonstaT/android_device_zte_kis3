@@ -1,2 +1,0 @@
-# usb mass storage
-allow kernel block_device:blk_file rw_file_perms;
