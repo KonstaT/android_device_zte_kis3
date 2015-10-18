@@ -105,6 +105,11 @@ TARGET_RECOVERY_FSTAB := device/zte/kis3/ramdisk/fstab.qcom
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 
+# RIL
+TARGET_RIL_VARIANT := caf
+COMMON_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_10
+COMMON_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_10
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 BOARD_SEPOLICY_DIRS += device/zte/kis3/sepolicy
