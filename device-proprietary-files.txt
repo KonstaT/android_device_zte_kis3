@@ -178,7 +178,6 @@ vendor/lib/libSHIMDivxDrm.so
 bin/irsc_util
 vendor/lib/libdiag.so
 vendor/lib/libdsi_netctrl.so
-vendor/lib/libdsnetutils.so
 vendor/lib/libdsutils.so
 vendor/lib/libidl.so
 vendor/lib/libqc-opt.so
@@ -192,9 +191,11 @@ vendor/lib/libqmi_common_so.so
 vendor/lib/libqmi_csi.so
 vendor/lib/libqmi_encdec.so
 vendor/lib/libqmiservices.so
+vendor/lib/libsmemlog.so
 
 # RIL
 -app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+-app/shutdownlistener/shutdownlistener.apk
 bin/netmgrd
 bin/qmuxd
 bin/radish
@@ -204,9 +205,14 @@ etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 -framework/qcnvitems.jar
 -framework/qcrilhook.jar
+lib/libmdmdetect.so
+vendor/lib/libconfigdb.so
 vendor/lib/libnetmgr.so
+vendor/lib/libperipheral_client.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
+vendor/lib/libsystem_health_mon.so
+vendor/lib/libxml.so
 
 # Sensors
 lib/hw/sensors.msm8610.so
