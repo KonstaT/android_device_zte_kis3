@@ -1,2 +1,0 @@
-allow location system_data_file:dir { write add_name };
-type_transition location system_data_file:fifo_file location_data_file;
