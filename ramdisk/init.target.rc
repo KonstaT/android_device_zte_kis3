@@ -104,7 +104,7 @@ service thermal-engine /system/bin/thermal-engine
     group root
 
 service qseecomd /system/bin/qseecomd
-    class late_start
+    class core
     user root
     group root
 
