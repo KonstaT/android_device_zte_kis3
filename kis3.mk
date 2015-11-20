@@ -44,7 +44,8 @@ PRODUCT_PACKAGES += \
 # Compatibility
 PRODUCT_PACKAGES += \
     libboringssl-compat \
-    libshim_qc-opt
+    libshim_qc-opt \
+    libshim_rmt_storage
 
 # Display
 PRODUCT_PACKAGES += \

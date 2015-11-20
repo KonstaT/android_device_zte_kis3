@@ -11,3 +11,14 @@ LOCAL_MODULE := libshim_qc-opt
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+# rmt_storage
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+     ioprio.c
+
+LOCAL_MODULE := libshim_rmt_storage
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_SHARED_LIBRARY)
