@@ -41,7 +41,6 @@ media.stagefright.enable-qcp=true
 media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 mmp.enable.3g2=true
-mm.enable.qcom_parser=37491
 mm.enable.smoothstreaming=true
 vidc.debug.level=1
 
