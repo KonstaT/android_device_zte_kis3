@@ -32,7 +32,7 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
 
 on init
-    export LD_SHIM_LIBS /system/bin/rmt_storage|libshim_rmt_storage.so:/system/lib/libcrypto.so|libboringssl-compat.so:/system/vendor/lib/libqc-opt.so|libshim_qc-opt.so
+    export LD_SHIM_LIBS /system/bin/rmt_storage|libshim_rmt_storage.so:/system/vendor/lib/libmmqjpeg_codec.so|libboringssl-compat.so:/system/vendor/lib/libqc-opt.so|libshim_qc-opt.so
 
     # Set permissions for persist partition
     mkdir /persist 0771 system system
