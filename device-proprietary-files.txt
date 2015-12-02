@@ -130,6 +130,11 @@ vendor/firmware/keymaster/keymaster.b02
 vendor/firmware/keymaster/keymaster.b03
 vendor/firmware/keymaster/keymaster.mdt
 
+# OMX
+vendor/lib/libDivxDrm.so
+vendor/lib/libmmosal.so
+vendor/lib/libSHIMDivxDrm.so
+
 # Qualcomm framework
 bin/irsc_util
 vendor/lib/libdiag.so
