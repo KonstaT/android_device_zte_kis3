@@ -35,7 +35,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8610
+    camera.msm8610 \
+    Snap
 
 # Charger
 PRODUCT_PACKAGES += \
