@@ -58,9 +58,6 @@ ro.min_freq_0=787200
 # Scheduler
 sys.io.scheduler=bfq
 
-# Storage
-ro.vold.primary_physical=true
-
 # Telephony
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
