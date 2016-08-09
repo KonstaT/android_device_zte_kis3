@@ -451,8 +451,3 @@ service ril-daemon2 /system/bin/rild -c 2
 service charger /charger
     class charger
     seclabel u:r:healthd:s0
-
-service charger_monitor /system/bin/charger_monitor
-    user system
-    group system
-    disabled

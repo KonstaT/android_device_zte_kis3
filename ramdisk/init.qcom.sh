@@ -79,7 +79,6 @@ start_charger_monitor()
 		chmod -h 0664 /sys/class/power_supply/battery/input_current_settled
 		chmod -h 0664 /sys/class/power_supply/battery/voltage_min
 		chmod -h 0664 /sys/module/qpnp_charger/parameters/charger_monitor
-		start charger_monitor
 	fi
 }
 
