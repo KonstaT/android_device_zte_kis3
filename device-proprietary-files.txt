@@ -185,8 +185,6 @@ vendor/lib/libtime_genoff.so
 vendor/lib/libTimeService.so
 
 # Widevine
-etc/permissions/com.google.widevine.software.drm.xml
-framework/com.google.widevine.software.drm.jar
 lib/libdrmdecrypt.so
 vendor/lib/drm/libdrmwvmplugin.so
 #vendor/lib/mediadrm/libwvdrmengine.so
