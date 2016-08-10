@@ -38,10 +38,6 @@ PRODUCT_PACKAGES += \
     camera.msm8610 \
     Snap
 
-# Charger
-PRODUCT_PACKAGES += \
-    charger_res_images
-
 # Compatibility
 PRODUCT_PACKAGES += \
     libboringssl-compat \
