@@ -18,6 +18,9 @@ audio.offload.video=false
 av.streaming.offload.enable=false
 tunnel.audio.encode=false
 
+# Bluetooth
+qcom.bluetooth.soc=smd
+
 # Camera
 camera2.portability.force_api=1
 
