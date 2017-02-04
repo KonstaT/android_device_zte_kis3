@@ -1,4 +1,4 @@
-Firefox OS device configuration for [ZTE Open C / Kis 3](http://www.modaco.com/topic/373261-Firefox-OS/).
+Firefox OS device configuration for [ZTE Open C / Kis 3](http://konstakang.com/devices/kis3/FirefoxOS).
 
 How to build:
 -------------
