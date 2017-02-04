@@ -1,4 +1,4 @@
-CAF Android device configuration for [ZTE Open C / Kis 3](http://www.modaco.com/topic/373718-CAF-Android/).
+CAF Android device configuration for [ZTE Open C / Kis 3](http://konstakang.com/devices/kis3/CAF).
 
 How to build:
 -------------
