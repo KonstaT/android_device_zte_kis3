@@ -1,1 +1,1 @@
-add_lunch_combo cm_kis3-userdebug
+add_lunch_combo lineage_kis3-userdebug

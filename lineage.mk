@@ -2,7 +2,7 @@
 TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 800
 
-# Inherit some common CM stuff.
+# Inherit some common LineageOS stuff.
 $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 
 # Inherit device configuration
@@ -10,7 +10,7 @@ $(call inherit-product, device/zte/kis3/kis3.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := kis3
-PRODUCT_NAME := cm_kis3
+PRODUCT_NAME := lineage_kis3
 PRODUCT_BRAND := ZTE
 PRODUCT_MODEL := Kis 3
 PRODUCT_MANUFACTURER := ZTE
