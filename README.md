@@ -1,4 +1,4 @@
-CyanogenMod 12.1 device configuration for [ZTE Open C / Kis 3](http://www.modaco.com/topic/374911-cyanogenmod-121/).
+CyanogenMod 12.1 device configuration for [ZTE Open C / Kis 3](http://konstakang.com/devices/kis3/CM12.1).
 
 How to build:
 -------------
