@@ -1,1 +1,2 @@
+allow rmt_storage self:capability dac_override;
 allow rmt_storage ssd_device:blk_file { read write open };
