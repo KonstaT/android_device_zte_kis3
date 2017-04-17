@@ -185,7 +185,6 @@
         <item>255</item>
     </integer-array>
 
-    <integer name="config_buttonBrightnessSettingDefault">40</integer>
     <bool name="config_deviceHasVariableButtonBrightness">true</bool>
 
     <!-- MMS user agent string -->
